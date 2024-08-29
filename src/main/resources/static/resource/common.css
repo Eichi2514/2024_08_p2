@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+html>body, button, input {
+	font-family: Galmuri11;
+	font-weight: 800;
+}
+
+img {
+	mix-blend-mode: multiply;
+}
