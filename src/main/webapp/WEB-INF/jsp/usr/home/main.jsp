@@ -1,43 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="pageTitle" value="메인"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<div class="bg relative">
-    <!-- p1 홈페이지 배경 -->
-	<img src="https://github.com/user-attachments/assets/007e8af7-3561-4c0d-8585-6c941cbde9ad" alt="" />
+<div class="bg relative mx-auto z-10">
+	<!-- p2 홈페이지 배경 -->
+	<img class="bg"
+		src="https://github.com/user-attachments/assets/57d5f274-24c1-486b-9679-7aa7b6fa9017"
+		alt="" />
 	<form method="POST" action="../member/doLogin">
 		<c:if test="${!rq.isLogined() }">
 
-			<div class="id absolute text_color">
-				I D : <input class="csp" type="text" placeholder="아이디 입력" name="loginId" />
+			<div class="id absolute">
+				I D : <input type="text" placeholder="아이디 입력" name="loginId" />
 			</div>
 
-			<div class="pw absolute text_color">
-				PW : <input class="csp" type="password" placeholder="비밀번호 입력" name="loginPw"></input>
+			<div class="pw absolute">
+				PW : <input type="password" placeholder="비밀번호 입력" name="loginPw" />
 			</div>
 
+			<a class="join_bt text-center absolute" href="../member/join">회 원
+				가 입</a>
 
-			<a class="join_bt absolute text_color" href="../member/join">회 원 가 입</a>
 
-
-			<button class="login_out_bt absolute text_color" type="submit">로 그 인</button>
+			<button class="login_out_bt absolute text-center" type="submit">로
+				그 인</button>
 		</c:if>
 		<c:if test="${rq.isLogined() }">
 
-			<div class="member_name absolute text_color">
-				${loginedMemberNickname }님 <br /> 환영합니다
-			</div>
+			<div class="member_name1 absolute text-center">${loginedMemberNickname }님</div>
+			<div class="member_name2 absolute text-center">환영합니다</div>
 			<div class="start absolute cursor-pointer">
-				<a class="start-text absolute" href="../charac/choice">게임시작</a> 
-				<!-- p1 게임시작 호버 전 -->
-				<img class="start-1" src="https://github.com/user-attachments/assets/f3f4bbe0-bdb9-4960-b9cd-968471a760fb" alt="" />
-				<!-- p1 게임시작 호버 후 -->
-				<img class="start-2" src="https://github.com/user-attachments/assets/7f9beadb-1431-4f67-b06e-0f95ad29d4fc" alt="" />
+				<a class="start-text absolute" href="../charac/choice">게임시작</a>
+				<!-- p2 게임시작 호버 전 -->
+				<img class="start-1"
+					src="https://github.com/user-attachments/assets/dddce550-c44d-45df-adfb-479191d45307"
+					alt="" />
+				<!-- p2 게임시작 호버 후 -->
+				<img class="start-2"
+					src="https://github.com/user-attachments/assets/7afa0678-efe6-4107-ab0f-a154bd841994"
+					alt="" />
 			</div>
-			<div class="login_out_bt absolute text_color">
-				<a href="../member/doLogout">로그아웃</a>
+			<div>
+				<a class="login_out_bt absolute text-center"
+					href="../member/doLogout">로그아웃</a>
 			</div>
 		</c:if>
 	</form>

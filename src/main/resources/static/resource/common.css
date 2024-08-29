@@ -6,5 +6,138 @@ html>body, button, input {
 }
 
 img {
-	mix-blend-mode: multiply;
+	/* mix-blend-mode: multiply; */
+	/* opacity: 0.9; */
+}
+
+body {
+	background: rgb(0, 0, 30);
+}
+
+input {
+	background-color: transparent;
+}
+
+input::placeholder {
+   color: black !important;
+}
+
+input::-webkit-input-placeholder { /* 크롬, 사파리, 오페라 */
+  color: black;
+}
+
+input:-ms-input-placeholder { /* 인터넷 익스플로러 10-11 */
+  color: black;
+}
+
+input::-ms-input-placeholder { /* 엣지 */
+  color: black;
+}
+
+input::-moz-placeholder { /* 파이어폭스 19+ */
+  color: black;
+}
+
+input:-moz-placeholder { /* 파이어폭스 4-18 */
+  color: black;
+}
+
+.bg {
+	width: 100vh;
+	height: 100vh;
+}
+
+/* 메인화면 */
+
+.id {
+	font-size: 3vh;
+	height: 5vh;
+	left: 30vh;
+	top: 47vh;
+	-webkit-text-stroke: 0.03vh white;
+	padding-left: 0.7vh;
+}
+
+.pw {
+	font-size: 3vh;
+	height: 5vh;
+	left: 30vh;
+	top: 53vh;
+	-webkit-text-stroke: 0.03vh white;
+}
+
+.id>input, .pw>input {
+	width: 34vh;
+	padding-left: 1vh;
+}
+
+.join_bt{
+	font-size: 3vh;
+	width: 18vh;
+	left: 30vh;
+	top: 36vh;
+	-webkit-text-stroke: 0.03vh white;
+	border : 0.3vh solid;
+	padding: 0.7vh;
+	border-radius:1vh; 
+}
+.login_out_bt{
+	font-size: 3vh;
+	width: 19vh;
+	left: 51vh;
+	top: 36vh;
+	-webkit-text-stroke: 0.03vh white;
+	border : 0.3vh solid;
+	padding: 0.7vh;
+	border-radius:1vh;
+}
+
+.start, .start-1, .start-2, start-text {
+	width: 15vh;
+	height: 15vh;
+	top: 46vh;
+	left: 53vh;
+}
+
+.start-2, .start-text {
+	display: none;
+}
+
+.start-text {
+	left: 10px;
+	top: 60px;
+	font-size: 30px;
+	z-index: 10;
+}
+
+.start:hover>.start-2, .start:hover>.start-text {
+	display: block;
+}
+
+.start:hover>.start-1 {
+	display: none;
+}
+
+.member_name1,.member_name2{
+	font-size: 3vh;
+	-webkit-text-stroke: 0.03vh white;
+	width: 20vh;
+}
+
+.member_name1{
+	font-size: 4vh;
+	width: 25vh;
+	left: 27vh;
+	top: 45vh;
+	-webkit-text-stroke: 0.05vh white;
+	padding: 0.7vh;
+}
+
+.member_name2{
+	font-size: 4vh;
+	width: 25vh;
+	left: 27vh;
+	top: 51vh;
+	-webkit-text-stroke: 0.05vh white;
+	padding: 0.7vh;
 }
