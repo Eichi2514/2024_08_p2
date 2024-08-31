@@ -28,7 +28,7 @@
 		
 		<a class="join_bt text-center absolute" href="../member/myPage">내 정 보</a>
 
-			<div class="member_name1 absolute text-center">${loginedMember.nickname }님</div>
+			<div class="member_name1 absolute text-center">${rq.loginedMember.nickname }님</div>
 			<div class="member_name2 absolute text-center">환영합니다</div>
 			<div class="start absolute cursor-pointer">
 				<a class="start-text absolute" href="../map/front">게임시작</a>
