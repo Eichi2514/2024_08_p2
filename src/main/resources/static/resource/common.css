@@ -3,6 +3,7 @@
 html>body, button, input, select {
 	font-family: Galmuri11;
 	font-weight: 800;
+	font-size: 3vh;
 }
 
 img {
@@ -58,6 +59,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	height: 100vh;
 	top: 0;
 	left: -20vh;	
+}
+
+.bo{
+	border: 0.1vh solid;
 }
 
 /* 메인화면 */
@@ -253,11 +258,13 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 /* 내 정보 화면 */
 
 .myPage_label{
+	height: 6vh;
 	width: 20vh;
 	display: inline-block;
 	font-size: 3vh;
 }
 .myPage_body{
+	height: 6vh;
 	width: 45vh;
 	display: inline-block;
 	font-size: 3vh;
@@ -283,35 +290,30 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 33vh;
 	left: 8vh;
 	-webkit-text-stroke: 0.05vh white;
-	
 }
 
-.myPage_2{
+.myPage_2{	
 	top: 39vh;
 	left: 8vh;
 	-webkit-text-stroke: 0.05vh white;
-	
 }
 
 .myPage_3{
 	top: 45vh;
 	left: 8vh;
 	-webkit-text-stroke: 0.05vh white;
-	
 }
 
 .myPage_4{
 	top: 51vh;
 	left: 8vh;
 	-webkit-text-stroke: 0.05vh white;
-	
 }
 
 .myPage_5{
 	top: 57vh;
 	left: 8vh;
 	-webkit-text-stroke: 0.05vh white;
-	
 }
 
 .myPage_bt{
