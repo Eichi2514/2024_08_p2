@@ -24,7 +24,7 @@ CREATE TABLE `charac`(
       `floor` INT(10) NOT NULL DEFAULT 0 COMMENT '캐릭터 도달 층 수',
       room INT(10) NOT NULL DEFAULT 0 COMMENT '캐릭터 도달 층 수',
       hp INT(10) NOT NULL DEFAULT 1 COMMENT '생명력',
-      weapon TEXT NOT NULL DEFAULT "https://github.com/user-attachments/assets/e1f9a01e-a3a7-401d-b361-875d24f6106c" COMMENT '무기',
+      weapon TEXT NOT NULL DEFAULT "https://github.com/user-attachments/assets/c4959d84-7072-44dc-9d2b-77399066448c" COMMENT '무기',
       weaponNumber INT(10) NOT NULL DEFAULT 1 COMMENT '무기번호'
 );
 
