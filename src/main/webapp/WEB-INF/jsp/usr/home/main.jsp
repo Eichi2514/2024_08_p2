@@ -4,10 +4,8 @@
 
 <c:set var="pageTitle" value="메인"></c:set>
 <%@ include file="../common/head.jspf"%>
-
-<div class="bg relative mx-auto z-10">
 	<!-- p2 홈페이지 배경 -->
-	<img class="bg"
+	<img class="bg_img"
 		src="https://github.com/user-attachments/assets/57d5f274-24c1-486b-9679-7aa7b6fa9017"
 		alt="" />
 	<form method="POST" action="../member/doLogin">
@@ -21,19 +19,19 @@
 				PW : <input type="password" placeholder="비밀번호 입력" name="loginPw" />
 			</div>
 
-			<a class="join_bt text-center absolute" href="../member/join">회 원
-				가 입</a>
+			<a class="join_bt text-center absolute" href="../member/join">회 원	가 입</a>
 
 
-			<button class="login_out_bt absolute text-center" type="submit">로
-				그 인</button>
+			<button class="login_out_bt absolute text-center" type="submit">로 그 인</button>
 		</c:if>
 		<c:if test="${rq.isLogined() }">
+		
+		<a class="join_bt text-center absolute" href="../member/myPage">내 정 보</a>
 
-			<div class="member_name1 absolute text-center">${loginedMemberNickname }님</div>
+			<div class="member_name1 absolute text-center">${loginedMember.nickname }님</div>
 			<div class="member_name2 absolute text-center">환영합니다</div>
 			<div class="start absolute cursor-pointer">
-				<a class="start-text absolute" href="../charac/choice">게임시작</a>
+				<a class="start-text absolute" href="../map/front">게임시작</a>
 				<!-- p2 게임시작 호버 전 -->
 				<img class="start-1"
 					src="https://github.com/user-attachments/assets/dddce550-c44d-45df-adfb-479191d45307"
@@ -49,8 +47,6 @@
 			</div>
 		</c:if>
 	</form>
-
-
 </div>
 
 <%@ include file="../common/foot.jspf"%>

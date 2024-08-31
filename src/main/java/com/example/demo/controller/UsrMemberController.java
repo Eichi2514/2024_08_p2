@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.MemberService;
@@ -16,10 +17,13 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UsrMemberController {
+	
+	@Autowired
+	private Rq rq;
 
 	@Autowired
 	private MemberService memberService;
-
+	
 	@RequestMapping("/usr/member/doLogout")
 	@ResponseBody
 	public String doLogout(HttpServletRequest req) {
@@ -29,11 +33,6 @@ public class UsrMemberController {
 		rq.logout();
 
 		return Ut.jsReplace("S-1", Ut.f("로그아웃 되었습니다"), "/");
-	}
-
-	@RequestMapping("/usr/member/login")
-	public String showLogin() {
-		return "/usr/member/login";
 	}
 
 	@RequestMapping("/usr/member/join")
@@ -72,7 +71,7 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
 	public String doJoin(HttpSession httpSession, String loginId, String loginPw, String loginPw2, String name,
-			String nickname, String cellphoneNum, String email) {
+			String nickname, String gender) {
 
 		if (Ut.isEmptyOrNull(loginId)) {
 			return Ut.jsReplace("F-1", "아이디를 입력해주세요", "join");
@@ -92,26 +91,65 @@ public class UsrMemberController {
 		if (Ut.isEmptyOrNull(nickname)) {
 			return Ut.jsReplace("F-4", "닉네임을 입력해주세요", "join");
 		}
-		if (Ut.isEmptyOrNull(cellphoneNum)) {
-			return Ut.jsReplace("F-5", "전화번호를 입력해주세요", "join");
-		}
-		if (cellphoneNum.length() != 11 || !cellphoneNum.startsWith("010")) {
-			return Ut.jsReplace("F-5", "잘못된 전화번호입니다", "join");
-		}
-		if (Ut.isEmptyOrNull(email)) {
-			return Ut.jsReplace("F-6", "이메일을 입력해주세요", "join");
-		}
-		if (!email.contains(".")) {
-			return Ut.jsReplace("F-6", "잘못된 이메일입니다", "join");
+		if (Ut.isEmptyOrNull(gender)) {
+			return Ut.jsReplace("F-5", "성별을 선택해주세요", "join");
 		}
 
-		ResultData doJoinRd = memberService.doJoin(loginId, loginPw, name, nickname, cellphoneNum, email);
+		ResultData doJoinRd = memberService.doJoin(loginId, loginPw, name, nickname, gender);
 
 		if (doJoinRd.isFail()) {
 			return Ut.jsReplace(doJoinRd.getResultCode(), doJoinRd.getMsg(), "join");
 		}
 		
 		return Ut.jsReplace("S-1", Ut.f("%s님 환영합니다", nickname), "/");
+	}
+	
+	@RequestMapping("/usr/member/myPage")
+	public String showmyPage() {
+		return "usr/member/myPage";
+	}
+
+	@RequestMapping("/usr/member/checkPw")
+	public String showCheckPw() {
+		return "usr/member/checkPw";
+	}
+	
+	@RequestMapping("/usr/member/doCheckPw")
+	@ResponseBody
+	public String doCheckPw(String loginPw) {
+		if (Ut.isEmptyOrNull(loginPw)) {
+			return Ut.jsHistoryBack("F-1", "비밀번호를 입력해주세요");
+		}
+
+		if (rq.getLoginedMember().getLoginPw().equals(loginPw) == false) {
+			return Ut.jsHistoryBack("F-2", "비밀번호가 틀렸습니다");
+		}
+
+		return Ut.jsReplace("S-1", Ut.f("비밀번호 확인 성공"), "modify");
+	}
+
+	@RequestMapping("/usr/member/modify")
+	public String showmyModify() {
+		return "usr/member/modify";
+	}
+	
+	@RequestMapping("/usr/member/doModify")
+	@ResponseBody
+	public String doModify(HttpServletRequest req, @RequestParam(defaultValue = "No") String loginPw, String name, String nickname) {
+		
+		   Rq rq = (Rq) req.getAttribute("rq");
+
+			if (Ut.isEmptyOrNull(name)) {
+				return Ut.jsHistoryBack("F-3", "이름을 입력해주세요");
+			}
+			if (Ut.isEmptyOrNull(nickname)) {
+				return Ut.jsHistoryBack("F-4", "닉네임을 입력해주세요");
+			}
+		
+			ResultData modifyRD = memberService.modifyMember(rq.getLoginedMemberId(), loginPw, name, nickname);
+			
+		
+		return Ut.jsReplace("S-1", Ut.f("회원정보 수정 성공"), "myPage");
 	}
 
 }
