@@ -87,8 +87,8 @@ room = 1;
 INSERT INTO scoreboard
 SET regDate = NOW(),
 memberId = 1,
-`floor` = 3,
-room = 3;
+`floor` = 99,
+room = 5;
 
 SELECT *
 FROM `member`;
