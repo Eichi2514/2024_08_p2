@@ -13,7 +13,7 @@
 	alt="" />
 
 
-<img class="charac absolute"
+<img class="charac rounded-full absolute"
 	src="https://github.com/user-attachments/assets/aaa05c2c-d55a-4111-b367-9231727e7050"
 	alt="" />
 

@@ -46,7 +46,7 @@
 			</div>
 			<div class="weapon absolute text-center">
 			착용무기
-			<img class="weapon_img absolute" src="${charac.weapon}"
+			<img class="weapon_img absolute" src="${charac.extra__weapon}"
 				alt="" />
 			</div>
 		</div>

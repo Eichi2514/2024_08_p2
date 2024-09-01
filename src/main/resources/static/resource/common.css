@@ -65,7 +65,8 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 1vh;
 	width: 10vh;
 	height: 10vh;
-	border: 1vh solid;
+	border: 1vh solid white;
+	background: black;
 }
 
 .id {
@@ -335,7 +336,8 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 1vh;
 	width: 16vh;
 	height: 16vh;
-	border: 1vh solid;
+	border: 1vh solid white;
+	background: black;
 }
 
 .bar {

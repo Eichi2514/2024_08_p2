@@ -9,7 +9,7 @@ public interface CharacRepository {
 		
 
 	@Insert("""
-			INSERT INTO `charac` 
+			INSERT INTO charac 
 			SET regDate = NOW(), 
 			updateDate = NOW(),
 			memberId = #{loginedMemberId}
@@ -17,8 +17,10 @@ public interface CharacRepository {
 	public Charac characCreation(int loginedMemberId);
 
 	@Select("""
-			SELECT *
-            FROM `charac`
+			SELECT C.*, W.img extra__weapon
+            FROM charac C
+            INNER JOIN weapon W
+            ON C.weaponId = W.id
             WHERE memberId = #{loginedMemberId}			
 				""")
 	public Charac characChack(int loginedMemberId);		
