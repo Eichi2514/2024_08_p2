@@ -69,8 +69,30 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	background: black;
 }
 
+.TOP3{
+	left: 70vh;
+	top: 1vh;
+	width: 30vh;
+	height: 30vh;	
+}
+.TOP3_img{
+	width: 30vh;
+	height: 30vh;
+}
+.TOP3_table{
+	top: 6vh;
+	left: 5vh;
+	font-size: 2vh;
+}
+.TOP3_list_bt{
+	top: 22.7vh;
+	left: 16vh;
+	width: 10vh;
+	height: 2vh;
+	font-size: 1.5vh;
+}
+
 .id {
-	font-size: 3vh;
 	height: 5vh;
 	left: 30vh;
 	top: 47vh;
@@ -79,7 +101,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 }
 
 .pw {
-	font-size: 3vh;
 	height: 5vh;
 	left: 30vh;
 	top: 53vh;
@@ -91,7 +112,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 }
 
 .join_bt {
-	font-size: 3vh;
 	width: 18vh;
 	left: 30vh;
 	top: 36vh;
@@ -102,7 +122,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 }
 
 .login_out_bt {
-	font-size: 3vh;
 	width: 19vh;
 	left: 51vh;
 	top: 36vh;
@@ -126,7 +145,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 .start-text {
 	left: 1.8vh;
 	top: 7vh;
-	font-size: 3vh;
 	z-index: 10;
 }
 
@@ -139,7 +157,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 }
 
 .member_name1, .member_name2 {
-	font-size: 3vh;
 	-webkit-text-stroke: 0.05vh white;
 	width: 20vh;
 }
@@ -230,7 +247,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 55vh;
 	left: 50vh;
 	width: 20vh;
-	font-size: 3vh;
 	border: 0.3vh solid;
 	padding: 0.7vh;
 	border-radius: 1vh;
@@ -241,7 +257,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 65vh;
 	left: 50vh;
 	width: 20vh;
-	font-size: 3vh;
 	border: 0.3vh solid;
 	padding: 0.7vh;
 	border-radius: 1vh;
@@ -253,14 +268,12 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	height: 6vh;
 	width: 20vh;
 	display: inline-block;
-	font-size: 3vh;
 }
 
 .myPage_body {
 	height: 6vh;
 	width: 45vh;
 	display: inline-block;
-	font-size: 3vh;
 }
 
 .myPage_bg {
@@ -312,7 +325,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 68vh;
 	left: 12vh;
 	width: 20vh;
-	font-size: 3vh;
 	border: 0.3vh solid;
 	padding: 0.7vh;
 	border-radius: 1vh;
@@ -323,7 +335,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 68vh;
 	left: 45vh;
 	width: 20vh;
-	font-size: 3vh;
 	border: 0.3vh solid;
 	padding: 0.7vh;
 	border-radius: 1vh;

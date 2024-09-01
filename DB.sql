@@ -32,6 +32,14 @@ CREATE TABLE weapon(
       img TEXT NOT NULL
 );
 
+CREATE TABLE scoreboard(
+      id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      regDate DATETIME NOT NULL,
+      memberId INT(10) NOT NULL,
+      `floor` INT(10) NOT NULL COMMENT '캐릭터 도달 층 수',
+      room INT(10) NOT NULL COMMENT '캐릭터 도달 방 번호'      
+);
+
 ## 테스트 회원 생성
 INSERT INTO `member`
 SET regDate = NOW(),
@@ -51,6 +59,36 @@ loginPw = 'qwe',
 `name` = '회원',
 nickname = '회원',
 gender = 0;
+
+INSERT INTO scoreboard
+SET regDate = NOW(),
+memberId = 1,
+`floor` = 1,
+room = 2;
+
+INSERT INTO scoreboard
+SET regDate = NOW(),
+memberId = 2,
+`floor` = 2,
+room = 2;
+
+INSERT INTO scoreboard
+SET regDate = NOW(),
+memberId = 1,
+`floor` = 1,
+room = 1;
+
+INSERT INTO scoreboard
+SET regDate = NOW(),
+memberId = 2,
+`floor` = 3,
+room = 1;
+
+INSERT INTO scoreboard
+SET regDate = NOW(),
+memberId = 1,
+`floor` = 3,
+room = 3;
 
 SELECT *
 FROM `member`;
@@ -76,3 +114,10 @@ FROM charac C
 INNER JOIN weapon W
 ON C.weaponId = W.id
 WHERE memberId = 1;
+
+SELECT S.*, M.nickname extra__user
+FROM scoreboard S
+LEFT JOIN `member` M
+ON m.id = S.memberId
+ORDER BY `floor` DESC, room DESC
+LIMIT 0, 3;
