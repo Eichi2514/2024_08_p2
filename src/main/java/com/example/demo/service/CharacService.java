@@ -16,12 +16,20 @@ public class CharacService {
 		this.characRepository = characRepository;
 	}
 
-	public Charac characCreation(int loginedMemberId) {
-		return characRepository.characCreation(loginedMemberId);
+	public void characCreation(int loginedMemberId) {
+		characRepository.characCreation(loginedMemberId);
 	}
 
 	public Charac characChack(int loginedMemberId) {
 		return characRepository.characChack(loginedMemberId);
 	}
+
+	public void update(int hp, int floor, int room, int weaponId, int memberId) {
+		characRepository.update(hp, floor, room, weaponId, memberId);		
+	}
+
+	public void delete(int memberId) {
+		characRepository.delete(memberId);
+	}	
 
 }

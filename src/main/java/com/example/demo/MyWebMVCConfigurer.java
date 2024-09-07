@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -20,15 +21,41 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 
 	@Autowired
 	NeedLogoutInterceptor needLogoutInterceptor;
+	
+	/*
+	 * @Autowired
+	 * StageInterceptor stageInterceptor;
+	 */
 
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(beforeActionInterceptor).addPathPatterns("/**").excludePathPatterns("/resource/**")
-				.excludePathPatterns("/error");
 
-		registry.addInterceptor(needLoginInterceptor).addPathPatterns("/usr/member/doLogout");
+		public void addInterceptors(InterceptorRegistry registry) {
 
-		registry.addInterceptor(needLogoutInterceptor).addPathPatterns("/usr/member/doLogin").addPathPatterns("/usr/member/join")
-				.addPathPatterns("/usr/member/doJoin");
+			InterceptorRegistration ir;
+
+			ir = registry.addInterceptor(beforeActionInterceptor);
+			ir.addPathPatterns("/**");
+			ir.addPathPatterns("/favicon.ico");
+			ir.excludePathPatterns("/resource/**");
+			ir.excludePathPatterns("/error");
+
+			ir = registry.addInterceptor(needLoginInterceptor);
+			ir.addPathPatterns("/usr/member/doLogout");
+			
+			ir.addPathPatterns("/usr/member/myPage");
+			ir.addPathPatterns("/usr/member/checkPw");
+			ir.addPathPatterns("/usr/member/doCheckPw");
+			ir.addPathPatterns("/usr/map/front");
+
+			ir = registry.addInterceptor(needLogoutInterceptor);
+			ir.addPathPatterns("/usr/member/login");
+			ir.addPathPatterns("/usr/member/doLogin");
+			ir.addPathPatterns("/usr/member/join");
+			ir.addPathPatterns("/usr/member/doJoin");
+			
+			/*
+			 * ir = registry.addInterceptor(stageInterceptor);
+			 * ir.addPathPatterns("/usr/map/front");
+			 */
 
 	}
 

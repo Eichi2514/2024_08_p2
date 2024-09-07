@@ -69,22 +69,25 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	background: black;
 }
 
-.TOP3{
+.TOP3 {
 	left: 70vh;
 	top: 1vh;
 	width: 30vh;
-	height: 30vh;	
+	height: 30vh;
 }
-.TOP3_img{
+
+.TOP3_img {
 	width: 30vh;
 	height: 30vh;
 }
-.TOP3_table{
+
+.TOP3_table {
 	top: 6vh;
 	left: 5vh;
 	font-size: 2vh;
 }
-.TOP3_list_bt{
+
+.TOP3_list_bt {
 	top: 22.7vh;
 	left: 16vh;
 	width: 10vh;
@@ -341,7 +344,46 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	background: rgb(255, 71, 48);
 }
 
-/* 인게임 */
+/* 점수기록 */
+.scoreboard_bg {
+	top: 15vh;
+	left: 10vh;
+	width: 80vh;
+	height: 80vh;
+}
+
+.scoreboard_table {
+	top: 4vh;
+	left: 24vh;
+}
+
+.pagination {
+	width: 80vh;
+	top: 69.5vh;
+}
+
+.pagination>a {
+	padding: 0.5vh;
+	-webkit-text-stroke: 0.05vh gray;
+}
+
+.scoreboard_exit_bt {
+	top: 61vh;
+	left: 46vh;
+	padding-right: 10vh;
+}
+
+.pagination_left {
+	top: 33vh;
+	left: 16vh;
+}
+
+.pagination_right {
+	top: 33vh;
+	left: 54vh;
+}
+
+/* 인게임 헤드 */
 .ingame_logo {
 	left: -18vh;
 	top: 1vh;
@@ -356,13 +398,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	height: 100vh;
 	top: 0;
 	left: -20vh;
-}
-
-.charac {
-	left: 45vh;
-	top: 80vh;
-	width: 10vh;
-	height: 10vh;
 }
 
 .door_top {
@@ -425,4 +460,87 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 6vh;
 	width: 10vh;
 	height: 10vh;
+}
+
+/* 인게임 맵 */
+.guide1 {
+	top: 30vh;
+	left: 15vh;
+	width: 30vh;
+	padding: 1vh;
+}
+
+.guide2 {
+	top: 30vh;
+	left: 55vh;
+	width: 30vh;
+	padding: 1vh;
+	width: 30vh;
+}
+
+.front_charac {
+	left: 10vh;
+	top: 44vh; /* 44.1 */
+	width: 10vh;
+	height: 10vh;
+}
+
+.front_charac_img {
+	width: 10vh;
+	height: 10vh;
+}
+
+.front_attack {
+	width: 2vh;
+	height: 2vh;
+}
+
+.Aattack {
+	left: -6vh;
+	top: 4vh;
+}
+
+.Wattack {
+	left: 4vh;
+	top: -6vh;
+}
+
+.Dattack {
+	left: 14vh;
+	top: 4vh;
+}
+
+.Sattack {
+	left: 4vh;
+	top: 14vh;
+}
+
+.front_mob_img {
+	width: 10vh;
+	height: 10vh;
+}
+
+.front_bossMob_img {
+	width: 20vh;
+	height: 20vh;
+}
+
+.item{
+	top: 45vh;
+	left: 75vh;
+	width: 10vh;
+	height: 10vh;
+}
+
+/* 게임오버화면 */
+.over {
+	top: 2vh;
+	left: 0;
+	height: 100vh;
+	width: 100vh;
+}
+.over_bt{
+	font-size : 15vh;
+	-webkit-text-stroke: 0.05vh white;
+	padding: 25vh;
 }

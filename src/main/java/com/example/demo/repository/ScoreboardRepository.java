@@ -11,14 +11,11 @@ import com.example.demo.vo.Scoreboard;
 
 @Mapper
 public interface ScoreboardRepository {
-
-	@Insert("""
-			INSERT INTO charac
-			SET regDate = NOW(),
-			updateDate = NOW(),
-			memberId = #{loginedMemberId}
-			""")
-	public Charac characCreation(int loginedMemberId);
+	/*
+	 * @Insert(""" INSERT INTO charac SET regDate = NOW(), updateDate = NOW(),
+	 * memberId = #{loginedMemberId} """) public Charac characCreation(int
+	 * loginedMemberId);
+	 */
 
 	@Select("""
 			SELECT S.*, M.nickname extra__user
@@ -35,7 +32,26 @@ public interface ScoreboardRepository {
 			FROM scoreboard S
 			LEFT JOIN `member` M
 			ON m.id = S.memberId
-			ORDER BY `floor` DESC, room DESC
+			ORDER BY `floor` DESC, room DESC, regDate ASC
+			LIMIT #{limitFrom}, #{itemsInAPage}
 			""")
-	public List<Scoreboard> scoreboardList();
+	public List<Scoreboard> scoreboardList(int limitFrom, int itemsInAPage);
+
+	@Select("""
+			<script>
+			SELECT COUNT(*)
+			FROM scoreboard
+			ORDER BY `floor` DESC, room DESC, regDate ASC
+			</script>
+			""")
+	public int totalCnt();
+
+	@Insert("""
+			INSERT INTO scoreboard
+			SET regDate = NOW(),
+			memberId = #{memberId},
+			`floor` = #{floor},
+			room = #{room}
+			""")
+	public void log(int memberId, int floor, int room);
 }
