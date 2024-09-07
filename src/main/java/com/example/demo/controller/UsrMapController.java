@@ -60,8 +60,10 @@ public class UsrMapController {
 		model.addAttribute("room", room); // 현재 방 정보
 
 		int originallyStage = (charac.getFloor() * 5) + charac.getRoom();
+		
+		System.out.println(rq.getLoginedMember().getAuthLevel());
 
-		if ((originallyStage < stage || originallyStage > stage) && stage != 5) {
+		if (((originallyStage < stage || originallyStage > stage) && stage != 5) && rq.getLoginedMember().getAuthLevel() != 7){
 			return "/usr/home/main";
 		}
 

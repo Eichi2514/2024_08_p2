@@ -438,6 +438,18 @@ function doDelete(something) {
 	});
 }	
 
+//몬스터 사라지게하는 함수
+function mobHidden(num) {
+	$(".mob"+num).fadeOut(2000, function() {
+	    $(this).addClass('hidden');
+	});
+}		
+
+// 몬스터 나타나게 하는 함수
+function mobShow(num) {
+	$(".mob"+num).fadeIn(1000).removeClass('hidden');
+}
+
 // 자동 실행 move 함수 담아놓을 변수 생성
 var stop2, stop3, stop4, stop5, stop6;
 
@@ -463,18 +475,6 @@ function show(){
 			}, 100)
 		}
 		
-		// 몬스터 사라지게하는 함수
-		function mobHidden(num) {
-			$(".mob"+num).fadeOut(3000, function() {
-			    $(this).addClass('hidden');
-			});
-		}		
-		
-		// 몬스터 나타나게 하는 함수
-		function mobShow(num) {
-			$(".mob"+num).fadeIn(1000).removeClass('hidden');
-		}
-
 	       function attackA(something) {
 				$.ajax({
 					url : '/usr/map/Aattack',
