@@ -498,11 +498,13 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 .Aattack {
 	left: -6vh;
 	top: 4vh;
+	transform: scaleX(-1);
 }
 
 .Wattack {
 	left: 4vh;
 	top: -6vh;
+	transform: rotate(270deg);
 }
 
 .Dattack {
@@ -513,6 +515,7 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 .Sattack {
 	left: 4vh;
 	top: 14vh;
+	transform: rotate(90deg);
 }
 
 .front_mob_img {
@@ -543,4 +546,42 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	font-size : 15vh;
 	-webkit-text-stroke: 0.05vh white;
 	padding: 25vh;
+}
+
+.item_text{
+	top: 40vh;
+	left: 25vh;
+	height: 20vh;
+	width: 50vh;
+	-webkit-text-stroke: 0.05vh white;	
+}
+
+.item_img{
+	height: 20vh;
+	width: 50vh;
+	transform: scaleY(-1);
+}
+
+.item_text > div, .item_text > button{
+	z-index: 20;
+}
+
+.item_title{
+	top: 5vh;
+	left: 3vh;
+}
+
+.item_change{
+	top: 14vh;
+	left: 6vh;
+}
+
+.item_mix{
+	top: 14vh;
+	left: 21vh;
+}
+
+.item_exit{
+	top: 14vh;
+	left: 37vh;
 }

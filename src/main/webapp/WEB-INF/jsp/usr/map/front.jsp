@@ -69,7 +69,6 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
     // 캐릭터 정보
     var front_hp = "${charac.hp}";
     var stage;
-    var front_weaponId = "${charac.weaponId}";
 
     // 스테이지 이동
 	function stageUp() {
@@ -77,7 +76,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 		var doorChack = $(".door").hasClass("hidden");
 		if (LR > 79 && 38 < UD && UD < 52 && !doorChack) {
 			windowChack = false;
-			update(front_hp, stage, front_weaponId);
+			update(front_hp, stage);
 			$(".door").fadeOut(1000).addClass('hidden');
 			mobShow(2);
 			mobShow(3);
@@ -92,14 +91,13 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 	}  
     
     // 캐릭터 정보 업데이트
-	function update(hp, stage, weaponId) {
+	function update(hp, stage) {
 		$.ajax({
 			url : '/usr/charac/update',
 			type : 'POST',
 			data : {
 				hp : hp,
-				stage : stage,
-				weaponId : weaponId
+				stage : stage
 			},
 			dataType : 'text',
 			success : function(data) {
@@ -328,7 +326,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 				dataType : 'text',
 				success : function(data) {
 					if (data == 'success') {
-						console.log('HP : ' + front_hp);
+						/* console.log('HP : ' + front_hp); */
 						if(something == 2){
 							LR2 -= 2;
 							$(".mob2").css("left", LR2 + "vh");
@@ -462,10 +460,45 @@ function show(){
 	if(${floor > 1 && room == 0}){stop6 = setInterval(move6, 100);}			
    }
    
+// 아이템 안내창 공개
+function showItem_text(){
+	var itemChack = $(".item").hasClass('hidden');
+	if(LR > 64 && LR < 76 && UD < 56 && UD > 34 && !itemChack){
+		$(".item_text").fadeIn(1000).removeClass('hidden');
+		}
+	}
+
+//아이템 안내창 교체
+function Item_change(){
+    $.ajax({
+        url : '/usr/charac/weaponChange',
+        type : 'POST',
+        dataType : 'text',
+        success: function(data) {
+        	var changeImg = "${weapon}";
+            $('.weapon_img').attr('src', changeImg);
+            $('.Aattack').attr('src', changeImg);
+            $('.Wattack').attr('src', changeImg);
+            $('.Dattack').attr('src', changeImg);
+            $('.Sattack').attr('src', changeImg);
+            $(".item").fadeOut(1000).addClass('hidden');
+            $(".item_text").fadeOut(1000).addClass('hidden');
+        },
+        error : function(jqXHR, textStatus, errorThrown) {
+            alert('오류 발생 : ' + textStatus);
+        }
+    });
+}
+
+//아이템 안내창 취소
+function Item_exit(){
+		$(".item_text").fadeOut(1000).addClass('hidden');
+	}
+    	  
 // 아이템 공개
-      function showItem(){
-    	  $(".item").fadeIn(1000).removeClass('hidden');
-    	  }
+function showItem(){
+	  $(".item").fadeIn(1000).removeClass('hidden');
+}
 
 // 캐릭터 공격
 		function attack_motion(motion) {
@@ -770,6 +803,19 @@ function show(){
 
 	<img class="item hidden absolute" src="${weapon}" alt="" />
 </c:if>
+
+
+<div class="item_text absolute z-20 hidden">
+<!-- p2 나무판 -->
+	<img class="item_img absolute z-20"
+		src="https://github.com/user-attachments/assets/b3351b33-5547-48b5-9108-78ef3c69c204"
+		alt="" />
+		
+	<div class="item_title absolute">새로운 무기를 발견하였습니다.</div>
+	<button class="item_change absolute" onclick="Item_change()">교체</button>
+	<button class="item_mix absolute">합성</button>
+	<button class="item_exit absolute" onclick="Item_exit()">취소</button>
+</div>
 
 
 <!-- 캐릭터 -->
