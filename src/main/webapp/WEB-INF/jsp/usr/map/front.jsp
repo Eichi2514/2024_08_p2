@@ -406,7 +406,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 // hp 감소
 function hpDown(){
 	front_hp -= 1;
-	$('.hp_bar').text(front_hp);
+	$('.hp_count').text(front_hp);
 	if(front_hp == 0){
 		scoreboardLog();
 		location.href = '../map/over';
@@ -515,7 +515,13 @@ function showItem(){
 	  $(".item").fadeIn(1000).removeClass('hidden');
 }
 
-// 공격 메소드
+// 보스 HP 감소 함수
+function BossHpDown(){
+	let new_width_value = ( ${50/ (floor*10) }*mob6_hp);
+	$(".bossHP_bar").css('width', new_width_value+'vh');
+}
+
+// 공격 함수
 		function attack_motion(something, motion) {
 			$("."+motion+"attack"+something).removeClass('hidden');
 			setTimeout(function() {
@@ -571,6 +577,7 @@ function showItem(){
 								doDelete(6);
 								showItem();
 							}
+							BossHpDown();
 						} 
 						// console.log("몬스터2 hp : " + mob2_hp);
 						// console.log("몬스터3 hp : " + mob3_hp);
@@ -634,6 +641,7 @@ function showItem(){
 								doDelete(6);
 								showItem();
 							}
+							BossHpDown();
 						} 
 						// console.log("몬스터2 hp : " + mob2_hp);
 						// console.log("몬스터3 hp : " + mob3_hp);
@@ -697,6 +705,7 @@ function showItem(){
 								doDelete(6);
 								showItem();
 							}
+							BossHpDown();
 						} 
 						// console.log("몬스터2 hp : " + mob2_hp);
 						// console.log("몬스터3 hp : " + mob3_hp);
@@ -760,6 +769,7 @@ function showItem(){
 								doDelete(6);
 								showItem();
 							}
+							BossHpDown();
 						} 
 						// console.log("몬스터2 hp : " + mob2_hp);
 						// console.log("몬스터3 hp : " + mob3_hp);
@@ -869,6 +879,11 @@ function showItem(){
 </c:if>
 <!-- 보스 몬스터 -->
 <c:if test="${floor > 1 && room == 0}">
+<div class="bossHP absolute">
+<div class="bossHP_title">BOSS : </div>
+<div class="bossHP_bar"></div>
+</div>
+
 	<div class="front_bossMob mob6 absolute">
 		<!-- 왼쪽 공격 -->
 		<img class="attack1 Aattack6 hidden absolute"
