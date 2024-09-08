@@ -96,26 +96,34 @@ public class UsrMapController {
 
 	@RequestMapping("/usr/map/Aattack")
 	@ResponseBody
-	public int Aattack(int something) {
-		return mapService.Aattack(something);
+	public int Aattack(HttpServletRequest req, int something) {
+		Rq rq = (Rq) req.getAttribute("rq"); // HttpServletRequest에 저장돼 있는 정보 가져오기
+		Charac charac = characService.characChack(rq.getLoginedMemberId()); // 캐릭터 가져오기
+		return mapService.Aattack(something, charac.getWeaponId());
 	}
 
 	@RequestMapping("/usr/map/Wattack")
 	@ResponseBody
-	public int Wattack(int something) {
-		return mapService.Wattack(something);
+	public int Wattack(HttpServletRequest req, int something) {
+		Rq rq = (Rq) req.getAttribute("rq"); // HttpServletRequest에 저장돼 있는 정보 가져오기
+		Charac charac = characService.characChack(rq.getLoginedMemberId()); // 캐릭터 가져오기
+		return mapService.Wattack(something, charac.getWeaponId());
 	}
 
 	@RequestMapping("/usr/map/Dattack")
 	@ResponseBody
-	public int Dattack(int something) {
-		return mapService.Dattack(something);
+	public int Dattack(HttpServletRequest req, int something) {
+		Rq rq = (Rq) req.getAttribute("rq"); // HttpServletRequest에 저장돼 있는 정보 가져오기
+		Charac charac = characService.characChack(rq.getLoginedMemberId()); // 캐릭터 가져오기
+		return mapService.Dattack(something, charac.getWeaponId());
 	}
 
 	@RequestMapping("/usr/map/Sattack")
 	@ResponseBody
-	public int Sattack(int something) {
-		return mapService.Sattack(something);
+	public int Sattack(HttpServletRequest req, int something) {
+		Rq rq = (Rq) req.getAttribute("rq"); // HttpServletRequest에 저장돼 있는 정보 가져오기
+		Charac charac = characService.characChack(rq.getLoginedMemberId()); // 캐릭터 가져오기
+		return mapService.Sattack(something, charac.getWeaponId());
 	}
 
 	@RequestMapping("/usr/map/delete")

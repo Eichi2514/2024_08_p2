@@ -492,10 +492,7 @@ function Item_change(){
         success: function(data) {
         	var changeImg = "${weapon}";
             $('.weapon_img').attr('src', changeImg);
-            $('.Aattack1').attr('src', changeImg);
-            $('.Wattack1').attr('src', changeImg);
-            $('.Dattack1').attr('src', changeImg);
-            $('.Sattack1').attr('src', changeImg);
+            $('.CharacAttack').attr('src', changeImg);
             $(".item").fadeOut(1000).addClass('hidden');
             $(".item_text").fadeOut(1000).addClass('hidden');
         },
@@ -808,16 +805,16 @@ function BossHpDown(){
 <c:if test="${room > 0 && room < 5}">
 	<div class="front_mob mob2 absolute">
 	    <!-- 왼쪽 공격 -->
-		<img class="attack1 Aattack2 hidden absolute"
+		<img class="mobAttack Aattack2 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="attack1 Wattack2 hidden absolute"
+		<img class="mobAttack Wattack2 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="attack1 Dattack2 hidden absolute"
+		<img class="mobAttack Dattack2 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="attack1 Sattack2 hidden absolute"
+		<img class="mobAttack Sattack2 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<img class="front_mob_img" src="${mob}" alt="" />
 	</div>
@@ -826,16 +823,16 @@ function BossHpDown(){
 <c:if test="${room > 1 && room < 5}">
 	<div class="front_mob mob3 absolute">
 	    <!-- 왼쪽 공격 -->
-		<img class="attack1 Aattack3 hidden absolute"
+		<img class="mobAttack Aattack3 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="attack1 Wattack3 hidden absolute"
+		<img class="mobAttack Wattack3 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="attack1 Dattack3 hidden absolute"
+		<img class="mobAttack Dattack3 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="attack1 Sattack3 hidden absolute"
+		<img class="mobAttack Sattack3 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<img class="front_mob_img" src="${mob}" alt="" />
 	</div>
@@ -844,16 +841,16 @@ function BossHpDown(){
 <c:if test="${room > 2 && room < 5}">
 	<div class="front_mob mob4 absolute">
 		<!-- 왼쪽 공격 -->
-		<img class="attack1 Aattack4 hidden absolute"
+		<img class="mobAttack Aattack4 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="attack1 Wattack4 hidden absolute"
+		<img class="mobAttack Wattack4 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="attack1 Dattack4 hidden absolute"
+		<img class="mobAttack Dattack4 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="attack1 Sattack4 hidden absolute"
+		<img class="mobAttack Sattack4 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<img class="front_mob_img"
 			src="${mob}" alt="" />
@@ -863,16 +860,16 @@ function BossHpDown(){
 <c:if test="${room > 3 && room < 5}">
 	<div class="front_mob mob5 absolute">
 		<!-- 왼쪽 공격 -->
-		<img class="attack1 Aattack5 hidden absolute"
+		<img class="mobAttack Aattack5 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="attack1 Wattack5 hidden absolute"
+		<img class="mobAttack Wattack5 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="attack1 Dattack5 hidden absolute"
+		<img class="mobAttack Dattack5 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="attack1 Sattack5 hidden absolute"
+		<img class="mobAttack Sattack5 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<img class="front_mob_img" src="${mob}" alt="" />
 	</div>
@@ -886,16 +883,16 @@ function BossHpDown(){
 
 	<div class="front_bossMob mob6 absolute">
 		<!-- 왼쪽 공격 -->
-		<img class="attack1 Aattack6 hidden absolute"
+		<img class="mobAttack Aattack6 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="attack1 Wattack6 hidden absolute"
+		<img class="mobAttack Wattack6 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="attack1 Dattack6 hidden absolute"
+		<img class="mobAttack Dattack6 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="attack1 Sattack6 hidden absolute"
+		<img class="mobAttack Sattack6 hidden absolute"
 			src="${charac.extra__weapon}" alt="" />	
 		<img class="front_bossMob_img" src="${mob}" alt="" />
 	</div>
@@ -920,16 +917,16 @@ function BossHpDown(){
 <!-- 캐릭터 -->
 <div class="front_charac charac absolute">
 	<!-- 왼쪽 공격 -->
-	<img class="attack1 Aattack1 hidden absolute"
+	<img class="Aattack1_${charac.weaponId} Aattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 위쪽 공격 -->
-	<img class="attack1 Wattack1 hidden absolute"
+	<img class="Wattack1_${charac.weaponId} Wattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 오른쪽 공격 -->
-	<img class="attack1 Dattack1 hidden absolute"
+	<img class="Dattack1_${charac.weaponId} Dattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 아래쪽 공격 -->
-	<img class="attack1 Sattack1 hidden absolute"
+	<img class="Sattack1_${charac.weaponId} Sattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 캐릭터 이미지 -->
 	<img class="front_charac_img rounded-full"

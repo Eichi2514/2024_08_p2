@@ -17,7 +17,7 @@ public class WeaponService {
 	private int randomWeaponId;
 
 	public String randomWeapon() {
-		int num = (int) (Math.random() * 9)+1; // 좌표 랜덤 지정
+		int num = (int) (Math.random() * 6)+1; // 좌표 랜덤 지정
 		
 		randomWeaponId = num;
 		
