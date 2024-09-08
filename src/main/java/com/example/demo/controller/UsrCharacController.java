@@ -32,7 +32,7 @@ public class UsrCharacController {
 		Rq rq = (Rq) req.getAttribute("rq");
 		
 		int memberId = rq.getLoginedMemberId();
-		
+		hp++;
 		characService.update(hp, floor, room, memberId);		
 	}
 

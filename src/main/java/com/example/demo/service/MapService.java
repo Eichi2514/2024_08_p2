@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class MapService {
 
 	// 맵 생성
-    // int[][] map;
+	// int[][] map;
 	int mapHeight; // 맵 높이
 	int mapWidth; // 맵 넓이
 
@@ -126,12 +126,12 @@ public class MapService {
 		return codes;
 	}
 
-	public String keyUp(int something) {		
+	public String keyUp(int something) {
 		int Xcode = somethingXcode(something);
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
-		
+
 		// 맵 생성
 		int[][] map = mapChack(something);
 
@@ -143,7 +143,7 @@ public class MapService {
 				return "Lost";
 			}
 		}
-		
+
 		if (something == charac) {
 			characXCode--;
 		} else if (something == mob2) {
@@ -159,7 +159,7 @@ public class MapService {
 		}
 
 		// 맵 상황 확인
-		
+
 		Xcode--;
 
 		for (int x = Xcode; x < Xcode + height; x++) {
@@ -315,7 +315,7 @@ public class MapService {
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
-		
+
 		// 맵 생성
 		int[][] map = mapChack(something);
 
@@ -327,7 +327,7 @@ public class MapService {
 				return "Lost";
 			}
 		}
-		
+
 		if (something == charac) {
 			characXCode++;
 		} else if (something == mob2) {
@@ -343,7 +343,7 @@ public class MapService {
 		}
 
 		// 맵 상황 확인
-		
+
 		Xcode++;
 
 		for (int x = Xcode; x < Xcode + height; x++) {
@@ -351,7 +351,6 @@ public class MapService {
 				map[x][y] = something;
 			}
 		}
-
 
 		System.out.println("==========================================");
 		if (something == charac || something == mob2 || something == mob6) {
@@ -370,7 +369,7 @@ public class MapService {
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
-		
+
 		// 맵 생성
 		int[][] map = mapChack(something);
 
@@ -381,7 +380,7 @@ public class MapService {
 			} else if (map[x][Ycode - 1] != road) {
 				return "Lost";
 			}
-		}		
+		}
 
 		if (something == charac) {
 			characYCode--;
@@ -399,7 +398,7 @@ public class MapService {
 
 		// 맵 상황 확인
 		System.out.println("==========================================");
-		
+
 		Ycode--;
 
 		for (int x = Xcode; x < Xcode + height; x++) {
@@ -407,7 +406,7 @@ public class MapService {
 				map[x][y] = something;
 			}
 		}
-		
+
 		if (something == charac || something == mob2 || something == mob6) {
 			for (int X = 0; X < mapHeight; X++) {
 				for (int Y = 0; Y < mapWidth; Y++) {
@@ -424,7 +423,7 @@ public class MapService {
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
-		
+
 		// 맵 생성
 		int[][] map = mapChack(something);
 
@@ -446,7 +445,7 @@ public class MapService {
 				return "Lost";
 			}
 		}
-		
+
 		if (something == charac) {
 			characYCode++;
 		} else if (something == mob2) {
@@ -462,7 +461,7 @@ public class MapService {
 		}
 
 		// 맵 상황 확인
-		
+
 		Ycode++;
 
 		for (int x = Xcode; x < Xcode + height; x++) {
@@ -488,10 +487,10 @@ public class MapService {
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
-		
+
 		// 맵 생성
 		int[][] map = mapChack(something);
-		
+
 		int x = Xcode + ((height - 1) / 2);
 		int y = -1;
 		if (Ycode - 3 >= 0)
@@ -506,10 +505,10 @@ public class MapService {
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
-		
+
 		// 맵 생성
 		int[][] map = mapChack(something);
-		
+
 		int x = -1;
 		int y = Ycode + ((width - 1) / 2);
 		if (Xcode - 3 >= 0)
@@ -524,10 +523,10 @@ public class MapService {
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
-		
+
 		// 맵 생성
 		int[][] map = mapChack(something);
-		
+
 		int x = Xcode + ((height - 1) / 2);
 		int y = -1;
 		if (Ycode + width + 3 <= mapWidth)
@@ -542,14 +541,14 @@ public class MapService {
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
-		
+
 		// 맵 생성
 		int[][] map = mapChack(something);
-		
+
 		int x = -1;
 		int y = Ycode + ((width - 1) / 2);
-		if (Xcode + ((height - 1) / 2) >= 0)
-			x = Xcode + height + 3;
+		if (Xcode + height + 3 <= mapHeight) {
+			x = Xcode + height + 3;}
 		if (x == -1)
 			return -1;
 		return map[x][y];
