@@ -69,6 +69,10 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
     // 캐릭터 정보
     var front_hp = "${charac.hp}";
     var stage;
+    var damage = Math.floor(${charac.weaponId} / 10); // 소수점 아래 버림
+    if (${charac.weaponId} % 10 != 0){
+    	damage++;
+    }    
 
     // 스테이지 이동
 	function stageUp() {
@@ -136,7 +140,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 	if(${room > 1 && room < 5}){mob3_hp = ${floor};}
 	if(${room > 2 && room < 5}){mob4_hp = ${floor};}
 	if(${room > 3 && room < 5}){mob5_hp = ${floor};}
-	if(${floor > 1 && room == 0}){mob6_hp = ${floor*10};}
+	if(${floor > 1 && room == 0}){mob6_hp = ${(floor-1)*10};}
 	
 	// 랜덤 숫자 생성
     function getRandom(min, max) {
@@ -407,7 +411,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 function hpDown(){
 	front_hp -= 1;
 	$('.hp_count').text(front_hp);
-	if(front_hp == 0){
+	if(front_hp <= 0){
 		scoreboardLog();
 		location.href = '../map/over';
 		}
@@ -428,7 +432,7 @@ function scoreboardLog() {
 		
 // 문 개방
 function showDoor(){
-	if(mob2_hp+mob3_hp+mob4_hp+mob5_hp+mob6_hp == 0){
+	if(mob2_hp <= 0 && mob3_hp <= 0 && mob4_hp <= 0 && mob5_hp <= 0 && mob6_hp <= 0){
 		$(".door").fadeIn(1000).removeClass('hidden');
 	}
 }
@@ -467,17 +471,25 @@ var stop2, stop3, stop4, stop5, stop6;
 
 //일정 시간마다 move 함수를 호출
 function show(){
-	if(${room > 0 && room < 5}){stop2 = setInterval(move2, 1000);}
-	if(${room > 1 && room < 5}){stop3 = setInterval(move3, 800);}
-	if(${room > 2 && room < 5}){stop4 = setInterval(move4, 500);}
-	if(${room > 3 && room < 5}){stop5 = setInterval(move5, 200);}			
-	if(${floor > 1 && room == 0}){stop6 = setInterval(move6, 100);}			
+	if(${param.stage <= 270}){
+	  if(${room > 0 && room < 5}){stop2 = setInterval(move2, 1000);}
+	  if(${room > 1 && room < 5}){stop3 = setInterval(move3, 800);}
+	  if(${room > 2 && room < 5}){stop4 = setInterval(move4, 500);}
+	  if(${room > 3 && room < 5}){stop5 = setInterval(move5, 200);}			
+	  if(${floor > 1 && room == 0}){stop6 = setInterval(move6, 100);}
+     } else {
+	  if(${room > 0 && room < 5}){stop2 = setInterval(move2, 300);}
+	  if(${room > 1 && room < 5}){stop3 = setInterval(move3, 200);}
+	  if(${room > 2 && room < 5}){stop4 = setInterval(move4, 120);}
+	  if(${room > 3 && room < 5}){stop5 = setInterval(move5, 70);}			
+	  if(${floor > 1 && room == 0}){stop6 = setInterval(move6, 30);}
+     }
    }
    
 // 아이템 안내창 공개
 function showItem_text(){	
 	var itemChack = $(".item").hasClass('hidden');
-	console.log(itemChack);
+	// console.log("아이템 공개 여부"+itemChack);
 	if(LR > 64 && LR < 76 && UD < 56 && UD > 34 && !itemChack && ${floor > 1 && room == 0}){
 		$(".item_text").fadeIn(1000).removeClass('hidden');
 		}
@@ -485,21 +497,41 @@ function showItem_text(){
 
 //아이템 안내창 교체
 function Item_change(){
-    $.ajax({
-        url : '/usr/charac/weaponChange',
-        type : 'POST',
-        dataType : 'text',
-        success: function(data) {
-        	var changeImg = "${weapon}";
-            $('.weapon_img').attr('src', changeImg);
-            $('.CharacAttack').attr('src', changeImg);
-            $(".item").fadeOut(1000).addClass('hidden');
-            $(".item_text").fadeOut(1000).addClass('hidden');
-        },
-        error : function(jqXHR, textStatus, errorThrown) {
-            alert('오류 발생 : ' + textStatus);
-        }
-    });
+  $.ajax({
+      url : '/usr/charac/weaponChange',
+      type : 'POST',
+      dataType : 'text',
+      success: function(data) {
+      	var changeImg = "${weapon}";
+          $('.weapon_img').attr('src', changeImg);
+          $('.CharacAttack').attr('src', changeImg);
+          $(".item").fadeOut(1000).addClass('hidden');
+          $(".item_text").fadeOut(1000).addClass('hidden');
+      },
+      error : function(jqXHR, textStatus, errorThrown) {
+          alert('오류 발생 : ' + textStatus);
+      }
+  });
+}
+
+//아이템 안내창 조합
+function Item_mix(){
+  $.ajax({
+      url : '/usr/charac/weaponMix',
+      type : 'POST',
+      dataType : 'text',
+      success: function(data) {
+    	  console.log("무기정보 : " + data);
+      	var changeImg = data;
+          $('.weapon_img').attr('src', changeImg);
+          $('.CharacAttack').attr('src', changeImg);
+          $(".item").fadeOut(1000).addClass('hidden');
+          $(".item_text").fadeOut(1000).addClass('hidden');
+      },
+      error : function(jqXHR, textStatus, errorThrown) {
+          alert('오류 발생 : ' + textStatus);
+      }
+  });
 }
 
 //아이템 안내창 취소
@@ -514,7 +546,7 @@ function showItem(){
 
 // 보스 HP 감소 함수
 function BossHpDown(){
-	let new_width_value = ( ${50/ (floor*10) }*mob6_hp);
+	let new_width_value = ( ${50/ ((floor-1)*10) }*mob6_hp);
 	$(".bossHP_bar").css('width', new_width_value+'vh');
 }
 
@@ -536,39 +568,41 @@ function BossHpDown(){
 					dataType : 'text',
 					success : function(data) {
 						// console.log("몬스터"+data+"Attack");		
+						// console.log("데미지 : " + damage);
+						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
 							hpDown();
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= 1;
-							if(mob2_hp == 0){
+							mob2_hp -= damage;
+							if(mob2_hp <= 0){
 								mobHidden(2);
 							    clearInterval(stop2);
 							    doDelete(2);
 							}
 						} else if (something == 1 && data == 3) {
-							mob3_hp -= 1;
-							if(mob3_hp == 0){
+							mob3_hp -= damage;
+							if(mob3_hp <= 0){
 								mobHidden(3);
 								clearInterval(stop3);
 								doDelete(3);
 							}
 						} else if (something == 1 && data == 4) {
-							mob4_hp -= 1;
-							if(mob4_hp == 0){
+							mob4_hp -= damage;
+							if(mob4_hp <= 0){
 								mobHidden(4);
 								clearInterval(stop4);
 								doDelete(4);
 							}
 						} else if (something == 1 && data == 5) {
-							mob5_hp -= 1;
-							if(mob5_hp == 0){
+							mob5_hp -= damage;
+							if(mob5_hp <= 0){
 								mobHidden(5);
 								clearInterval(stop5);
 								doDelete(5);
 							}
 						} else if (something == 1 && data == 6) {
-							mob6_hp -= 1;
-							if(mob6_hp == 0){
+							mob6_hp -= damage;
+							if(mob6_hp <= 0){
 								mobHidden(6);
 								clearInterval(stop6);
 								doDelete(6);
@@ -603,36 +637,36 @@ function BossHpDown(){
 						if (something != 1 && data == 1) {
 							hpDown();
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= 1;
-							if(mob2_hp == 0){
+							mob2_hp -= damage;
+							if(mob2_hp <= 0){
 								mobHidden(2);
 							    clearInterval(stop2);
 							    doDelete(2);
 							}
 						} else if (something == 1 && data == 3) {
-							mob3_hp -= 1;
-							if(mob3_hp == 0){
+							mob3_hp -= damage;
+							if(mob3_hp <= 0){
 								mobHidden(3);
 								clearInterval(stop3);
 								doDelete(3);
 							}
 						} else if (something == 1 && data == 4) {
-							mob4_hp -= 1;
-							if(mob4_hp == 0){
+							mob4_hp -= damage;
+							if(mob4_hp <= 0){
 								mobHidden(4);
 								clearInterval(stop4);
 								doDelete(4);
 							}
 						} else if (something == 1 && data == 5) {
-							mob5_hp -= 1;
-							if(mob5_hp == 0){
+							mob5_hp -= damage;
+							if(mob5_hp <= 0){
 								mobHidden(5);
 								clearInterval(stop5);
 								doDelete(5);
 							}
 						} else if (something == 1 && data == 6) {
-							mob6_hp -= 1;
-							if(mob6_hp == 0){
+							mob6_hp -= damage;
+							if(mob6_hp <= 0){
 								mobHidden(6);
 								clearInterval(stop6);
 								doDelete(6);
@@ -663,40 +697,42 @@ function BossHpDown(){
 					},
 					dataType : 'text',
 					success : function(data) {
-						// console.log("몬스터"+data+"Attack");						 
+						// console.log("몬스터"+data+"Attack");
+						// console.log("데미지 : " + damage);
+						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
 							hpDown();
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= 1;
-							if(mob2_hp == 0){
+							mob2_hp -= damage;
+							if(mob2_hp <= 0){
 								mobHidden(2);
 							    clearInterval(stop2);
 							    doDelete(2);
 							}
 						} else if (something == 1 && data == 3) {
-							mob3_hp -= 1;
-							if(mob3_hp == 0){
+							mob3_hp -= damage;
+							if(mob3_hp <= 0){
 								mobHidden(3);
 								clearInterval(stop3);
 								doDelete(3);
 							}
 						} else if (something == 1 && data == 4) {
-							mob4_hp -= 1;
-							if(mob4_hp == 0){
+							mob4_hp -= damage;
+							if(mob4_hp <= 0){
 								mobHidden(4);
 								clearInterval(stop4);
 								doDelete(4);
 							}
 						} else if (something == 1 && data == 5) {
-							mob5_hp -= 1;
-							if(mob5_hp == 0){
+							mob5_hp -= damage;
+							if(mob5_hp <= 0){
 								mobHidden(5);
 								clearInterval(stop5);
 								doDelete(5);
 							}
 						} else if (something == 1 && data == 6) {
-							mob6_hp -= 1;
-							if(mob6_hp == 0){
+							mob6_hp -= damage;
+							if(mob6_hp <= 0){
 								mobHidden(6);
 								clearInterval(stop6);
 								doDelete(6);
@@ -731,36 +767,36 @@ function BossHpDown(){
 						if (something != 1 && data == 1) {
 							hpDown();
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= 1;
-							if(mob2_hp == 0){
+							mob2_hp -= damage;
+							if(mob2_hp <= 0){
 								mobHidden(2);
 							    clearInterval(stop2);
 							    doDelete(2);
 							}
 						} else if (something == 1 && data == 3) {
-							mob3_hp -= 1;
-							if(mob3_hp == 0){
+							mob3_hp -= damage;
+							if(mob3_hp <= 0){
 								mobHidden(3);
 								clearInterval(stop3);
 								doDelete(3);
 							}
 						} else if (something == 1 && data == 4) {
-							mob4_hp -= 1;
-							if(mob4_hp == 0){
+							mob4_hp -= damage;
+							if(mob4_hp <= 0){
 								mobHidden(4);
 								clearInterval(stop4);
 								doDelete(4);
 							}
 						} else if (something == 1 && data == 5) {
-							mob5_hp -= 1;
-							if(mob5_hp == 0){
+							mob5_hp -= damage;
+							if(mob5_hp <= 0){
 								mobHidden(5);
 								clearInterval(stop5);
 								doDelete(5);
 							}
 						} else if (something == 1 && data == 6) {
-							mob6_hp -= 1;
-							if(mob6_hp == 0){
+							mob6_hp -= damage;
+							if(mob6_hp <= 0){
 								mobHidden(6);
 								clearInterval(stop6);
 								doDelete(6);
@@ -797,62 +833,61 @@ function BossHpDown(){
 
 <!-- 튜토리얼 알림창 -->
 <c:if test="${param.stage == 5}">
-	<div class="guide1 bg-white text-center absolute">A W D S : 공격</div>
+	<div class="guide1 bg-white text-center absolute">A W D X : 공격</div>
 	<div class="guide2 bg-white text-center absolute">← ↑ → ↓ : 이동</div>
 </c:if>
 
 <!-- 첫번째 몬스터 -->
 <c:if test="${room > 0 && room < 5}">
 	<div class="front_mob mob2 absolute">
-	    <!-- 왼쪽 공격 -->
-		<img class="mobAttack Aattack2 hidden absolute"
+		<!-- 왼쪽 공격 -->
+		<img class="mobAttack Aattack2 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="mobAttack Wattack2 hidden absolute"
+		<img class="mobAttack Wattack2 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="mobAttack Dattack2 hidden absolute"
+		<img class="mobAttack Dattack2 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="mobAttack Sattack2 hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_mob_img" src="${mob}" alt="" />
+		<img class="mobAttack Sattack2 attackSize hidden absolute"
+			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
+			src="${mob}" alt="" />
 	</div>
 </c:if>
 <!-- 두번째 몬스터 -->
 <c:if test="${room > 1 && room < 5}">
 	<div class="front_mob mob3 absolute">
-	    <!-- 왼쪽 공격 -->
-		<img class="mobAttack Aattack3 hidden absolute"
+		<!-- 왼쪽 공격 -->
+		<img class="mobAttack Aattack3 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="mobAttack Wattack3 hidden absolute"
+		<img class="mobAttack Wattack3 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="mobAttack Dattack3 hidden absolute"
+		<img class="mobAttack Dattack3 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="mobAttack Sattack3 hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_mob_img" src="${mob}" alt="" />
+		<img class="mobAttack Sattack3 attackSize hidden absolute"
+			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
+			src="${mob}" alt="" />
 	</div>
 </c:if>
 <!-- 세번째 몬스터 -->
 <c:if test="${room > 2 && room < 5}">
 	<div class="front_mob mob4 absolute">
 		<!-- 왼쪽 공격 -->
-		<img class="mobAttack Aattack4 hidden absolute"
+		<img class="mobAttack Aattack4 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="mobAttack Wattack4 hidden absolute"
+		<img class="mobAttack Wattack4 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="mobAttack Dattack4 hidden absolute"
+		<img class="mobAttack Dattack4 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="mobAttack Sattack4 hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_mob_img"
+		<img class="mobAttack Sattack4 attackSize hidden absolute"
+			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
 			src="${mob}" alt="" />
 	</div>
 </c:if>
@@ -860,41 +895,41 @@ function BossHpDown(){
 <c:if test="${room > 3 && room < 5}">
 	<div class="front_mob mob5 absolute">
 		<!-- 왼쪽 공격 -->
-		<img class="mobAttack Aattack5 hidden absolute"
+		<img class="mobAttack Aattack5 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="mobAttack Wattack5 hidden absolute"
+		<img class="mobAttack Wattack5 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="mobAttack Dattack5 hidden absolute"
+		<img class="mobAttack Dattack5 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="mobAttack Sattack5 hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_mob_img" src="${mob}" alt="" />
+		<img class="mobAttack Sattack5 attackSize hidden absolute"
+			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
+			src="${mob}" alt="" />
 	</div>
 </c:if>
 <!-- 보스 몬스터 -->
 <c:if test="${floor > 1 && room == 0}">
-<div class="bossHP absolute">
-<div class="bossHP_title">BOSS : </div>
-<div class="bossHP_bar"></div>
-</div>
+	<div class="bossHP absolute">
+		<div class="bossHP_title">BOSS :</div>
+		<div class="bossHP_bar"></div>
+	</div>
 
 	<div class="front_bossMob mob6 absolute">
 		<!-- 왼쪽 공격 -->
-		<img class="mobAttack Aattack6 hidden absolute"
+		<img class="mobAttack Aattack6 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 위쪽 공격 -->
-		<img class="mobAttack Wattack6 hidden absolute"
+		<img class="mobAttack Wattack6 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 오른쪽 공격 -->
-		<img class="mobAttack Dattack6 hidden absolute"
+		<img class="mobAttack Dattack6 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
-		<img class="mobAttack Sattack6 hidden absolute"
-			src="${charac.extra__weapon}" alt="" />	
-		<img class="front_bossMob_img" src="${mob}" alt="" />
+		<img class="mobAttack Sattack6 attackSize hidden absolute"
+			src="${charac.extra__weapon}" alt="" /> <img
+			class="front_bossMob_img" src="${mob}" alt="" />
 	</div>
 
 	<img class="item hidden absolute" src="${weapon}" alt="" />
@@ -909,7 +944,7 @@ function BossHpDown(){
 
 	<div class="item_title absolute">새로운 무기를 발견하였습니다.</div>
 	<button class="item_change absolute" onclick="Item_change()">교체</button>
-	<button class="item_mix absolute">합성</button>
+	<button class="item_mix absolute" onclick="Item_mix()">합성</button>
 	<button class="item_exit absolute" onclick="Item_exit()">취소</button>
 </div>
 
@@ -917,22 +952,131 @@ function BossHpDown(){
 <!-- 캐릭터 -->
 <div class="front_charac charac absolute">
 	<!-- 왼쪽 공격 -->
-	<img class="Aattack1_${charac.weaponId} Aattack1 CharacAttack hidden absolute"
+	<img
+		class="Aattack1_${charac.weaponId} attackSize Aattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 위쪽 공격 -->
-	<img class="Wattack1_${charac.weaponId} Wattack1 CharacAttack hidden absolute"
+	<img
+		class="Wattack1_${charac.weaponId} attackSize Wattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 오른쪽 공격 -->
-	<img class="Dattack1_${charac.weaponId} Dattack1 CharacAttack hidden absolute"
+	<img
+		class="Dattack1_${charac.weaponId} attackSize Dattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 아래쪽 공격 -->
-	<img class="Sattack1_${charac.weaponId} Sattack1 CharacAttack hidden absolute"
+	<img
+		class="Sattack1_${charac.weaponId} attackSize Sattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 캐릭터 이미지 -->
 	<img class="front_charac_img rounded-full"
 		src="https://github.com/user-attachments/assets/aaa05c2c-d55a-4111-b367-9231727e7050"
 		alt="" />
 </div>
+
+<!--  배경음악 관련 -->
+<c:if
+	test="${floor % 40 >= 1 && floor % 40 <= 10 && room != 0 || (floor-1) % 40 >= 0 && (floor-1) % 40 <= 10 && room == 0}">
+	<audio id="audioPlayer" class="audioPlayer hidden absolute" controls
+		autoplay loop preload="auto">
+		<source src="${pageContext.request.contextPath}/audio/bg1.mp3"
+			type="audio/mpeg">
+	</audio>
+</c:if>
+<c:if
+	test="${floor % 40 >= 11 && floor % 40 <= 20 && room != 0 || (floor-1) % 40 >= 11 && (floor-1) % 40 <= 20 && room == 0}">
+	<audio id="audioPlayer" class="audioPlayer hidden absolute" controls
+		autoplay loop preload="auto">
+		<source src="${pageContext.request.contextPath}/audio/bg2.mp3"
+			type="audio/mpeg">
+	</audio>
+</c:if>
+<c:if
+	test="${floor % 40 >= 21 && floor % 40 <= 30 && room != 0 || (floor-1) % 40 >= 21 && (floor-1) % 40 <= 30 && room == 0}">
+	<audio id="audioPlayer" class="audioPlayer hidden absolute" controls
+		autoplay loop preload="auto">
+		<source src="${pageContext.request.contextPath}/audio/bg3.mp3"
+			type="audio/mpeg">
+	</audio>
+</c:if>
+<c:if
+	test="${floor % 40 >= 31 && floor % 40 <= 40 && room != 0 || (floor-1) % 40 >= 31 && (floor-1) % 40 <= 40 && room == 0}">
+	<audio id="audioPlayer" class="audioPlayer hidden absolute" controls
+		autoplay loop preload="auto">
+		<source src="${pageContext.request.contextPath}/audio/bg4.mp3"
+			type="audio/mpeg">
+	</audio>
+</c:if>
+
+<button id="toggleAutoplayButton" class="audio_bt absolute">소리
+</button>
+
+
+<script>
+// 페이지를 떠나기 전, 현재 오디오의 재생 위치와 상태를 저장
+window.addEventListener('beforeunload', function() {
+    // 오디오 요소를 가져옴
+    var audio = document.getElementById('audioPlayer');
+    // 재생 위치를 저장할 키 설정
+    var storageKey = 'audioPlaybackPosition';
+    // 현재 재생 위치를 localStorage에 저장
+    localStorage.setItem(storageKey, audio.currentTime);
+    // 오디오 재생 상태도 저장 (재생 중이면 true, 멈춤이면 false)
+    localStorage.setItem('audioPlayingState', !audio.paused);
+});
+
+// 문서가 로드된 후 실행
+document.addEventListener('DOMContentLoaded', function() {
+    // 오디오 요소를 가져옴
+    var audio = document.getElementById('audioPlayer');
+    // 저장된 재생 위치를 가져올 키 설정
+    var storageKey = 'audioPlaybackPosition';
+    // 저장된 재생 위치를 가져옴
+    var savedPosition = localStorage.getItem(storageKey);
+
+    // 저장된 재생 위치가 있으면 해당 위치로 이동
+    if (savedPosition) {
+        audio.currentTime = parseFloat(savedPosition);
+    }
+
+    // 저장된 재생 상태를 localStorage에서 가져옴
+    var audioPlayingState = localStorage.getItem('audioPlayingState');
+
+    // 재생 상태가 true였으면 오디오를 재생하고 버튼을 멈춤 모양으로 설정
+    if (audioPlayingState === 'true') {
+        audio.play();
+        toggleButton.classList.remove('play');
+        toggleButton.classList.add('pause');
+    } else {
+        // 멈춤 상태였으면 오디오를 멈추고 버튼을 재생 모양으로 설정
+        audio.pause();
+        toggleButton.classList.remove('pause');
+        toggleButton.classList.add('play');
+    }
+});
+
+// 오디오 재생/멈춤을 토글하는 버튼 클릭 이벤트
+document.getElementById('toggleAutoplayButton').addEventListener('click', function() {
+    // 오디오 요소를 가져옴
+    var audio = document.getElementById('audioPlayer');
+
+    // 오디오가 재생 중이면 멈추고, 버튼 상태 변경
+    if (!audio.paused) {
+        audio.pause();
+        // 재생 상태를 멈춤으로 저장
+        localStorage.setItem('audioPlayingState', false);
+        this.classList.remove('pause');
+        this.classList.add('play');
+    } else {
+        // 오디오가 멈췄으면 재생하고, 버튼 상태 변경
+        audio.play();
+        // 재생 상태를 재생 중으로 저장
+        localStorage.setItem('audioPlayingState', true);
+        this.classList.remove('play');
+        this.classList.add('pause');
+    }
+});
+</script>
+
 
 
 
