@@ -28,8 +28,9 @@ function startMoving(moveAction) {
 			Up(1);
 		} else if (moveAction === 'right') {
 			Right(1);
+			console.log(moveSpeed);
 		} else if (moveAction === 'down') {
-			Down(1);
+			Down(1);			
 		}
 	}, moveSpeed);
 }
@@ -104,6 +105,7 @@ function Up(something) {
 					$(".charac").css("top", UD + "vh");
 					stageUp();
 					showItem_text();
+					showRandomItem_text();
 					//			console.log('LR : ' + LR + ', UD : ' + UD);
 				}
 			},
@@ -128,6 +130,7 @@ function Down(something) {
 					$(".charac").css("top", UD + "vh");
 					stageUp();
 					showItem_text();
+					showRandomItem_text();
 					//				console.log('LR : ' + LR + ', UD : ' + UD);
 				}
 			},
@@ -152,6 +155,7 @@ function Left(something) {
 					$(".charac").css("left", LR + "vh");
 					stageUp();
 					showItem_text();
+					showRandomItem_text();
 					//					console.log('LR : ' + LR + ', UD : ' + UD);
 				}
 			},
@@ -176,6 +180,7 @@ function Right(something) {
 					$(".charac").css("left", LR + "vh");
 					stageUp();
 					showItem_text();
+					showRandomItem_text();
 					//					console.log('LR : ' + LR + ', UD : ' + UD);
 				}
 			},

@@ -65,7 +65,7 @@ Map<Integer, String> weaponImgs = (Map<Integer, String>) request.getAttribute("w
 			</div>
 			<div class="speed absolute">
 				속도 :
-				<section class="speed_count inline-block" style="padding-left: 1vh;">${60 - charac.speed}</section>
+				<section class="speed_count inline-block" style="padding-left: 1vh;">${50 - charac.speed}</section>
 			</div>
 			<button class="mob__dictionary_bt absolute play"
 				onclick="showMob__dictionary()">몬스터 도감</button>

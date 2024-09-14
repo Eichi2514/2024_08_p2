@@ -496,7 +496,7 @@ function showItem_text(){
 		}
 	}
 
-//아이템 안내창 교체
+//아이템 안내창 교체 버튼 눌렀을 떄
 function Item_change(){
   $.ajax({
       url : '/usr/charac/weaponChange',
@@ -515,7 +515,7 @@ function Item_change(){
   });
 }
 
-//아이템 안내창 조합
+//아이템 안내창 조합 버튼 눌렀을 떄
 function Item_mix(){
   $.ajax({
       url : '/usr/charac/weaponMix',
@@ -535,14 +535,50 @@ function Item_mix(){
   });
 }
 
-//아이템 안내창 취소
+//아이템 안내창 취소 버튼 눌렀을 떄
 function Item_exit(){
 		$(".item_text").fadeOut(1000).addClass('hidden');
+		$(".random_item_text").fadeOut(1000).addClass('hidden');
 	}
     	  
 // 아이템 공개
 function showItem(){
 	  $(".item").fadeIn(1000).removeClass('hidden');
+}
+
+
+// 랜덤아이템 안내창 공개
+function showRandomItem_text(){	
+	var randomItemChack = $(".random_item").hasClass('hidden');
+	// console.log("아이템 공개 여부"+itemChack);
+	if(UD > 64 && UD < 76 && LR < 56 && LR > 34 && !randomItemChack){
+		$(".random_item_text").fadeIn(1000).removeClass('hidden');
+		}
+	}
+	
+//랜덤아이템 안내창 먹는다 버튼 눌렀을 떄
+function Item_get(){
+  $.ajax({
+      url : '/usr/charac/itemGet',
+      type : 'GET',
+      success: function(data) {
+    	  // console.log(data);
+    	  $('.power_count').text(data.power);
+    	  $('.speed_count').text(50 - data.speed);
+    	  $(".random_item").fadeOut(1000).addClass('hidden');
+          $(".random_item_text").fadeOut(1000).addClass('hidden');
+      },
+      error : function(jqXHR, textStatus, errorThrown) {
+          alert('오류 발생 : ' + textStatus);
+      }
+  });
+}
+	
+// 랜덤아이템 공개
+function showRandomItem(){
+	if(mob2_hp <= 0 && mob3_hp <= 0 && mob4_hp <= 0 && mob5_hp <= 0 && mob6_hp <= 0){
+	  $(".random_item").fadeIn(1000).removeClass('hidden');
+	}
 }
 
 // 보스 HP 감소 함수
@@ -598,7 +634,7 @@ function attack_motion(something, motion) {
 					dataType : 'text',
 					success : function(data) {
 						// console.log("몬스터"+data+"Attack");		
-						console.log("데미지 : " + damage);
+						// console.log("데미지 : " + damage);
 						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
 							hpDown();
@@ -636,7 +672,7 @@ function attack_motion(something, motion) {
 								mobHidden(6);
 								clearInterval(stop6);
 								doDelete(6);
-								showItem();
+								showItem();								
 							}
 							BossHpDown();
 						} 
@@ -646,6 +682,7 @@ function attack_motion(something, motion) {
 						// console.log("몬스터5 hp : " + mob5_hp);
 						// console.log("몬스터6 hp : " + mob6_hp);
 						showDoor();
+						showRandomItem();
 						attack_motion(something, "A");
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
@@ -710,6 +747,7 @@ function attack_motion(something, motion) {
 						// console.log("몬스터5 hp : " + mob5_hp);
 						// console.log("몬스터6 hp : " + mob6_hp);
 						showDoor();
+						showRandomItem();
 						attack_motion(something, "W");
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
@@ -776,6 +814,7 @@ function attack_motion(something, motion) {
 						// console.log("몬스터5 hp : " + mob5_hp);
 						// console.log("몬스터6 hp : " + mob6_hp);
 						showDoor();
+						showRandomItem();
 						attack_motion(something, "D");
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
@@ -840,6 +879,7 @@ function attack_motion(something, motion) {
 						// console.log("몬스터5 hp : " + mob5_hp);
 						// console.log("몬스터6 hp : " + mob6_hp);
 						showDoor();
+						showRandomItem();
 						attack_motion(something, "S");
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
@@ -978,6 +1018,21 @@ function attack_motion(something, motion) {
 	<button class="item_exit absolute" onclick="Item_exit()">취소</button>
 </div>
 
+<c:if test="${random_item_probability == 1 && param.stage > 5}">
+<div class="random_item_text absolute z-20 hidden">
+	<!-- p2 나무판 -->
+	<img class="item_img absolute z-20"
+		src="https://github.com/user-attachments/assets/b3351b33-5547-48b5-9108-78ef3c69c204"
+		alt="" />
+
+	<div class="item_title absolute z-20">수상한 알약을 발견하였습니다.</div>
+	<button class="item_get absolute z-20" onclick="Item_get()">먹는다</button>
+	<button class="item_exit absolute z-20" onclick="Item_exit()">취소</button>
+</div>
+
+
+<img class="random_item hidden absolute" src="https://github.com/user-attachments/assets/64a8dc0c-b9bc-41a7-a500-8a9466c0dd04" alt="" />
+</c:if>
 
 <!-- 캐릭터 -->
 <div class="front_charac charac absolute">

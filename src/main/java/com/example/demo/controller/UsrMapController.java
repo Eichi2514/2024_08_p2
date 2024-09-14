@@ -96,6 +96,12 @@ public class UsrMapController {
 			System.out.println("j2 : "+j);
 		} */
 		
+		// 1~3 숫자 랜덤으로 지정 (1이 나오면 랜덤아이템이 생기게 하기위해서)
+		int random_item_probability = (int) (Math.random() * 3) + 1;
+		
+		if(random_item_probability == 1) {
+			System.out.println(floor+"층"+room+"번방 랜덤 아이템 등장");
+			}
 
 		// 캐릭터 정보 넘기기
 		model.addAttribute("charac", charac);
@@ -111,6 +117,8 @@ public class UsrMapController {
 		model.addAttribute("floor", floor);
 		// 현재 방 정보 넘기기
 		model.addAttribute("room", room);
+		// 랜덤아이템 확률 넘기기
+		model.addAttribute("random_item_probability", random_item_probability);
 
 		// 현재 캐릭터의 위치정보 변수에 저장
 		int originallyStage = (charac.getFloor() * 5) + charac.getRoom();

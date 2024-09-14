@@ -126,4 +126,29 @@ public class UsrCharacController {
 
 		return extra__weapon;
 	}
+	
+	// 캐릭터 아이템 획득
+	@RequestMapping("/usr/charac/itemGet")
+	@ResponseBody
+	public Charac itemGet(HttpServletRequest req) {
+		// System.out.println("아이템 획득 컨트롤러 실행");
+
+		// Rq에 저장돼 있는 정보 가져오기
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		// 로그인한 아이디의 고유번호 변수에 저장
+		int memberId = rq.getLoginedMemberId();
+		
+		// 로그인 유저의 캐릭터 정보 가져오기
+		Charac charac = characService.characChack(rq.getLoginedMemberId());
+		
+		characService.itemGet(memberId, charac.getPower(), charac.getSpeed());
+		
+		Charac newCharac = characService.characChack(rq.getLoginedMemberId());
+
+		// System.out.println("newCharac : ");
+		// System.out.println(newCharac);
+		
+		return newCharac;
+	}
 }
