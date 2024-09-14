@@ -569,13 +569,13 @@ function attack_motion(something, motion) {
         } else if (motion == 'W' && something == 1) {
             $attackElement.css('top', (-4 - (Distance * 2)) + "vh");
         } else if (motion == 'D' && something == 1) {
-            $attackElement.css('left', (14 + (Distance * 2)) + "vh");
-            console.log((14 + (Distance * 2)));
+            $attackElement.css('left', (12 + (Distance * 2)) + "vh");
+            /* console.log((14 + (Distance * 2)));
             console.log("weaponId : " + ${charac.weaponId});
             console.log("Distance*2 : " + Distance*2);
-            console.log("사거리 : " + (14 + (Distance * 2)));
+            console.log("사거리 : " + (12 + (Distance * 2))); */
         } else if (motion == 'S' && something == 1) {
-            $attackElement.css('top', (14 + (Distance * 2)) + "vh");
+            $attackElement.css('top', (12 + (Distance * 2)) + "vh");
         }
     }, 10);  // 10ms 정도의 짧은 딜레이를 줘서 CSS 변경을 애니메이션으로 적용
 
@@ -862,7 +862,7 @@ function attack_motion(something, motion) {
 
 <!-- 튜토리얼 알림창 -->
 <c:if test="${param.stage == 5}">
-	<div class="guide1 bg-white text-center absolute">A W D X : 공격</div>
+	<div class="guide1 bg-white text-center absolute">A W D S : 공격</div>
 	<div class="guide2 bg-white text-center absolute">← ↑ → ↓ : 이동</div>
 </c:if>
 
@@ -997,110 +997,5 @@ function attack_motion(something, motion) {
 		src="https://github.com/user-attachments/assets/aaa05c2c-d55a-4111-b367-9231727e7050"
 		alt="" />
 </div>
-
-<!--  배경음악 관련 -->
-<c:if
-	test="${floor % 40 >= 1 && floor % 40 <= 10 && room != 0 || (floor-1) % 40 >= 0 && (floor-1) % 40 <= 10 && room == 0}">
-	<audio id="audioPlayer" class="audioPlayer hidden absolute" controls
-		autoplay loop preload="auto">
-		<source src="${pageContext.request.contextPath}/audio/bg1.mp3"
-			type="audio/mpeg">
-	</audio>
-</c:if>
-<c:if
-	test="${floor % 40 >= 11 && floor % 40 <= 20 && room != 0 || (floor-1) % 40 >= 11 && (floor-1) % 40 <= 20 && room == 0}">
-	<audio id="audioPlayer" class="audioPlayer hidden absolute" controls
-		autoplay loop preload="auto">
-		<source src="${pageContext.request.contextPath}/audio/bg2.mp3"
-			type="audio/mpeg">
-	</audio>
-</c:if>
-<c:if
-	test="${floor % 40 >= 21 && floor % 40 <= 30 && room != 0 || (floor-1) % 40 >= 21 && (floor-1) % 40 <= 30 && room == 0}">
-	<audio id="audioPlayer" class="audioPlayer hidden absolute" controls
-		autoplay loop preload="auto">
-		<source src="${pageContext.request.contextPath}/audio/bg3.mp3"
-			type="audio/mpeg">
-	</audio>
-</c:if>
-<c:if
-	test="${floor % 40 >= 31 && floor % 40 <= 40 && room != 0 || (floor-1) % 40 >= 31 && (floor-1) % 40 <= 40 && room == 0}">
-	<audio id="audioPlayer" class="audioPlayer hidden absolute" controls
-		autoplay loop preload="auto">
-		<source src="${pageContext.request.contextPath}/audio/bg4.mp3"
-			type="audio/mpeg">
-	</audio>
-</c:if>
-
-<button id="toggleAutoplayButton" class="audio_bt absolute">소리</button>
-
-
-<script>
-// 페이지를 떠나기 전, 현재 오디오의 재생 위치와 상태를 저장
-window.addEventListener('beforeunload', function() {
-    // 오디오 요소를 가져옴
-    var audio = document.getElementById('audioPlayer');
-    // 재생 위치를 저장할 키 설정
-    var storageKey = 'audioPlaybackPosition';
-    // 현재 재생 위치를 localStorage에 저장
-    localStorage.setItem(storageKey, audio.currentTime);
-    // 오디오 재생 상태도 저장 (재생 중이면 true, 멈춤이면 false)
-    localStorage.setItem('audioPlayingState', !audio.paused);
-});
-
-// 문서가 로드된 후 실행
-document.addEventListener('DOMContentLoaded', function() {
-    // 오디오 요소를 가져옴
-    var audio = document.getElementById('audioPlayer');
-    // 투글 버튼 요소를 가져옴
-    var toggleButton = document.getElementById('toggleAutoplayButton');
-    // 저장된 재생 위치를 가져올 키 설정
-    var storageKey = 'audioPlaybackPosition';
-    // 저장된 재생 위치를 가져옴
-    var savedPosition = localStorage.getItem(storageKey);
-
-    // 저장된 재생 위치가 있으면 해당 위치로 이동
-    if (savedPosition) {
-        audio.currentTime = parseFloat(savedPosition);
-    }
-
-    // 저장된 재생 상태를 localStorage에서 가져옴
-    var audioPlayingState = localStorage.getItem('audioPlayingState');
-
-    // 재생 상태가 true였으면 오디오를 재생하고 버튼 문구를 소리 : 꺼짐으로 변경
-    if (audioPlayingState === 'true') {
-        audio.play();
-        toggleButton.classList.remove('play');
-        toggleButton.classList.add('pause');
-    } else {
-        // 멈춤 상태였으면 오디오를 멈추고 버튼 문구를 소리 : 켜짐으로 변경
-        audio.pause();
-        toggleButton.classList.remove('pause');
-        toggleButton.classList.add('play');
-    }
-});
-
-// 오디오 재생/멈춤을 토글하는 버튼 클릭 이벤트
-document.getElementById('toggleAutoplayButton').addEventListener('click', function() {
-    // 오디오 요소를 가져옴
-    var audio = document.getElementById('audioPlayer');
-
-    // 오디오가 재생 중이면 멈추고, 버튼 상태 변경
-    if (!audio.paused) {
-        audio.pause();
-        // 재생 상태를 멈춤으로 저장
-        localStorage.setItem('audioPlayingState', false);
-        this.classList.remove('pause');
-        this.classList.add('play');
-    } else {
-        // 오디오가 멈췄으면 재생하고, 버튼 상태 변경
-        audio.play();
-        // 재생 상태를 재생 중으로 저장
-        localStorage.setItem('audioPlayingState', true);
-        this.classList.remove('play');
-        this.classList.add('pause');
-    }
-});
-</script>
 
 <%@ include file="../common/foot.jspf"%>

@@ -54,6 +54,8 @@ public class UsrDictionaryController {
 		model.addAttribute("weaponImgs", weaponImgs);
 		// 캐릭터 정보 넘기기
 		model.addAttribute("charac", charac);
+		// 플로어 정보 넘기기
+		model.addAttribute("floor", -1);
 
 		return "/usr/dictionary/mob";
 	}
@@ -79,6 +81,8 @@ public class UsrDictionaryController {
 		model.addAttribute("weaponImgs", weaponImgs);
 		// 캐릭터 정보 넘기기
 		model.addAttribute("charac", charac);
+		// 플로어 정보 넘기기
+		model.addAttribute("floor", -2);
 
 		return "/usr/dictionary/weapon";
 	}
