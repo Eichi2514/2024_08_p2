@@ -69,7 +69,8 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
     // 캐릭터 정보
     var front_hp = "${charac.hp}";
     var stage;
-    var damage = Math.floor(${charac.weaponId} / 10); // 소수점 아래 버림
+    var moveSpeed = ${charac.speed}; // 이동 속도 조절 (ms)
+    var damage = Math.floor(${charac.weaponId} / 10) + ${charac.power}; // 소수점 아래 버림
     if (${charac.weaponId} % 10 != 0){
     	damage++;
     }    
@@ -597,7 +598,7 @@ function attack_motion(something, motion) {
 					dataType : 'text',
 					success : function(data) {
 						// console.log("몬스터"+data+"Attack");		
-						// console.log("데미지 : " + damage);
+						console.log("데미지 : " + damage);
 						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
 							hpDown();

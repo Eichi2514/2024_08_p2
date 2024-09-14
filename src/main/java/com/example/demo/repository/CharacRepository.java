@@ -52,6 +52,8 @@ public interface CharacRepository {
 			`floor` = 1,
 			room = 0,
 			hp = 1,
+			`power` = 0,
+			speed = 50,
 			weaponId = 1
 			WHERE memberId = #{memberId}
 			""")	

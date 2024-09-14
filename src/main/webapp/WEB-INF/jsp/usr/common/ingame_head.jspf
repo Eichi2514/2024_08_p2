@@ -56,8 +56,16 @@ Map<Integer, String> weaponImgs = (Map<Integer, String>) request.getAttribute("w
 				</c:if>
 			</c:if>
 			<div class="hp absolute">
-				생명 :
+				체력 :
 				<section class="hp_count inline-block" style="padding-left: 1vh;">${charac.hp}</section>
+			</div>
+			<div class="power absolute">
+				힘 :
+				<section class="power_count inline-block" style="padding-left: 1vh;">${charac.power}</section>
+			</div>
+			<div class="speed absolute">
+				속도 :
+				<section class="speed_count inline-block" style="padding-left: 1vh;">${60 - charac.speed}</section>
 			</div>
 			<button class="mob__dictionary_bt absolute play"
 				onclick="showMob__dictionary()">몬스터 도감</button>

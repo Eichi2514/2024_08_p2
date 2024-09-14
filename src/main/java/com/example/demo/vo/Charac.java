@@ -15,7 +15,9 @@ public class Charac {
 	private int memberId;
 	private int floor;
 	private int room;
-	private int hp;	
+	private int hp;
+	private int power;
+	private int speed;
 	private int weaponId;
 	
 	private String extra__weapon;		

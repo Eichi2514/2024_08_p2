@@ -11,7 +11,6 @@ window.onload = function() {
 }
 
 var moveInterval; // 캐릭터 이동을 위한 interval
-var moveSpeed = 50; // 이동 속도 조절 (ms)
 var moveActionChack = null; // 현재 움직이고 있는 방향 추적
 
 function startMoving(moveAction) {
@@ -191,19 +190,19 @@ function Right(something) {
 var mob__itemsPerPage = 4; // 몬스터 도감 한 페이지에 보여줄 카드 개수
 var mob__currentIndex = 0; // 몬스터 도감 현재 첫 번째로 보여지는 카드의 인덱스
 var mob__totalItems = $('.mob__dictionary_card').length; // 몬스터 도감 총 몬스터 수
-var mob__dictionaryWidth = $('.mob__dictionary').width(); // 몬스터 도감 한 번에 보여줄 전체 너비
-var mob__cardWidth = $('.mob__dictionary_card').outerWidth(true); // 몬스터 도감 카드의 너비(마진 포함)
+var mob__dictionaryWidth = mob__cardWidth * mob__itemsPerPage; // 몬스터 도감 한 번에 보여줄 전체 너비
+var mob__cardWidth = 20; // 몬스터 도감 카드의 너비(마진 포함)
 
 var weapon__itemsPerPage = 4; // 무기 도감 한 페이지에 보여줄 카드 개수
 var weapon__currentIndex = 0; // 무기 도감 현재 첫 번째로 보여지는 카드의 인덱스
-var weapon__totalItems = $('.weapon__dictionary_card').length; // 무기 도감 총 몬스터 수
-var weapon__dictionaryWidth = $('.weapon__dictionary').width(); // 무기 도감 한 번에 보여줄 전체 너비
-var weapon__cardWidth = $('.weapon__dictionary_card').outerWidth(true); // 무기 도감 카드의 너비(마진 포함)
+var weapon__totalItems = $('.weapon__dictionary_card').length; // 무기 도감 총 무기 수
+var weapon__dictionaryWidth = weapon__cardWidth * weapon__itemsPerPage; // 무기 도감 한 번에 보여줄 전체 너비
+var weapon__cardWidth = 20; // 무기 도감 카드의 너비(마진 포함)
 
 function mob__updateSlide() {
 	// 이동할 위치 계산 (현재 인덱스에 맞게 이동)
-	var mob__translateX = -mob__currentIndex * mob__cardWidth;
-	$('.mob__dictionary_inner').css('transform', 'translateX(' + mob__translateX + 'px)');
+	var mob__translateX = -mob__currentIndex * (mob__cardWidth + 3.5);
+	$('.mob__dictionary_inner').css('transform', 'translateX(' + mob__translateX + 'vh)');
 }
 
 function mob__next() {
@@ -226,11 +225,16 @@ function mob__prev() {
 
 function weapon__updateSlide() {
 	// 이동할 위치 계산 (현재 인덱스에 맞게 이동)
-	var weapon__translateX = -weapon__currentIndex * weapon__cardWidth;
-	$('.weapon__dictionary_inner').css('transform', 'translateX(' + weapon__translateX + 'px)');
+	    var weapon__translateX = -weapon__currentIndex * (weapon__cardWidth + 3.5);
+		console.log("weapon__currentIndex : "+weapon__currentIndex);
+		console.log("weapon__itemsPerPage : "+weapon__itemsPerPage);
+		console.log("weapon__totalItems : "+weapon__totalItems);
+		console.log("weapon__cardWidth : "+weapon__cardWidth);
+		console.log("weapon__translateX : "+weapon__translateX);
+	$('.weapon__dictionary_inner').css('transform', 'translateX(' + weapon__translateX + 'vh)');
 }
 
-function weapon__next() {
+function weapon__next() {	
 	if (weapon__currentIndex + weapon__itemsPerPage < weapon__totalItems) {
 		weapon__currentIndex++;
 	} else {

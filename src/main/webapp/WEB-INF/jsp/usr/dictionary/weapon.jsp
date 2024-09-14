@@ -23,7 +23,7 @@
 			if (weaponImgs.containsKey(1)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				1번 무기 <br> 데미지 1 <br> 사거리 3
+				1번 무기 <br> 데미지 +1 <br> 사거리 3
 			</div>
 			<%
 			}
@@ -39,7 +39,7 @@
 			if (weaponImgs.containsKey(2)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				2번 무기 <br> 데미지 1 <br> 사거리 3
+				2번 무기 <br> 데미지 +1 <br> 사거리 4
 			</div>
 			<%
 			}
@@ -55,7 +55,7 @@
 			if (weaponImgs.containsKey(3)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				3번 무기 <br> 데미지 1 <br> 사거리 3
+				3번 무기 <br> 데미지 +1 <br> 사거리 5
 			</div>
 			<%
 			}
@@ -71,7 +71,7 @@
 			if (weaponImgs.containsKey(4)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				4번 무기 <br> 데미지 1 <br> 사거리 3
+				4번 무기 <br> 데미지 +1 <br> 사거리 6
 			</div>
 			<%
 			}
@@ -87,7 +87,7 @@
 			if (weaponImgs.containsKey(5)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				5번 무기 <br> 데미지 1 <br> 사거리 3
+				5번 무기 <br> 데미지 +1 <br> 사거리 7
 			</div>
 			<%
 			}
@@ -103,7 +103,7 @@
 			if (weaponImgs.containsKey(6)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				6번 무기 <br> 데미지 1 <br> 사거리 3
+				6번 무기 <br> 데미지 +1 <br> 사거리 8
 			</div>
 			<%
 			}
@@ -119,7 +119,7 @@
 			if (weaponImgs.containsKey(7)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				7번 무기 <br> 데미지 1 <br> 사거리 3
+				7번 무기 <br> 데미지 +1 <br> 사거리 9
 			</div>
 			<%
 			}
@@ -135,7 +135,7 @@
 			if (weaponImgs.containsKey(8)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				8번 무기 <br> 데미지 1 <br> 사거리 3
+				8번 무기 <br> 데미지 +1 <br> 사거리 10
 			</div>
 			<%
 			}
@@ -151,7 +151,7 @@
 			if (weaponImgs.containsKey(9)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				9번 무기 <br> 데미지 1 <br> 사거리 3
+				9번 무기 <br> 데미지 +1 <br> 사거리 11
 			</div>
 			<%
 			}
@@ -167,7 +167,7 @@
 			if (weaponImgs.containsKey(10)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				10번 무기 <br> 데미지 2 <br> 사거리 3
+				10번 무기 <br> 데미지 +1 <br> 사거리 12
 			</div>
 			<%
 			}
@@ -185,7 +185,7 @@
 			if (weaponImgs.containsKey(11)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				11번 무기 <br> 데미지 1 <br> 사거리 3
+				11번 무기 <br> 데미지 +2 <br> 사거리 3
 			</div>
 			<%
 			}
@@ -201,7 +201,7 @@
 			if (weaponImgs.containsKey(12)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				12번 무기 <br> 데미지 1 <br> 사거리 3
+				12번 무기 <br> 데미지 +2 <br> 사거리 4
 			</div>
 			<%
 			}
@@ -217,7 +217,7 @@
 			if (weaponImgs.containsKey(13)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				13번 무기 <br> 데미지 1 <br> 사거리 3
+				13번 무기 <br> 데미지 +2 <br> 사거리 5
 			</div>
 			<%
 			}
@@ -233,7 +233,7 @@
 			if (weaponImgs.containsKey(14)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				14번 무기 <br> 데미지 1 <br> 사거리 3
+				14번 무기 <br> 데미지 +2 <br> 사거리 6
 			</div>
 			<%
 			}
@@ -249,7 +249,7 @@
 			if (weaponImgs.containsKey(15)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				15번 무기 <br> 데미지 1 <br> 사거리 3
+				15번 무기 <br> 데미지 +2 <br> 사거리 7
 			</div>
 			<%
 			}
@@ -265,7 +265,7 @@
 			if (weaponImgs.containsKey(16)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				16번 무기 <br> 데미지 1 <br> 사거리 3
+				16번 무기 <br> 데미지 +2 <br> 사거리 8
 			</div>
 			<%
 			}
@@ -281,7 +281,7 @@
 			if (weaponImgs.containsKey(17)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				17번 무기 <br> 데미지 1 <br> 사거리 3
+				17번 무기 <br> 데미지 +2 <br> 사거리 9
 			</div>
 			<%
 			}
@@ -297,7 +297,7 @@
 			if (weaponImgs.containsKey(18)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				18번 무기 <br> 데미지 1 <br> 사거리 3
+				18번 무기 <br> 데미지 +2 <br> 사거리 10
 			</div>
 			<%
 			}
@@ -313,7 +313,7 @@
 			if (weaponImgs.containsKey(19)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				19번 무기 <br> 데미지 1 <br> 사거리 3
+				19번 무기 <br> 데미지 +2 <br> 사거리 11
 			</div>
 			<%
 			}
@@ -329,7 +329,7 @@
 			if (weaponImgs.containsKey(20)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				20번 무기 <br> 데미지 2 <br> 사거리 3
+				20번 무기 <br> 데미지 +2 <br> 사거리 12
 			</div>
 			<%
 			}
@@ -347,7 +347,7 @@
 			if (weaponImgs.containsKey(21)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				21번 무기 <br> 데미지 1 <br> 사거리 3
+				21번 무기 <br> 데미지 +3 <br> 사거리 3
 			</div>
 			<%
 			}
@@ -363,7 +363,7 @@
 			if (weaponImgs.containsKey(22)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				22번 무기 <br> 데미지 1 <br> 사거리 3
+				22번 무기 <br> 데미지 +3 <br> 사거리 4
 			</div>
 			<%
 			}
@@ -379,7 +379,7 @@
 			if (weaponImgs.containsKey(23)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				23번 무기 <br> 데미지 1 <br> 사거리 3
+				23번 무기 <br> 데미지 +3 <br> 사거리 5
 			</div>
 			<%
 			}
@@ -395,7 +395,7 @@
 			if (weaponImgs.containsKey(24)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				24번 무기 <br> 데미지 1 <br> 사거리 3
+				24번 무기 <br> 데미지 +3 <br> 사거리 6
 			</div>
 			<%
 			}
@@ -411,7 +411,7 @@
 			if (weaponImgs.containsKey(25)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				25번 무기 <br> 데미지 1 <br> 사거리 3
+				25번 무기 <br> 데미지 +3 <br> 사거리 7
 			</div>
 			<%
 			}
@@ -427,7 +427,7 @@
 			if (weaponImgs.containsKey(26)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				26번 무기 <br> 데미지 1 <br> 사거리 3
+				26번 무기 <br> 데미지 +3 <br> 사거리 8
 			</div>
 			<%
 			}
@@ -443,7 +443,7 @@
 			if (weaponImgs.containsKey(27)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				27번 무기 <br> 데미지 1 <br> 사거리 3
+				27번 무기 <br> 데미지 +3 <br> 사거리 9
 			</div>
 			<%
 			}
@@ -459,7 +459,7 @@
 			if (weaponImgs.containsKey(28)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				28번 무기 <br> 데미지 1 <br> 사거리 3
+				28번 무기 <br> 데미지 +3 <br> 사거리 10
 			</div>
 			<%
 			}
@@ -475,7 +475,7 @@
 			if (weaponImgs.containsKey(29)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				29번 무기 <br> 데미지 1 <br> 사거리 3
+				29번 무기 <br> 데미지 +3 <br> 사거리 11
 			</div>
 			<%
 			}
@@ -491,7 +491,7 @@
 			if (weaponImgs.containsKey(30)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				30번 무기 <br> 데미지 2 <br> 사거리 3
+				30번 무기 <br> 데미지 +3 <br> 사거리 12
 			</div>
 			<%
 			}
@@ -509,7 +509,7 @@
 			if (weaponImgs.containsKey(31)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				31번 무기 <br> 데미지 1 <br> 사거리 3
+				31번 무기 <br> 데미지 +4 <br> 사거리 3
 			</div>
 			<%
 			}
@@ -525,7 +525,7 @@
 			if (weaponImgs.containsKey(32)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				32번 무기 <br> 데미지 1 <br> 사거리 3
+				32번 무기 <br> 데미지 +4 <br> 사거리 4
 			</div>
 			<%
 			}
@@ -541,7 +541,7 @@
 			if (weaponImgs.containsKey(33)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				33번 무기 <br> 데미지 1 <br> 사거리 3
+				33번 무기 <br> 데미지 +4 <br> 사거리 5
 			</div>
 			<%
 			}
@@ -557,7 +557,7 @@
 			if (weaponImgs.containsKey(34)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				34번 무기 <br> 데미지 1 <br> 사거리 3
+				34번 무기 <br> 데미지 +4 <br> 사거리 6
 			</div>
 			<%
 			}
@@ -573,7 +573,7 @@
 			if (weaponImgs.containsKey(35)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				35번 무기 <br> 데미지 1 <br> 사거리 3
+				35번 무기 <br> 데미지 +4 <br> 사거리 7
 			</div>
 			<%
 			}
@@ -589,7 +589,7 @@
 			if (weaponImgs.containsKey(36)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				36번 무기 <br> 데미지 1 <br> 사거리 3
+				36번 무기 <br> 데미지 +4 <br> 사거리 8
 			</div>
 			<%
 			}
@@ -605,7 +605,7 @@
 			if (weaponImgs.containsKey(37)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				37번 무기 <br> 데미지 1 <br> 사거리 3
+				37번 무기 <br> 데미지 +4 <br> 사거리 9
 			</div>
 			<%
 			}
@@ -621,7 +621,7 @@
 			if (weaponImgs.containsKey(38)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				38번 무기 <br> 데미지 1 <br> 사거리 3
+				38번 무기 <br> 데미지 +4 <br> 사거리 10
 			</div>
 			<%
 			}
@@ -637,7 +637,7 @@
 			if (weaponImgs.containsKey(39)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				39번 무기 <br> 데미지 1 <br> 사거리 3
+				39번 무기 <br> 데미지 +4 <br> 사거리 11
 			</div>
 			<%
 			}
@@ -653,7 +653,7 @@
 			if (weaponImgs.containsKey(40)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				40번 무기 <br> 데미지 2 <br> 사거리 3
+				40번 무기 <br> 데미지 +4 <br> 사거리 12
 			</div>
 			<%
 			}
@@ -671,7 +671,7 @@
 			if (weaponImgs.containsKey(41)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				41번 무기 <br> 데미지 1 <br> 사거리 3
+				41번 무기 <br> 데미지 +5 <br> 사거리 3
 			</div>
 			<%
 			}
@@ -687,7 +687,7 @@
 			if (weaponImgs.containsKey(42)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				42번 무기 <br> 데미지 1 <br> 사거리 3
+				42번 무기 <br> 데미지 +5 <br> 사거리 4
 			</div>
 			<%
 			}
@@ -703,7 +703,7 @@
 			if (weaponImgs.containsKey(43)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				43번 무기 <br> 데미지 1 <br> 사거리 3
+				43번 무기 <br> 데미지 +5 <br> 사거리 5
 			</div>
 			<%
 			}
@@ -719,7 +719,7 @@
 			if (weaponImgs.containsKey(44)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				44번 무기 <br> 데미지 1 <br> 사거리 3
+				44번 무기 <br> 데미지 +5 <br> 사거리 6
 			</div>
 			<%
 			}
@@ -735,7 +735,7 @@
 			if (weaponImgs.containsKey(45)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				45번 무기 <br> 데미지 1 <br> 사거리 3
+				45번 무기 <br> 데미지 +5 <br> 사거리 7
 			</div>
 			<%
 			}
@@ -751,7 +751,7 @@
 			if (weaponImgs.containsKey(46)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				46번 무기 <br> 데미지 1 <br> 사거리 3
+				46번 무기 <br> 데미지 +5 <br> 사거리 8
 			</div>
 			<%
 			}
@@ -767,7 +767,7 @@
 			if (weaponImgs.containsKey(47)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				47번 무기 <br> 데미지 1 <br> 사거리 3
+				47번 무기 <br> 데미지 +5 <br> 사거리 9
 			</div>
 			<%
 			}
@@ -783,7 +783,7 @@
 			if (weaponImgs.containsKey(48)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				48번 무기 <br> 데미지 1 <br> 사거리 3
+				48번 무기 <br> 데미지 +5 <br> 사거리 10
 			</div>
 			<%
 			}
@@ -799,7 +799,7 @@
 			if (weaponImgs.containsKey(49)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				49번 무기 <br> 데미지 1 <br> 사거리 3
+				49번 무기 <br> 데미지 +5 <br> 사거리 11
 			</div>
 			<%
 			}
@@ -815,7 +815,7 @@
 			if (weaponImgs.containsKey(50)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				50번 무기 <br> 데미지 2 <br> 사거리 3
+				50번 무기 <br> 데미지 +5 <br> 사거리 12
 			</div>
 			<%
 			}
@@ -833,7 +833,7 @@
 			if (weaponImgs.containsKey(51)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				51번 무기 <br> 데미지 1 <br> 사거리 3
+				51번 무기 <br> 데미지 +6 <br> 사거리 3
 			</div>
 			<%
 			}
@@ -849,7 +849,7 @@
 			if (weaponImgs.containsKey(52)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				52번 무기 <br> 데미지 1 <br> 사거리 3
+				52번 무기 <br> 데미지 +6 <br> 사거리 4
 			</div>
 			<%
 			}
@@ -865,7 +865,7 @@
 			if (weaponImgs.containsKey(53)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				53번 무기 <br> 데미지 1 <br> 사거리 3
+				53번 무기 <br> 데미지 +6 <br> 사거리 5
 			</div>
 			<%
 			}
@@ -881,7 +881,7 @@
 			if (weaponImgs.containsKey(54)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				54번 무기 <br> 데미지 1 <br> 사거리 3
+				54번 무기 <br> 데미지 +6 <br> 사거리 6
 			</div>
 			<%
 			}
@@ -897,7 +897,7 @@
 			if (weaponImgs.containsKey(55)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				55번 무기 <br> 데미지 1 <br> 사거리 3
+				55번 무기 <br> 데미지 +6 <br> 사거리 7
 			</div>
 			<%
 			}
@@ -913,7 +913,7 @@
 			if (weaponImgs.containsKey(56)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				56번 무기 <br> 데미지 1 <br> 사거리 3
+				56번 무기 <br> 데미지 +6 <br> 사거리 8
 			</div>
 			<%
 			}
@@ -929,7 +929,7 @@
 			if (weaponImgs.containsKey(57)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				57번 무기 <br> 데미지 1 <br> 사거리 3
+				57번 무기 <br> 데미지 +6 <br> 사거리 9
 			</div>
 			<%
 			}
@@ -945,7 +945,7 @@
 			if (weaponImgs.containsKey(58)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				58번 무기 <br> 데미지 1 <br> 사거리 3
+				58번 무기 <br> 데미지 +6 <br> 사거리 10
 			</div>
 			<%
 			}
@@ -961,7 +961,7 @@
 			if (weaponImgs.containsKey(59)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				59번 무기 <br> 데미지 1 <br> 사거리 3
+				59번 무기 <br> 데미지 +6 <br> 사거리 11
 			</div>
 			<%
 			}
@@ -977,7 +977,7 @@
 			if (weaponImgs.containsKey(60)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				60번 무기 <br> 데미지 2 <br> 사거리 3
+				60번 무기 <br> 데미지 +6 <br> 사거리 12
 			</div>
 			<%
 			}
@@ -995,7 +995,7 @@
 			if (weaponImgs.containsKey(61)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				61번 무기 <br> 데미지 1 <br> 사거리 3
+				61번 무기 <br> 데미지 +7 <br> 사거리 3
 			</div>
 			<%
 			}
@@ -1011,7 +1011,7 @@
 			if (weaponImgs.containsKey(62)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				62번 무기 <br> 데미지 1 <br> 사거리 3
+				62번 무기 <br> 데미지 +7 <br> 사거리 4
 			</div>
 			<%
 			}
@@ -1027,7 +1027,7 @@
 			if (weaponImgs.containsKey(63)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				63번 무기 <br> 데미지 1 <br> 사거리 3
+				63번 무기 <br> 데미지 +7 <br> 사거리 5
 			</div>
 			<%
 			}
@@ -1043,7 +1043,7 @@
 			if (weaponImgs.containsKey(64)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				64번 무기 <br> 데미지 1 <br> 사거리 3
+				64번 무기 <br> 데미지 +7 <br> 사거리 6
 			</div>
 			<%
 			}
@@ -1059,7 +1059,7 @@
 			if (weaponImgs.containsKey(65)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				65번 무기 <br> 데미지 1 <br> 사거리 3
+				65번 무기 <br> 데미지 +7 <br> 사거리 7
 			</div>
 			<%
 			}
@@ -1075,7 +1075,7 @@
 			if (weaponImgs.containsKey(66)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				66번 무기 <br> 데미지 1 <br> 사거리 3
+				66번 무기 <br> 데미지 +7 <br> 사거리 8
 			</div>
 			<%
 			}
@@ -1091,7 +1091,7 @@
 			if (weaponImgs.containsKey(67)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				67번 무기 <br> 데미지 1 <br> 사거리 3
+				67번 무기 <br> 데미지 +7 <br> 사거리 9
 			</div>
 			<%
 			}
@@ -1107,7 +1107,7 @@
 			if (weaponImgs.containsKey(68)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				68번 무기 <br> 데미지 1 <br> 사거리 3
+				68번 무기 <br> 데미지 +7 <br> 사거리 10
 			</div>
 			<%
 			}
@@ -1123,7 +1123,7 @@
 			if (weaponImgs.containsKey(69)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				69번 무기 <br> 데미지 1 <br> 사거리 3
+				69번 무기 <br> 데미지 +7 <br> 사거리 11
 			</div>
 			<%
 			}
@@ -1139,7 +1139,7 @@
 			if (weaponImgs.containsKey(70)) {
 			%>
 			<div class="weapon__dictionary_body_text absolute">
-				70번 무기 <br> 데미지 2 <br> 사거리 3
+				70번 무기 <br> 데미지 +7 <br> 사거리 12
 			</div>
 			<%
 			}
