@@ -87,9 +87,9 @@ public class UsrMapController {
 		// 로그인 유저의 무기를 발견한 기록 만큼 무기들 이미지 가져오기
 		Map<Integer, String> weaponImgs = findService.weaponImgs(rq.getLoginedMemberId());
 		
-		
+		/* 
 		System.err.println(weaponImgs);
-		/* System.err.println("시작");
+		System.err.println("시작");
 		 for(int i = 0; i < 5; i++) {
 			System.out.println(i+" : "+weaponImgs.get(i));
 			String j = weaponImgs.get(i) != null ? weaponImgs.get(i) : "";

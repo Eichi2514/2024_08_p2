@@ -494,7 +494,7 @@ public class MapService {
 		
 		int distance = 3;
 		if (something == charac) {
-			distance = somethingdistance(weaponId);
+			distance = somethingDistance(weaponId);
 		}
 
 		// 맵 생성
@@ -517,7 +517,7 @@ public class MapService {
 		
 		int distance = 3;
 		if (something == charac) {
-			distance = somethingdistance(weaponId);
+			distance = somethingDistance(weaponId);
 		}
 
 		// 맵 생성
@@ -540,7 +540,7 @@ public class MapService {
 		
 		int distance = 3;
 		if (something == charac) {
-			distance = somethingdistance(weaponId);
+			distance = somethingDistance(weaponId);
 		}
 
 		// 맵 생성
@@ -563,7 +563,7 @@ public class MapService {
 		
 		int distance = 3;
 		if (something == charac) {
-			distance = somethingdistance(weaponId);
+			distance = somethingDistance(weaponId);
 		}
 
 		// 맵 생성
@@ -579,7 +579,7 @@ public class MapService {
 		return map[x][y];
 	}
 
-	private int somethingdistance(int weaponId) {
+	private int somethingDistance(int weaponId) {
 		if (weaponId%10 == 1) {
 			return 3;
 		} else if (weaponId%10 == 2) {

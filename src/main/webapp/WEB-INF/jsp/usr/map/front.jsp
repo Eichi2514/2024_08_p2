@@ -551,16 +551,41 @@ function BossHpDown(){
 }
 
 // 공격 함수
-		function attack_motion(something, motion) {
-			$("."+motion+"attack"+something).removeClass('hidden');
-			if(motion == 'A'){}
-			else if (motion == 'W') {}
-			else if (motion == 'D') {}
-			else if (motion == 'S') {}
-			setTimeout(function() {
-			$("."+motion+"attack"+something).addClass('hidden');
-			}, 300)
-		}
+function attack_motion(something, motion) {
+	var Distance = ${charac.weaponId} % 10; // 소수점 아래 버림
+		    if (${charac.weaponId} % 10 == 0){
+		    	Distance = 10;
+		    }   
+	
+    const $attackElement = $("." + motion + "attack" + something);
+    
+    // hidden 클래스를 제거해서 모습을 드러냄
+    $attackElement.removeClass('hidden');
+    
+    // 약간의 딜레이 후에 css를 변경해 이동하는 모습을 표현
+    setTimeout(function() {
+        if (motion == 'A' && something == 1) {
+            $attackElement.css('left', (-4 - (Distance * 2)) + "vh");
+        } else if (motion == 'W' && something == 1) {
+            $attackElement.css('top', (-4 - (Distance * 2)) + "vh");
+        } else if (motion == 'D' && something == 1) {
+            $attackElement.css('left', (14 + (Distance * 2)) + "vh");
+            console.log((14 + (Distance * 2)));
+            console.log("weaponId : " + ${charac.weaponId});
+            console.log("Distance*2 : " + Distance*2);
+            console.log("사거리 : " + (14 + (Distance * 2)));
+        } else if (motion == 'S' && something == 1) {
+            $attackElement.css('top', (14 + (Distance * 2)) + "vh");
+        }
+    }, 10);  // 10ms 정도의 짧은 딜레이를 줘서 CSS 변경을 애니메이션으로 적용
+
+    // 0.5초 뒤에 애니메이션이 끝나고, 모습을 없애고 원래 자리로
+    setTimeout(function() {
+        $attackElement.addClass('hidden'); // 다시 hidden 추가
+        $attackElement.css({top: "4vh", left: "4vh"}); // 원래 위치로 복귀
+    }, 500);  // 애니메이션 시간 500ms 이후
+}
+
 		
 	       function attackA(something) {
 				$.ajax({
@@ -855,8 +880,8 @@ function BossHpDown(){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack2 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_mob_img" src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
+			src="${mob}" alt="" />
 	</div>
 </c:if>
 <!-- 두번째 몬스터 -->
@@ -873,8 +898,8 @@ function BossHpDown(){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack3 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_mob_img" src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
+			src="${mob}" alt="" />
 	</div>
 </c:if>
 <!-- 세번째 몬스터 -->
@@ -891,8 +916,8 @@ function BossHpDown(){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack4 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_mob_img" src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
+			src="${mob}" alt="" />
 	</div>
 </c:if>
 <!-- 네번째 몬스터 -->
@@ -909,8 +934,8 @@ function BossHpDown(){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack5 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_mob_img" src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
+			src="${mob}" alt="" />
 	</div>
 </c:if>
 <!-- 보스 몬스터 -->
@@ -932,8 +957,8 @@ function BossHpDown(){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack6 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" />
-		<img class="front_bossMob_img" src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" /> <img
+			class="front_bossMob_img" src="${mob}" alt="" />
 	</div>
 
 	<img class="item hidden absolute" src="${weapon}" alt="" />
@@ -956,20 +981,16 @@ function BossHpDown(){
 <!-- 캐릭터 -->
 <div class="front_charac charac absolute">
 	<!-- 왼쪽 공격 -->
-	<img
-		class="Aattack1_${charac.weaponId} attackSize Aattack1 CharacAttack hidden absolute"
+	<img class="attackSize Aattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 위쪽 공격 -->
-	<img
-		class="Wattack1_${charac.weaponId} attackSize Wattack1 CharacAttack hidden absolute"
+	<img class="attackSize Wattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 오른쪽 공격 -->
-	<img
-		class="Dattack1_${charac.weaponId} attackSize Dattack1 CharacAttack hidden absolute"
+	<img class="attackSize Dattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 아래쪽 공격 -->
-	<img
-		class="Sattack1_${charac.weaponId} attackSize Sattack1 CharacAttack hidden absolute"
+	<img class="attackSize Sattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />
 	<!-- 캐릭터 이미지 -->
 	<img class="front_charac_img rounded-full"
