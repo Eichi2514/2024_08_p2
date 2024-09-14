@@ -1,3 +1,4 @@
+// 프론트 js
 // 캐릭터 위치 변수
 let LR = 10;
 let UD = 44; // 44.1
@@ -104,7 +105,7 @@ function Up(something) {
 					$(".charac").css("top", UD + "vh");
 					stageUp();
 					showItem_text();
-		//			console.log('LR : ' + LR + ', UD : ' + UD);
+					//			console.log('LR : ' + LR + ', UD : ' + UD);
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -128,7 +129,7 @@ function Down(something) {
 					$(".charac").css("top", UD + "vh");
 					stageUp();
 					showItem_text();
-	//				console.log('LR : ' + LR + ', UD : ' + UD);
+					//				console.log('LR : ' + LR + ', UD : ' + UD);
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -152,7 +153,7 @@ function Left(something) {
 					$(".charac").css("left", LR + "vh");
 					stageUp();
 					showItem_text();
-//					console.log('LR : ' + LR + ', UD : ' + UD);
+					//					console.log('LR : ' + LR + ', UD : ' + UD);
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -176,7 +177,7 @@ function Right(something) {
 					$(".charac").css("left", LR + "vh");
 					stageUp();
 					showItem_text();
-//					console.log('LR : ' + LR + ', UD : ' + UD);
+					//					console.log('LR : ' + LR + ', UD : ' + UD);
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -185,3 +186,86 @@ function Right(something) {
 		});
 	}
 }
+
+// 인게임 헤드 js
+var mob__itemsPerPage = 4; // 몬스터 도감 한 페이지에 보여줄 카드 개수
+var mob__currentIndex = 0; // 몬스터 도감 현재 첫 번째로 보여지는 카드의 인덱스
+var mob__totalItems = $('.mob__dictionary_card').length; // 몬스터 도감 총 몬스터 수
+var mob__dictionaryWidth = $('.mob__dictionary').width(); // 몬스터 도감 한 번에 보여줄 전체 너비
+var mob__cardWidth = $('.mob__dictionary_card').outerWidth(true); // 몬스터 도감 카드의 너비(마진 포함)
+
+var weapon__itemsPerPage = 4; // 무기 도감 한 페이지에 보여줄 카드 개수
+var weapon__currentIndex = 0; // 무기 도감 현재 첫 번째로 보여지는 카드의 인덱스
+var weapon__totalItems = $('.weapon__dictionary_card').length; // 무기 도감 총 몬스터 수
+var weapon__dictionaryWidth = $('.weapon__dictionary').width(); // 무기 도감 한 번에 보여줄 전체 너비
+var weapon__cardWidth = $('.weapon__dictionary_card').outerWidth(true); // 무기 도감 카드의 너비(마진 포함)
+
+function mob__updateSlide() {
+	// 이동할 위치 계산 (현재 인덱스에 맞게 이동)
+	var mob__translateX = -mob__currentIndex * mob__cardWidth;
+	$('.mob__dictionary_inner').css('transform', 'translateX(' + mob__translateX + 'px)');
+}
+
+function mob__next() {
+	if (mob__currentIndex + mob__itemsPerPage < mob__totalItems) {
+		mob__currentIndex++;
+	} else {
+		mob__currentIndex = 0; // 마지막 카드에 도달하면 처음으로 돌아가기
+	}
+	mob__updateSlide();
+}
+
+function mob__prev() {
+	if (mob__currentIndex > 0) {
+		mob__currentIndex--;
+	} else {
+		mob__currentIndex = mob__totalItems - mob__itemsPerPage; // 처음으로 돌아가면 마지막 페이지로 이동
+	}
+	mob__updateSlide();
+}
+
+function weapon__updateSlide() {
+	// 이동할 위치 계산 (현재 인덱스에 맞게 이동)
+	var weapon__translateX = -weapon__currentIndex * weapon__cardWidth;
+	$('.weapon__dictionary_inner').css('transform', 'translateX(' + weapon__translateX + 'px)');
+}
+
+function weapon__next() {
+	if (weapon__currentIndex + weapon__itemsPerPage < weapon__totalItems) {
+		weapon__currentIndex++;
+	} else {
+		weapon__currentIndex = 0; // 마지막 카드에 도달하면 처음으로 돌아가기
+	}
+	weapon__updateSlide();
+}
+
+function weapon__prev() {
+	if (weapon__currentIndex > 0) {
+		weapon__currentIndex--;
+	} else {
+		weapon__currentIndex = weapon__totalItems - weapon__itemsPerPage; // 처음으로 돌아가면 마지막 페이지로 이동
+	}
+	weapon__updateSlide();
+}
+
+// 몬스터 도감 버튼 클릭했을때 적용되는 함수
+function showMob__dictionary() {
+	$('.mob__dictionary').toggleClass('hidden');
+	$('.mob__prev_bt').toggleClass('hidden');
+	$('.mob__list_bt').toggleClass('hidden');
+	$('.mob__next_bt').toggleClass('hidden');
+	$('.mob__dictionary_bt').toggleClass('play');
+	$('.mob__dictionary_bt').toggleClass('pause');
+}
+
+function showWeapon__dictionary() {
+	$('.weapon__dictionary').toggleClass('hidden');
+	$('.weapon__prev_bt').toggleClass('hidden');
+	$('.weapon__list_bt').toggleClass('hidden');
+	$('.weapon__next_bt').toggleClass('hidden');
+	$('.weapon__dictionary_bt').toggleClass('play');
+	$('.weapon__dictionary_bt').toggleClass('pause');
+}
+/*
+showMob__dictionary();
+showWeapon__dictionary();*/
