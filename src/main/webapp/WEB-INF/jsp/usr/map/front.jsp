@@ -619,7 +619,9 @@ function attack_motion(something, motion) {
     // 0.5초 뒤에 애니메이션이 끝나고, 모습을 없애고 원래 자리로
     setTimeout(function() {
         $attackElement.addClass('hidden'); // 다시 hidden 추가
-        $attackElement.css({top: "4vh", left: "4vh"}); // 원래 위치로 복귀
+        if(something == 1){
+        	$attackElement.css({top: "4vh", left: "4vh"}); // 원래 위치로 복귀
+        }
     }, 500);  // 애니메이션 시간 500ms 이후
 }
 
