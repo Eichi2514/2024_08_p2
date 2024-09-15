@@ -78,30 +78,32 @@ public class UsrMapController {
 		// 로그인 유저의 floor 기록 만큼 몬스터들 이미지 가져오기
 		int memberFloor = rq.getLoginedMember().getFloor();
 		ArrayList<String> mobImgs = mobService.mobImgs(memberFloor);
-		
+
 		/*
-		 for(int i = 0; i < mobImgs.size(); i++) {
-		 System.out.println(i+"번방 : "+mobImgs.get(i)); }
+		 * for(int i = 0; i < mobImgs.size(); i++) {
+		 * System.out.println(i+"번방 : "+mobImgs.get(i)); }
 		 */
-		
+
 		// 로그인 유저의 무기를 발견한 기록 만큼 무기들 이미지 가져오기
 		Map<Integer, String> weaponImgs = findService.weaponImgs(rq.getLoginedMemberId());
-		
-		/* 
-		System.err.println(weaponImgs);
-		System.err.println("시작");
-		 for(int i = 0; i < 5; i++) {
-			System.out.println(i+" : "+weaponImgs.get(i));
-			String j = weaponImgs.get(i) != null ? weaponImgs.get(i) : "";
-			System.out.println("j2 : "+j);
-		} */
-		
+
+		/*
+		 * System.err.println(weaponImgs); System.err.println("시작"); for(int i = 0; i <
+		 * 5; i++) { System.out.println(i+" : "+weaponImgs.get(i)); String j =
+		 * weaponImgs.get(i) != null ? weaponImgs.get(i) : "";
+		 * System.out.println("j2 : "+j); }
+		 */
+
 		// 1~3 숫자 랜덤으로 지정 (1이 나오면 랜덤아이템이 생기게 하기위해서)
 		int random_item_probability = (int) (Math.random() * 3) + 1;
-		
-		if(random_item_probability == 1) {
-			System.out.println(floor+"층"+room+"번방 랜덤 아이템 등장");
+
+		if (random_item_probability == 1) {
+			if (room != 0) {
+				System.out.println(floor + "층" + room + "번방 랜덤 아이템 등장");
+			} else {
+				System.out.println(floor - 1 + "층 보스방 랜덤 아이템 등장");
 			}
+		}
 
 		// 캐릭터 정보 넘기기
 		model.addAttribute("charac", charac);
@@ -235,13 +237,13 @@ public class UsrMapController {
 
 		// 캐릭터의 현재 방 정보 변수에 저장
 		int room = charac.getRoom();
-		
+
 		// 로그인 유저의 floor 기록 만큼 몬스터들 이미지 가져오기
 		int memberFloor = rq.getLoginedMember().getFloor();
 		ArrayList<String> mobImgs = mobService.mobImgs(memberFloor);
 
 		// 로그인 유저의 무기를 발견한 기록 만큼 무기들 이미지 가져오기
-        Map<Integer, String> weaponImgs = findService.weaponImgs(rq.getLoginedMemberId());
+		Map<Integer, String> weaponImgs = findService.weaponImgs(rq.getLoginedMemberId());
 
 		// 캐릭터 정보 넘기기
 		model.addAttribute("charac", charac);

@@ -28,7 +28,7 @@ function startMoving(moveAction) {
 			Up(1);
 		} else if (moveAction === 'right') {
 			Right(1);
-			console.log(moveSpeed);
+			// console.log(moveSpeed);
 		} else if (moveAction === 'down') {
 			Down(1);			
 		}
