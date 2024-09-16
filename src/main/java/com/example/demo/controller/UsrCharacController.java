@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.service.CharacService;
 import com.example.demo.service.FindService;
 import com.example.demo.service.WeaponService;
+import com.example.demo.util.Ut;
 import com.example.demo.vo.Charac;
 import com.example.demo.vo.Rq;
 
@@ -39,11 +40,7 @@ public class UsrCharacController {
 
 		// 로그인한 아이디의 고유번호 변수에 저장
 		int memberId = rq.getLoginedMemberId();
-
-		// 보스방 통과시에만 체력 증가
-		if (floor != 1 && room == 1) {
-			hp++;
-		}
+		
 		characService.update(hp, floor, room, memberId);
 	}
 
@@ -130,7 +127,7 @@ public class UsrCharacController {
 	// 캐릭터 아이템 획득
 	@RequestMapping("/usr/charac/itemGet")
 	@ResponseBody
-	public Charac itemGet(HttpServletRequest req) {
+	public String[] itemGet(HttpServletRequest req) {
 		// System.out.println("아이템 획득 컨트롤러 실행");
 
 		// Rq에 저장돼 있는 정보 가져오기
@@ -142,13 +139,16 @@ public class UsrCharacController {
 		// 로그인 유저의 캐릭터 정보 가져오기
 		Charac charac = characService.characChack(rq.getLoginedMemberId());
 		
-		characService.itemGet(memberId, charac.getFloor(), charac.getPower(), charac.getSpeed());
+		String msg = characService.itemGet(memberId, charac.getFloor(), charac.getPower(), charac.getSpeed());
 		
 		Charac newCharac = characService.characChack(rq.getLoginedMemberId());
 
 		// System.out.println("newCharac : ");
 		// System.out.println(newCharac);
-		
-		return newCharac;
+		String sPower = Integer.toString(newCharac.getPower());
+		String sSpeed = Integer.toString(newCharac.getSpeed());
+
+		String[] itemGet = {sPower, sSpeed, msg};
+		return itemGet;
 	}
 }

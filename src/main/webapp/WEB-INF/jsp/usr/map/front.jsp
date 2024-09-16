@@ -563,10 +563,12 @@ function Item_get(){
       type : 'GET',
       success: function(data) {
     	  // console.log(data);
-    	  $('.power_count').text(data.power);
-    	  $('.speed_count').text(50 - data.speed);
+    	  $('.power_count').text(data[0]);
+    	  $('.speed_count').text(50 - data[1]);
+    	  alert(data[2]);
     	  $(".random_item").fadeOut(1000).addClass('hidden');
           $(".random_item_text").fadeOut(1000).addClass('hidden');
+          
       },
       error : function(jqXHR, textStatus, errorThrown) {
           alert('오류 발생 : ' + textStatus);
@@ -767,7 +769,7 @@ function attack_motion(something, motion) {
 					},
 					dataType : 'text',
 					success : function(data) {
-						// console.log("몬스터"+data+"Attack");
+						console.log("몬스터"+data+"Attack");
 						// console.log("데미지 : " + damage);
 						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
@@ -810,11 +812,11 @@ function attack_motion(something, motion) {
 							}
 							BossHpDown();
 						} 
-						// console.log("몬스터2 hp : " + mob2_hp);
-						// console.log("몬스터3 hp : " + mob3_hp);
-						// console.log("몬스터4 hp : " + mob4_hp);
-						// console.log("몬스터5 hp : " + mob5_hp);
-						// console.log("몬스터6 hp : " + mob6_hp);
+						console.log("몬스터2 hp : " + mob2_hp);
+						console.log("몬스터3 hp : " + mob3_hp);
+						console.log("몬스터4 hp : " + mob4_hp);
+						console.log("몬스터5 hp : " + mob5_hp);
+						console.log("몬스터6 hp : " + mob6_hp);
 						showDoor();
 						showRandomItem();
 						attack_motion(something, "D");
