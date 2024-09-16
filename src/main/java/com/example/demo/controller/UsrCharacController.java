@@ -142,7 +142,7 @@ public class UsrCharacController {
 		// 로그인 유저의 캐릭터 정보 가져오기
 		Charac charac = characService.characChack(rq.getLoginedMemberId());
 		
-		characService.itemGet(memberId, charac.getPower(), charac.getSpeed());
+		characService.itemGet(memberId, charac.getFloor(), charac.getPower(), charac.getSpeed());
 		
 		Charac newCharac = characService.characChack(rq.getLoginedMemberId());
 
