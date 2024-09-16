@@ -533,7 +533,7 @@ public class MapService {
 		int x = Xcode + ((height - 1) / 2);
 		int y = Ycode + width + distance;
 		
-		for (int i = Ycode + width + 1; i < y; i++) {
+		for (int i = Ycode + width; i < y; i++) {
 			if (map[x][i] != road) {
 				return map[x][i];
 			}
@@ -558,7 +558,7 @@ public class MapService {
 		int x = Xcode + height + distance;
 		int y = Ycode + ((width - 1) / 2);
 		
-		for (int i = Xcode + height + 1; i < x; i++) {
+		for (int i = Xcode + height; i < x; i++) {
 			if (map[i][y] != road) {
 				return map[i][y];
 			}

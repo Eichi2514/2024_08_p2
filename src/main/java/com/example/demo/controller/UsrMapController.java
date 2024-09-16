@@ -15,15 +15,15 @@ import com.example.demo.service.MapService;
 import com.example.demo.service.MemberService;
 import com.example.demo.service.MobService;
 import com.example.demo.service.WeaponService;
+import com.example.demo.util.Ut;
 import com.example.demo.vo.Charac;
-import com.example.demo.vo.Find;
 import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsrMapController {
-
+	
 	@Autowired
 	private CharacService characService;
 
@@ -126,10 +126,8 @@ public class UsrMapController {
 		int originallyStage = (charac.getFloor() * 5) + charac.getRoom();
 		/* System.out.println("로그인계정 권한 레벨 : "+rq.getLoginedMember().getAuthLevel()); */
 
-		// 현재 캐릭터의 위치정보가 이동하려는 스테이지보다 작거나 크고
-		// 튜토리얼이 아니면 메인페이지로 이동
-		if (((originallyStage < stage || originallyStage > stage) && stage != 5)
-				&& rq.getLoginedMember().getAuthLevel() != 7) {
+		// 현재 캐릭터의 위치정보가 이동하려는 스테이지보다 작거나 크고 관리자가 아니면 메인페이지로 이동
+		if ((originallyStage < stage || originallyStage > stage)&& rq.getLoginedMember().getAuthLevel() != 7) {
 			return "/usr/home/main";
 		}
 
