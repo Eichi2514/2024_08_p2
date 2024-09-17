@@ -2,70 +2,66 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script>
+var loginedMemberId = ${rq.loginedMemberId};
+
+$(document).ready(function() {
+    var chat = $(".chat");
+    // 페이지 로드 시 스크롤을 맨 아래로 설정
+    chat.scrollTop(chat[0].scrollHeight);
+});
+
+function Chat__Write(form) {
+    var formData = $(form).serialize(); // 폼 데이터를 가져오기
+
+    $.ajax({
+        type: "POST",
+        url: "/usr/chat/write",
+        data: formData,
+        success: function(data) {
+            // 성공적으로 채팅을 전송했을 때 새로운 채팅 내용을 화면에 추가
+			console.log(data);
+            
+            var chatClass = data.memberId == loginedMemberId ? 'my_chat' : 'who_chat';
+            var newChat = `<div class=`+chatClass+`>
+                               <div class="chat_writer">`+data.extra__writer+`</div>
+                               <div class="chat_body">`+data.body+`</div>
+                            </div>`;
+            console.log(newChat);
+            $('.chat').append(newChat);
+
+            // 채팅 입력 필드 비우기
+            $('input[name=body]').val('');
+
+            // 채팅 스크롤을 맨 아래로
+            var chat = $(".chat");
+            chat.scrollTop(chat[0].scrollHeight);
+        },
+        error: function(xhr, status, error) {
+            console.log("채팅 전송 중 오류 발생:", error);
+        }
+    });
+
+    return false; // 폼의 기본 제출 동작을 막기 위해 false 반환
+}
+
+</script>
+
 <div class="chat absolute">
-	<div class="who_chat">
-		<div class="chat_title">에밀리</div>
-		<div class="chat_body">안녕</div>
-	</div>
-	<div class="my_chat">
-		<div class="chat_title">에이치</div>
-		<div class="chat_body">하이</div>
-	</div>
-	<div class="who_chat">
-		<div class="chat_title">에밀리</div>
-		<div class="chat_body">일 일초라도 안보이면</div>
-	</div>
-	<div class="my_chat">
-		<div class="chat_title">에이치</div>
-		<div class="chat_body">이 이렇게 초조한데</div>
-	</div>
-	<div class="who_chat">
-		<div class="chat_title">에밀리</div>
-		<div class="chat_body">삼 삼초는어떻게 기다려 이야이야이야</div>
-	</div>
-	<div class="my_chat">
-		<div class="chat_title">에이치</div>
-		<div class="chat_body">사 사랑해 널 사랑해</div>
-	</div>
-	<div class="who_chat">
-		<div class="chat_title">에밀리</div>
-		<div class="chat_body">오 오늘은 말할꺼야</div>
-	</div>
-	<div class="my_chat">
-		<div class="chat_title">에이치</div>
-		<div class="chat_body">육 육십억 지구에서 널만난건</div>
-	</div>
-	<div class="who_chat">
-		<div class="chat_title">에밀리</div>
-		<div class="chat_body">칠 럭키야</div>
-	</div>
-	<div class="my_chat">
-		<div class="chat_title">에이치</div>
-		<div class="chat_body">사랑해 요기조기 한눈팔지말고 나를봐</div>
-	</div>
-	<div class="who_chat">
-		<div class="chat_title">에밀리</div>
-		<div class="chat_body">좋아해 나를향해 웃는미소 매일매일 보여줘</div>
-	</div>
-	<div class="my_chat">
-		<div class="chat_title">에이치</div>
-		<div class="chat_body">팔 팔딱팔딱 뛰는가슴</div>
-	</div>
-	<div class="who_chat">
-		<div class="chat_title">에밀리</div>
-		<div class="chat_body">구 구해줘 오내마음</div>
-	</div>
-	<div class="my_chat">
-		<div class="chat_title">에이치</div>
-		<div class="chat_body">십 십년이가도 너를사랑해</div>
-	</div>
-	<div class="who_chat">
-		<div class="chat_title">에밀리</div>
-		<div class="chat_body">언제나 이맘변치않을께</div>
-	</div>
+	<c:forEach var="chat" items="${chats}">
+		<div
+			class="${chat.memberId == rq.loginedMemberId ? 'my_chat' : 'who_chat' }">
+			<div class="chat_writer">${chat.extra__writer}</div>
+			<div class="chat_body">${chat.body}</div>
+		</div>
+	</c:forEach>
 </div>
-<input class="chat_var absolute"></input>
-<button class="chat_bt absolute">전송</button>
+<form action="" onSubmit="Chat__Write(this); return false;">
+	<input type="hidden" name="loginedMemberId"
+		value="${rq.loginedMember.id}" /> <input class="chat_var absolute"
+		name="body" autocomplete="off"></input>
+	<button type="submit" class="chat_bt absolute">전송</button>
+</form>
 </div>
 </body>
 </html>

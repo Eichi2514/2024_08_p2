@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.CharacService;
+import com.example.demo.service.ChatService;
 import com.example.demo.service.FindService;
 import com.example.demo.service.MapService;
 import com.example.demo.service.MemberService;
 import com.example.demo.service.MobService;
 import com.example.demo.service.WeaponService;
-import com.example.demo.util.Ut;
 import com.example.demo.vo.Charac;
+import com.example.demo.vo.Chat;
 import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -41,6 +43,9 @@ public class UsrMapController {
 
 	@Autowired
 	private FindService findService;
+	
+	@Autowired
+	private ChatService chatService;
 
 	// 게임 화면
 	@RequestMapping("/usr/map/front")
@@ -104,6 +109,9 @@ public class UsrMapController {
 				System.out.println(floor - 1 + "층 보스방 랜덤 아이템 등장");
 			}
 		}
+		
+		// 채팅기록 불러오기
+		List<Chat> chats = chatService.chatList();
 
 		// 캐릭터 정보 넘기기
 		model.addAttribute("charac", charac);
@@ -121,6 +129,8 @@ public class UsrMapController {
 		model.addAttribute("room", room);
 		// 랜덤아이템 확률 넘기기
 		model.addAttribute("random_item_probability", random_item_probability);
+		// 채팅 기록 넘기기
+		model.addAttribute("chats", chats);
 
 		// 현재 캐릭터의 위치정보 변수에 저장
 		int originallyStage = (charac.getFloor() * 5) + charac.getRoom();
