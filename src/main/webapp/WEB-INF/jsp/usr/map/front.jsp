@@ -905,8 +905,8 @@ function attack_motion(something, motion) {
 
 <!-- 튜토리얼 알림창 -->
 <c:if test="${param.stage == 5}">
-	<div class="guide1 bg-white text-center absolute">A W D S : 공격</div>
-	<div class="guide2 bg-white text-center absolute">← ↑ → ↓ : 이동</div>
+	<div class="guide1 bg-black text-gray-400 text-center absolute">A W D S : 공격</div>
+	<div class="guide2 bg-black text-gray-400 text-center absolute">← ↑ → ↓ : 이동</div>
 </c:if>
 
 <!-- 첫번째 몬스터 -->
