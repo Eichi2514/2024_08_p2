@@ -98,8 +98,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 1vh;
 	width: 10vh;
 	height: 10vh;
-	border: 1vh solid white;
-	background: black;
 }
 
 .TOP3 {
@@ -422,8 +420,6 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 1vh;
 	width: 16vh;
 	height: 16vh;
-	border: 1vh solid white;
-	background: black;
 }
 
 .bar {
@@ -703,7 +699,8 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	width: 39vh;
 	height: 83.5vh;
 	border: 0.1vh solid white;
-	border-radius: 1vh;
+	border-top-left-radius: 1vh;
+	border-bottom-left-radius: 1vh;
 	overflow: auto;
 	color: white;
 }
