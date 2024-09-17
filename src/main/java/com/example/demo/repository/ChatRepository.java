@@ -37,4 +37,6 @@ public interface ChatRepository {
 			LIMIT 1
 			""")
 	public Chat update();
+
+	
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>	
 <%@ page import="java.util.Map"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
@@ -29,6 +29,7 @@ Map<Integer, String> weaponImgs = (Map<Integer, String>) request.getAttribute("w
 @import
 	url("https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css");
 </style>
+<script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
 	<div class="bg relative mx-auto z-10">

@@ -727,6 +727,7 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 .chat_body{
 	font-size: 2vh;
+	word-break: keep-all;
 }
 
 .chat_var{

@@ -11,23 +11,13 @@ import com.example.demo.vo.Chat;
 @Controller
 public class UsrChatController {
 
-	@Autowired
-	private ChatService chatService;
+    @Autowired
+    private ChatService chatService;
 
-	// 채팅 내용 추가
-	@RequestMapping("/usr/chat/write")
-	@ResponseBody
-	public Chat write(int loginedMemberId, String body) {
-		chatService.write(loginedMemberId, body);
-
-		return chatService.update();
-	}
-
-	// 채팅 내용 추가
-	@RequestMapping("/usr/chat/update")
-	@ResponseBody
-	public Chat update(int loginedMemberId, String body) {
-		return chatService.update();
-	}
-
+    // 채팅 내용 추가
+    @RequestMapping("/usr/chat/write")
+    @ResponseBody
+    public void write(int loginedMemberId, String body) {
+        chatService.write(loginedMemberId, body); // 데이터베이스에 저장 후, WebSocket을 통해 클라이언트에 전송
+    }
 }
