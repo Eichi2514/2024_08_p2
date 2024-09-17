@@ -895,7 +895,7 @@ function attack_motion(something, motion) {
 </script>
 <!-- p2 맵 배경 -->
 <img class="bg_img"
-	src="https://github.com/user-attachments/assets/04fa2504-f697-4a59-8626-89551e8611da"
+	src="https://github.com/user-attachments/assets/e92471f8-4b53-4df2-9b42-e4fe0abe9d5e"
 	alt="" />
 
 <!-- p2 문 -->

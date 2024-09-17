@@ -81,8 +81,8 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 }
 
 .audio_bt {
-	top: 0;
-	left: 100vh;
+	top: 1vh;
+	left: 101vh;
 	width: 20vh;
 	height: 9vh;
 	border-radius: 1vh;
@@ -426,7 +426,7 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	width: 20vh;
 	height: 100vh;
 	top: 0;
-	left: -20vh;
+	left: -20.5vh;
 }
 
 .door_top {
@@ -462,12 +462,14 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 .floor_room {
 	left: 0;
-	top: 18.5vh;
+	top: 18vh;
 	width: 20vh;
 	height: 9vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/* color: white; */
+	/* -webkit-text-stroke: 0.05vh white; */
 	border: 0.3vh solid;
 	border-radius: 1vh;
 	background: rgb(255, 71, 48);
@@ -481,6 +483,8 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/* color: white; */
+	/* -webkit-text-stroke: 0.05vh white; */
 	border: 0.3vh solid;
 	border-radius: 1vh;
 	background: rgb(255, 71, 48);
@@ -494,6 +498,8 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/* color: white; */
+	/* -webkit-text-stroke: 0.05vh white; */
 	border: 0.3vh solid;
 	border-radius: 1vh;
 	background: rgb(255, 71, 48);
@@ -501,12 +507,14 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 .speed {
 	left: 0;
-	top: 47.5vh;
+	top: 48vh;
 	width: 20vh;
 	height: 9vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/* color: white; */
+	/* -webkit-text-stroke: 0.05vh white; */
 	border: 0.3vh solid;
 	border-radius: 1vh;
 	background: rgb(255, 71, 48);
@@ -514,7 +522,7 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 .mob__dictionary_bt {
 	left: 0;
-	top: 57vh;
+	top: 58vh;
 	width: 20vh;
 	height: 9vh;
 	display: flex;
@@ -597,7 +605,7 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 .weapon__dictionary_bt {
 	left: 0;
-	top: 67vh;
+	top: 68vh;
 	width: 20vh;
 	height: 9vh;
 	display: flex;
@@ -682,22 +690,26 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	left: 0;
 	top: 78vh;
 	width: 20vh;
-	height: 10vh;
-	-webkit-text-stroke: 0.05vh white;
+	height: 20vh;
+	/* color: white; */
+	/* -webkit-text-stroke: 0.05vh white; */
+	border: 0.3vh solid;
+	border-radius: 1vh;
+	background: rgb(255, 71, 48);
 }
 
 .weapon_img {
 	left: 5vh;
-	top: 6vh;
+	top: 7vh;
 	width: 10vh;
 	height: 10vh;
 }
 /* 풋(채팅) */
 .chat {
-	top: 10vh;
+	top: 11vh;
 	left: 101vh;
-	width: 39vh;
-	height: 83.5vh;
+	width: 41vh;
+	height: 82.5vh;
 	border: 0.1vh solid white;
 	border-top-left-radius: 1vh;
 	border-bottom-left-radius: 1vh;
@@ -978,8 +990,8 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 /* 몬스터 도감 */
 .dictionary_exit_bt {
-	top: 0vh;
-	left: 121vh;
+	top: 1vh;
+	left: 122vh;
 	width: 20vh;
 	height: 9vh;
 	border-radius: 1vh;

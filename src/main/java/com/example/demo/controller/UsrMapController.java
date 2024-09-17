@@ -252,7 +252,12 @@ public class UsrMapController {
 
 		// 로그인 유저의 무기를 발견한 기록 만큼 무기들 이미지 가져오기
 		Map<Integer, String> weaponImgs = findService.weaponImgs(rq.getLoginedMemberId());
-
+		
+		// 채팅기록 불러오기
+		List<Chat> chats = chatService.chatList();
+		
+		// 채팅 기록 넘기기
+		model.addAttribute("chats", chats);
 		// 캐릭터 정보 넘기기
 		model.addAttribute("charac", charac);
 		// 현재 층 정보 넘기기

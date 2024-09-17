@@ -35,9 +35,16 @@ Map<Integer, String> weaponImgs = (Map<Integer, String>) request.getAttribute("w
 	<div class="bg relative mx-auto z-10">
 		<div class="bar absolute">
 			<!-- p2 나무 바 -->
+			<!-- 
 			<img class="bar"
 				src="https://github.com/user-attachments/assets/b817da40-3f88-4bac-a73c-b14853be1a36"
 				alt="" />
+			-->
+			<!-- 
+			<img class="bar"
+				src="https://github.com/user-attachments/assets/7009d4e0-e658-474a-a697-c8e6c7e2801c"
+				alt="" />
+			-->			
 
 			<c:if test="${floor == 1 && room == 0 }">
 				<div class="floor_room absolute">튜토리얼</div>
