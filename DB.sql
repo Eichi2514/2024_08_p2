@@ -14,7 +14,7 @@ CREATE TABLE `member`(
       gender TINYINT(1) UNSIGNED NOT NULL COMMENT '성별 (0=여자, 1=남자)',
       delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴 여부 (0=탈퇴 전, 1=탈퇴 후)',
       delDate DATETIME COMMENT '탈퇴 날짜',
-      `floor` INT(10) NOT NULL DEFAULT 0 COMMENT '캐릭터 도달 층 수'
+      `floor` INT(10) NOT NULL DEFAULT 0 COMMENT '회원이 도달한 층 수'
 );
 
 CREATE TABLE charac(
@@ -36,9 +36,10 @@ CREATE TABLE weapon(
 );
 
 CREATE TABLE find(
-      updateDate DATETIME NOT NULL,
+      id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      regDate DATETIME NOT NULL,
       memberId INT(10) NOT NULL,
-      weaponId INT(10) NOT NULL COMMENT '무기번호'
+      weaponId INT(10) NOT NULL
 );
 
 CREATE TABLE scoreboard(
@@ -115,167 +116,72 @@ room = 1;
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 1,
-`body` = "아저씨 (Feat. 제이레빗)";
+`body` = "슬라임 가득한 탑을 올라 하늘 높이 꿈을 그려 때론 힘들어도 멈추지 않아요 신비의 세상이 날 기다려";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 2,
-`body` = "아저씨 이상해요 내 맘이 왜 이렇죠 생각만해도 가슴이 마구 두근두근 또 뛰는걸요";
+`body` = "한 걸음씩 다가가는 그 길 빛나는 신발에 용기 담아 용사처럼 슬라임을 넘고 조금씩 다가가리라 꿈꾸며";
+
+INSERT INTO chat
+SET regDate = NOW(),
+memberId = 1,
+`body` = "슬라임의 탑 올라가 모험의 시작이야 우리가 함께 이뤄요 저 높은 곳으로 가자";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 2,
-`body` = "아저씨 사랑해요 조금만 기다려요 필요한 게 하나 있다면 그건 오직 시간뿐인걸요";
+`body` = "새로운 친구들 만나 함께 싸우고 웃으며 현명함과 용기를 쌓아 끝없는 여정 이어가리";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 1,
-`body` = "정말 어쩜 그렇게 내 말 못 알아듣니. 도대체 몇 번을 내가 말을 해야겠니";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "너와 나의 나이차이 소주와 우유 차이. 내가 해장국을 외칠 때 넌 아마 애플파이";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "넌 내게 너무도 어린아이 귀연 꼬마아이. 가위바위 보나 해야 할 것 같은 나이";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "넌 아직 너무나 어린걸 pretty girl. wake up! 이제 제발 정신을 좀 차려봐";
+`body` = "새로운 친구들 만나 함께 싸우고 웃으며 현명함과 용기를 쌓아 끝없는 여정 이어가리";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 2,
-`body` = "아저씨 어떡하죠? 이러면 안되나요 뭘 바라는게 아니에요 그냥 좋은걸 어떡해요";
+`body` = "슬라임 물결 밀려와도 우린 뒤돌지 않아요 끝없는 도전 속에서 우리의 길을 찾으리라";
+
+INSERT INTO chat
+SET regDate = NOW(),
+memberId = 1,
+`body` = "새로운 친구들 만나";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 2,
-`body` = "아저씨 왜 안돼요? 한 번만 더 생각해요 그저 난 어릴 뿐이죠 이게 그렇게 잘못인가요?";
+`body` = "함께 싸우고 웃으며";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 1,
-`body` = "난 떡볶이 no 팝콘도 no 로맨틱영화도 no 당구장만 go";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "생각해봐 도대체 너랑 뭘 하겠니 뭐가 또 통하겠니 뭔 얘길 하겠니";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "주식 얘기해? 야구 얘기해? 차 얘기해? 소녀시대? yeah!!!";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "이런 나랑 뭘 해 너희 엄마 놀래 아무리 생각해도 이건 아니라고 절레절레";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "뭔가 착각을 하는 것 같은데 난 니가 찾는 동화 속의 왕자님은 아니거든";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "난 백마도 큰 성도 심지어 시간도 없으니까 제발 여기서 그만둬";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "oh mama 이게 또 왠 drama 넌 아마 언젠가 날 이해하게 될 꺼야 참고 또 참아";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "보고도 싶어도 만나고 싶어도 암만 생각해도 이건 진짜 아니잖아";
+`body` = "현명함과 용기를 쌓아";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 2,
-`body` = "아저씨 어떡하죠? 이러면 안되나요 뭘 바라는 게 아니에요 그냥 좋은걸 어떡해요";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 2,
-`body` = "아저씨 왜 안돼요? 한 번만 더 생각해요 그저 난 어릴 뿐이죠 이게 그렇게 잘못인가요?";
+`body` = "끝없는 여정 이어가리";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 1,
-`body` = "너가 ABC 공부 할 때 난 내pc 조립했을걸";
+`body` = "새로운 친구들 만나";
+
+INSERT INTO chat
+SET regDate = NOW(),
+memberId = 2,
+`body` = "함께 싸우고 웃으며";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 1,
-`body` = "사실 나는 자신이 없는 걸. 넌 내게 어린 아일 뿐인걸";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "너가 도레미 음계칠 때 난 체르니 졸업했을걸";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "사실 난 자신이 없는 걸 넌 내게 그저 어린 아이 일 뿐인걸";
+`body` = "현명함과 용기를 쌓아";
 
 INSERT INTO chat
 SET regDate = NOW(),
 memberId = 2,
-`body` = "어쩜 그대 이렇게도 나를 몰라주나요";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 2,
-`body` = "이제 좀더 솔직히 내게 마음을 열어요";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 2,
-`body` = "아저씨 이상해요 내 맘이 왜 이렇죠 생각만해도 가슴이 마구 두근두근 또 뛰는걸요";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 2,
-`body` = "아저씨 사랑해요 조금만 기다려요 필요한 게 하나 있다면 그건 오직 시간뿐 인걸요";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "어! 이건 정말 말도 안돼";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 2,
-`body` = "아저씨";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "안돼 안돼";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 2,
-`body` = "내 맘이";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 1,
-`body` = "이건 말도 안돼 흔들리면 안돼 제발 정신차려 정말 이럼 안돼";
-
-INSERT INTO chat
-SET regDate = NOW(),
-memberId = 2,
-`body` = "아저씨...";
+`body` = "끝없는 여정 이어가리";
 
 SELECT *
 FROM `member`;

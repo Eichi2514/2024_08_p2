@@ -87,12 +87,11 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	height: 9vh;
 	display: flex;
 	justify-content: center;
-	align-items: center;	
-	border: 0.3vh solid rgb(255, 71, 48);
+	align-items: center;
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -472,11 +471,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -488,11 +486,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -504,11 +501,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -520,11 +516,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -536,11 +531,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -622,11 +616,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -705,11 +698,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 78vh;
 	width: 20vh;
 	height: 20vh;
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -726,7 +718,7 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	width: 41vh;
 	height: 82.5vh;
 	color: white;	
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-top-left-radius: 1vh;
 	border-bottom-left-radius: 1vh;
 	overflow: auto;
@@ -759,7 +751,7 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	left: 101vh;
 	bottom: 1vh;
 	color: white;	
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	background: inherit;
 }
@@ -768,11 +760,10 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	width: 8vh;
 	left: 134vh;
 	bottom: 1vh;
-	border: 0.3vh solid rgb(255, 71, 48);
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 
@@ -931,7 +922,7 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 /* 게임오버화면 */
 .over {
-	top: 2vh;
+	top: 0;
 	left: 0;
 	height: 100vh;
 	width: 100vh;
@@ -949,6 +940,11 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	height: 20vh;
 	width: 50vh;
 	-webkit-text-stroke: 0.05vh white;
+	border: 0.3vh solid rgb(174, 0, 27);
+	border-radius: 1vh;
+	background: rgb(0, 0, 30);
+	color: rgb(156, 163, 175);
+	-webkit-text-stroke: 0.1vh black;
 }
 
 .random_item_text {
@@ -956,7 +952,11 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	left: 25vh;
 	height: 20vh;
 	width: 50vh;
-	-webkit-text-stroke: 0.05vh white;
+	border: 0.3vh solid rgb(174, 0, 27);
+	border-radius: 1vh;
+	background: rgb(0, 0, 30);
+	color: rgb(156, 163, 175);
+	-webkit-text-stroke: 0.1vh black;
 }
 
 .item_img {
@@ -976,22 +976,38 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 .item_change {
 	top: 14vh;
-	left: 6vh;
+	left: 4vh;
+	width: 10vh;
+	text-align:center;
+	border: 0.3vh solid rgb(174, 0, 27);
+	border-radius: 1vh;
 }
 
 .item_get {
 	top: 14vh;
-	left: 6vh;
+	left: 4vh;
+	width: 10vh;
+	text-align:center;
+	border: 0.3vh solid rgb(174, 0, 27);
+	border-radius: 1vh;
 }
 
 .item_mix {
 	top: 14vh;
-	left: 21vh;
+	left: 19vh;
+	width: 10vh;
+	text-align:center;
+	border: 0.3vh solid rgb(174, 0, 27);
+	border-radius: 1vh;
 }
 
 .item_exit {
 	top: 14vh;
-	left: 37vh;
+	left: 35vh;
+	width: 10vh;
+	text-align:center;
+	border: 0.3vh solid rgb(174, 0, 27);
+	border-radius: 1vh;
 }
 
 .bossHP {
@@ -1020,12 +1036,11 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	height: 9vh;
 	display: flex;
 	justify-content: center;
-	align-items: center;	
-	border: 0.3vh solid rgb(255, 71, 48);
+	align-items: center;
+	border: 0.3vh solid rgb(174, 0, 27);
 	border-radius: 1vh;
 	/* background: rgb(255, 71, 48); */
-	color: rgb(5, 243, 202);
-	background: rgb(0, 0, 136);
+	color: rgb(156, 163, 175);
 	-webkit-text-stroke: 0.1vh black;
 }
 

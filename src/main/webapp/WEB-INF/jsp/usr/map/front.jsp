@@ -1010,9 +1010,11 @@ function attack_motion(something, motion) {
 
 <div class="item_text absolute z-20 hidden">
 	<!-- p2 나무판 -->
+	<!-- 
 	<img class="item_img absolute z-20"
 		src="https://github.com/user-attachments/assets/b3351b33-5547-48b5-9108-78ef3c69c204"
 		alt="" />
+	-->
 
 	<div class="item_title absolute">새로운 무기를 발견하였습니다.</div>
 	<button class="item_change absolute" onclick="Item_change()">교체</button>
@@ -1023,9 +1025,11 @@ function attack_motion(something, motion) {
 <c:if test="${random_item_probability == 1 && param.stage > 5}">
 <div class="random_item_text absolute z-20 hidden">
 	<!-- p2 나무판 -->
+	<!-- 
 	<img class="item_img absolute z-20"
 		src="https://github.com/user-attachments/assets/b3351b33-5547-48b5-9108-78ef3c69c204"
 		alt="" />
+	-->
 
 	<div class="item_title absolute z-20">수상한 알약을 발견하였습니다.</div>
 	<button class="item_get absolute z-20" onclick="Item_get()">먹는다</button>

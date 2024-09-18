@@ -63,11 +63,11 @@ public class UsrCharacController {
 		characService.weaponChange(memberId, weaponId);
 		
 		// 가져온 랜덤무기를 로그인한 유저가 발견한적 있는지 확인하기 위해 가져오기	
-		int weaponChack = findService.weaponFind(memberId, weaponId);
+		int weaponFindChack = findService.weaponFind(memberId, weaponId);
 		
 		// 가져온 랜덤무기를 발견한적 없으면 추가
-		if(weaponChack == 0) {
-		weaponService.weaponFindUpdata(memberId, weaponId);
+		if(weaponFindChack == 0) {
+			findService.weaponFindUpdata(memberId, weaponId);
 		}
 	}
 
@@ -111,11 +111,11 @@ public class UsrCharacController {
 		characService.weaponChange(memberId, weaponId); // 무기 조합
 		
 		// 조합된 무기를 로그인한 유저가 발견한적 있는지 확인하기 위해 가져오기		
-        int weaponChack = findService.weaponFind(memberId, weaponId);
+        int weaponFindChack = findService.weaponFind(memberId, weaponId);
 				
 		// 조합된 무기를 발견한적 없으면 추가
-		if(weaponChack == 0) {
-		weaponService.weaponFindUpdata(memberId, weaponId);
+		if(weaponFindChack == 0) {
+			findService.weaponFindUpdata(memberId, weaponId);
 		}
 
 		// 조합된 무기의 고유번호로 이미지 불러오기

@@ -967,7 +967,7 @@ Map<Integer, String> weaponImgs = (Map<Integer, String>) request.getAttribute("w
 		<a class="ingame_logo rounded-full absolute cursor-pointer" href="/">
 		 <img
 			class="ingame_logo"
-			src="https://github.com/user-attachments/assets/19a18684-da40-4693-a6db-81039eebb6e2"
+			src="https://github.com/user-attachments/assets/8c7de13c-87f7-470f-a64e-17291ead7104"
 			alt="" />
 		</a>
 		
