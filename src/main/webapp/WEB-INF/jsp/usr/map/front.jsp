@@ -79,13 +79,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 		var doorChack = $(".door").hasClass("hidden");
 		if (LR > 79 && 38 < UD && UD < 52 && !doorChack) {
 			windowChack = false;
-			update(front_hp, stage);
-			$(".door").fadeOut(1000).addClass('hidden');
-			mobShow(2);
-			mobShow(3);
-			mobShow(4);
-			mobShow(5);
-			mobShow(6);
+			update(front_hp, stage);						
 			setTimeout(function(){location.href = '../map/front?stage=' + stage;}, 100);			
 			/* console.log("HP:", front_hp);
 			console.log("Stage:", stage);
@@ -134,7 +128,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
     var mob5_hp = 0;
     var mob6_hp = 0;
     
-	// 일정 시간마다 move 함수를 호출
+	// 몬스터의 체력 부여
 	if(${room > 0 && room < 5}){mob2_hp = ${floor};}
 	if(${room > 1 && room < 5}){mob3_hp = ${floor};}
 	if(${room > 2 && room < 5}){mob4_hp = ${floor};}
@@ -470,6 +464,7 @@ var stop2, stop3, stop4, stop5, stop6;
 
 //일정 시간마다 move 함수를 호출
 function show(){
+	console.log("페이지가 모두 로드된 후 실행됩니다.");
 	if(${param.stage <= 270}){
 	  if(${room > 0 && room < 5}){stop2 = setInterval(move2, 1000);}
 	  if(${room > 1 && room < 5}){stop3 = setInterval(move3, 800);}
@@ -888,9 +883,8 @@ function attack_motion(something, motion) {
 						alert('오류 발생 : ' + textStatus);
 					}
 				});
-			}
+			}	       
 	       
-	       window.onload = show();
 		
 </script>
 <!-- p2 맵 배경 -->

@@ -6,8 +6,39 @@ let UD = 44; // 44.1
 // 윈도우 로딩 체크
 var windowChack = false;
 
+// 페이지가 시작될 때 시간 기록
+const startTime = new Date().getTime();
+let estimatedLoadTime = 1500; // 예상 로드 시간
+
+// 페이지 로딩 중에 로딩 바가 점진적으로 증가하도록 설정
+const interval = setInterval(function() {
+    const currentTime = new Date().getTime();
+    const elapsedTime = currentTime - startTime;
+    
+    // 경과된 시간에 비례해 로딩 바 너비 설정 (최대 80vh)
+    const width = Math.min((elapsedTime / estimatedLoadTime) * 80, 80);
+    $(".loding_bar").css("width", width + "vh");
+
+    // 페이지가 로드되기 전에 80vh에 도달하지 않도록 안전하게 제한
+    if (width >= 80) {
+        clearInterval(interval); // 최대 너비에 도달하면 애니메이션 정지
+    }
+}, 100); // 100ms마다 로딩 바 업데이트
+
+// window.onload 이벤트 감지
 window.onload = function() {
 	windowChack = true;
+	show();
+	const loadTime = new Date().getTime() - startTime;
+	
+	// 실제 로드 시간이 예상 시간을 초과하지 않으면, 비율로 로딩 바 채우기
+	const finalWidth = Math.min((loadTime / estimatedLoadTime) * 80, 80);
+	    $(".loding_bar").css("width", finalWidth + "vh");
+
+	// 로딩 바가 완료된 후 로딩 화면 서서히 제거
+	setTimeout(function () {
+	  $(".loding").fadeOut(500);
+	}, 500);  // 로드가 완료되면 잠시 후 로딩 화면 제거
 }
 
 var moveInterval; // 캐릭터 이동을 위한 interval
@@ -192,6 +223,7 @@ function Right(something) {
 }
 
 // 인게임 헤드 js
+
 var mob__itemsPerPage = 4; // 몬스터 도감 한 페이지에 보여줄 카드 개수
 var mob__currentIndex = 0; // 몬스터 도감 현재 첫 번째로 보여지는 카드의 인덱스
 var mob__totalItems = $('.mob__dictionary_card').length; // 몬스터 도감 총 몬스터 수
@@ -275,6 +307,3 @@ function showWeapon__dictionary() {
 	$('.weapon__dictionary_bt').toggleClass('play');
 	$('.weapon__dictionary_bt').toggleClass('pause');
 }
-/*
-showMob__dictionary();
-showWeapon__dictionary();*/
