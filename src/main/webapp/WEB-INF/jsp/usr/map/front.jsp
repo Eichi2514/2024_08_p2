@@ -283,6 +283,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 						}						
 					} else if (data == 'charac') {
 						hpDown();
+						damage__motion('1', '1');
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -319,6 +320,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 						}
 					} else if (data == 'charac') {
 						hpDown();
+						damage__motion('1', '1');
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -355,7 +357,8 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 							$(".mob6").css("left", LR6 + "vh");
 						}
 					} else if (data == 'charac') {
-						hpDown();						
+						hpDown();		
+						damage__motion('1', '1');
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -392,6 +395,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 						}
 					} else if (data == 'charac') {
 						hpDown();
+						damage__motion('1', '1');
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -620,6 +624,13 @@ function attack_motion(something, motion) {
     }, 500);  // 애니메이션 시간 500ms 이후
 }
 
+// 데미지 화면에 보여주기
+function damage__motion(data, damage){
+	$(".damage"+data).text(damage);
+	setTimeout(function() {
+		$(".damage"+data).text('');	
+	}, 1000);
+}
 		
 	       function attackA(something) {
 				$.ajax({
@@ -635,8 +646,10 @@ function attack_motion(something, motion) {
 						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
 							hpDown();
+							damage__motion('1', '1');
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= damage;
+							mob2_hp -= damage;			
+							damage__motion(data, damage);
 							if(mob2_hp <= 0){
 								mobHidden(2);
 							    clearInterval(stop2);
@@ -644,6 +657,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 3) {
 							mob3_hp -= damage;
+							damage__motion(data, damage);
 							if(mob3_hp <= 0){
 								mobHidden(3);
 								clearInterval(stop3);
@@ -651,6 +665,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 4) {
 							mob4_hp -= damage;
+							damage__motion(data, damage);
 							if(mob4_hp <= 0){
 								mobHidden(4);
 								clearInterval(stop4);
@@ -658,6 +673,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 5) {
 							mob5_hp -= damage;
+							damage__motion(data, damage);
 							if(mob5_hp <= 0){
 								mobHidden(5);
 								clearInterval(stop5);
@@ -665,6 +681,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 6) {
 							mob6_hp -= damage;
+							damage__motion(data, damage);
 							if(mob6_hp <= 0){
 								mobHidden(6);
 								clearInterval(stop6);
@@ -680,7 +697,7 @@ function attack_motion(something, motion) {
 						// console.log("몬스터6 hp : " + mob6_hp);
 						showDoor();
 						showRandomItem();
-						attack_motion(something, "A");
+						attack_motion(something, "A");						
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert('오류 발생 : ' + textStatus);
@@ -700,8 +717,10 @@ function attack_motion(something, motion) {
 						// console.log("몬스터"+data+"Attack");						 
 						if (something != 1 && data == 1) {
 							hpDown();
+							damage__motion('1', '1');
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= damage;
+							mob2_hp -= damage;			
+							damage__motion(data, damage);
 							if(mob2_hp <= 0){
 								mobHidden(2);
 							    clearInterval(stop2);
@@ -709,6 +728,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 3) {
 							mob3_hp -= damage;
+							damage__motion(data, damage);
 							if(mob3_hp <= 0){
 								mobHidden(3);
 								clearInterval(stop3);
@@ -716,6 +736,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 4) {
 							mob4_hp -= damage;
+							damage__motion(data, damage);
 							if(mob4_hp <= 0){
 								mobHidden(4);
 								clearInterval(stop4);
@@ -723,6 +744,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 5) {
 							mob5_hp -= damage;
+							damage__motion(data, damage);
 							if(mob5_hp <= 0){
 								mobHidden(5);
 								clearInterval(stop5);
@@ -730,11 +752,12 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 6) {
 							mob6_hp -= damage;
+							damage__motion(data, damage);
 							if(mob6_hp <= 0){
 								mobHidden(6);
 								clearInterval(stop6);
 								doDelete(6);
-								showItem();
+								showItem();								
 							}
 							BossHpDown();
 						} 
@@ -746,6 +769,7 @@ function attack_motion(something, motion) {
 						showDoor();
 						showRandomItem();
 						attack_motion(something, "W");
+						damage__motion(data, damage);
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert('오류 발생 : ' + textStatus);
@@ -767,8 +791,10 @@ function attack_motion(something, motion) {
 						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
 							hpDown();
+							damage__motion('1', '1');
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= damage;
+							mob2_hp -= damage;			
+							damage__motion(data, damage);
 							if(mob2_hp <= 0){
 								mobHidden(2);
 							    clearInterval(stop2);
@@ -776,6 +802,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 3) {
 							mob3_hp -= damage;
+							damage__motion(data, damage);
 							if(mob3_hp <= 0){
 								mobHidden(3);
 								clearInterval(stop3);
@@ -783,6 +810,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 4) {
 							mob4_hp -= damage;
+							damage__motion(data, damage);
 							if(mob4_hp <= 0){
 								mobHidden(4);
 								clearInterval(stop4);
@@ -790,6 +818,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 5) {
 							mob5_hp -= damage;
+							damage__motion(data, damage);
 							if(mob5_hp <= 0){
 								mobHidden(5);
 								clearInterval(stop5);
@@ -797,11 +826,12 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 6) {
 							mob6_hp -= damage;
+							damage__motion(data, damage);
 							if(mob6_hp <= 0){
 								mobHidden(6);
 								clearInterval(stop6);
 								doDelete(6);
-								showItem();
+								showItem();								
 							}
 							BossHpDown();
 						} 
@@ -813,6 +843,7 @@ function attack_motion(something, motion) {
 						showDoor();
 						showRandomItem();
 						attack_motion(something, "D");
+						damage__motion(data, damage);
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert('오류 발생 : ' + textStatus);
@@ -832,8 +863,10 @@ function attack_motion(something, motion) {
 						// console.log("몬스터"+data+"Attack");						 
 						if (something != 1 && data == 1) {
 							hpDown();
+							damage__motion('1', '1');
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= damage;
+							mob2_hp -= damage;			
+							damage__motion(data, damage);
 							if(mob2_hp <= 0){
 								mobHidden(2);
 							    clearInterval(stop2);
@@ -841,6 +874,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 3) {
 							mob3_hp -= damage;
+							damage__motion(data, damage);
 							if(mob3_hp <= 0){
 								mobHidden(3);
 								clearInterval(stop3);
@@ -848,6 +882,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 4) {
 							mob4_hp -= damage;
+							damage__motion(data, damage);
 							if(mob4_hp <= 0){
 								mobHidden(4);
 								clearInterval(stop4);
@@ -855,6 +890,7 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 5) {
 							mob5_hp -= damage;
+							damage__motion(data, damage);
 							if(mob5_hp <= 0){
 								mobHidden(5);
 								clearInterval(stop5);
@@ -862,11 +898,12 @@ function attack_motion(something, motion) {
 							}
 						} else if (something == 1 && data == 6) {
 							mob6_hp -= damage;
+							damage__motion(data, damage);
 							if(mob6_hp <= 0){
 								mobHidden(6);
 								clearInterval(stop6);
 								doDelete(6);
-								showItem();
+								showItem();								
 							}
 							BossHpDown();
 						} 
@@ -878,6 +915,7 @@ function attack_motion(something, motion) {
 						showDoor();
 						showRandomItem();
 						attack_motion(something, "S");
+						damage__motion(data, damage);
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert('오류 발생 : ' + textStatus);
@@ -919,6 +957,8 @@ function attack_motion(something, motion) {
 		<img class="mobAttack Sattack2 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
 			src="${mob}" alt="" />
+			<!-- 몬스터 데미지 -->
+		<div class="damage2 absolute z-20"></div>
 	</div>
 </c:if>
 <!-- 두번째 몬스터 -->
@@ -937,6 +977,8 @@ function attack_motion(something, motion) {
 		<img class="mobAttack Sattack3 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
 			src="${mob}" alt="" />
+			<!-- 몬스터 데미지 -->
+		<div class="damage3 absolute z-20"></div>
 	</div>
 </c:if>
 <!-- 세번째 몬스터 -->
@@ -955,6 +997,8 @@ function attack_motion(something, motion) {
 		<img class="mobAttack Sattack4 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
 			src="${mob}" alt="" />
+			<!-- 몬스터 데미지 -->
+		<div class="damage4 absolute z-20"></div>
 	</div>
 </c:if>
 <!-- 네번째 몬스터 -->
@@ -973,6 +1017,8 @@ function attack_motion(something, motion) {
 		<img class="mobAttack Sattack5 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
 			src="${mob}" alt="" />
+		<!-- 몬스터 데미지 -->
+		<div class="damage5 absolute z-20"></div>
 	</div>
 </c:if>
 <!-- 보스 몬스터 -->
@@ -996,6 +1042,8 @@ function attack_motion(something, motion) {
 		<img class="mobAttack Sattack6 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img
 			class="front_bossMob_img" src="${mob}" alt="" />
+			<!-- 보스 데미지 -->
+	<div class="damage6 absolute z-20"></div>	
 	</div>
 
 	<img class="item hidden absolute" src="${weapon}" alt="" />
@@ -1052,6 +1100,8 @@ function attack_motion(something, motion) {
 	<img class="front_charac_img rounded-full"
 		src="https://github.com/user-attachments/assets/aaa05c2c-d55a-4111-b367-9231727e7050"
 		alt="" />
+	<!-- 캐릭터 데미지 -->
+	<div class="damage1 absolute z-20"></div>	
 </div>
 
 <%@ include file="../common/foot.jspf"%>

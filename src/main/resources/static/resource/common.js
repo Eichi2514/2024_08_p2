@@ -103,8 +103,6 @@ $(window).keyup(function(e) {
 
 });
 
-
-
 $(window).keyup(function(e) {
 	if (e.keyCode === 65) {
 		// console.log('A키 눌림')
