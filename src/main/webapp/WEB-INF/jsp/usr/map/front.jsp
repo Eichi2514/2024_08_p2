@@ -140,47 +140,47 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
     	return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
 
-	// 1초마다 랜덤 숫자를 출력하는 함수
+	// 랜덤 행동을 사용하는 함수
 	function move2() {
 		var random;
 		// 1에서 5까지의 랜덤 숫자 생성
 		if (${floor < 4}){random = getRandom(1, 4);}
 		else {random = getRandom(1, 5);}
 
-		if (random == 1) {
+		if (random == 1 && windowChack) {
 			Left2(2);
-		} else if (random == 2) {
+		} else if (random == 2&& windowChack) {
 			Up2(2);
-		} else if (random == 3) {
+		} else if (random == 3&& windowChack) {
 			Right2(2);
-		} else if (random == 4) {
+		} else if (random == 4&& windowChack) {
 			Down2(2);
-		} else if (random == 5) {
+		} else if (random == 5&& windowChack) {
 			mobAttack(2);
 		}
 	}
 
-	// 1초마다 랜덤 숫자를 출력하는 함수
+	// 랜덤 행동을 사용하는 함수
 	function move3() {
 		var random;
 		// 랜덤 숫자 생성
 		if (${floor < 4}){random = getRandom(1, 4);}
 		else {random = getRandom(1, 5);}
 
-		if (random == 1) {
+		if (random == 1&& windowChack) {
 			Left2(3);
-		} else if (random == 2) {
+		} else if (random == 2&& windowChack) {
 			Up2(3);
-		} else if (random == 3) {
+		} else if (random == 3&& windowChack) {
 			Right2(3);
-		} else if (random == 4) {
+		} else if (random == 4&& windowChack) {
 			Down2(3);
-		} else if (random == 5) {
+		} else if (random == 5&& windowChack) {
 			mobAttack(3);
 		}
 	}
 
-	// 1초마다 랜덤 숫자를 출력하는 함수
+	// 랜덤 행동을 사용하는 함수
 	function move4() {
 		var random;
 		// 랜덤 숫자 생성
@@ -189,18 +189,18 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 
 		if (random == 1) {
 			Left2(4);
-		} else if (random == 2) {
+		} else if (random == 2&& windowChack) {
 			Up2(4);
-		} else if (random == 3) {
+		} else if (random == 3&& windowChack) {
 			Right2(4);
-		} else if (random == 4) {
+		} else if (random == 4&& windowChack) {
 			Down2(4);
-		} else if (random == 5) {
+		} else if (random == 5&& windowChack) {
 			mobAttack(4);
 		}
 	}
 
-	// 1초마다 랜덤 숫자를 출력하는 함수
+	// 랜덤 행동을 사용하는 함수
 	function move5() {
 		var random;
 		// 랜덤 숫자 생성
@@ -209,33 +209,33 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 
 		if (random == 1) {
 			Left2(5);
-		} else if (random == 2) {
+		} else if (random == 2&& windowChack) {
 			Up2(5);
-		} else if (random == 3) {
+		} else if (random == 3&& windowChack) {
 			Right2(5);
-		} else if (random == 4) {
+		} else if (random == 4&& windowChack) {
 			Down2(5);
-		} else if (random == 5) {
+		} else if (random == 5&& windowChack) {
 			mobAttack(5);
 		}
 	}
 
-	// 1초마다 랜덤 숫자를 출력하는 함수
+	// 랜덤 행동을 사용하는 함수
 	function move6() {
 		var random;
 		// 랜덤 숫자 생성
 		if (${floor < 4} || ${floor == 4 && room == 0}){random = getRandom(1, 4);}
 		else {random = getRandom(1, 5);}
 
-		if (random == 1) {
+		if (random == 1&& windowChack) {
 			Left2(6);
-		} else if (random == 2) {
+		} else if (random == 2&& windowChack) {
 			Up2(6);
-		} else if (random == 3) {
+		} else if (random == 3&& windowChack) {
 			Right2(6);
-		} else if (random == 4) {
+		} else if (random == 4&& windowChack) {
 			Down2(6);
-		} else if (random == 5) {
+		} else if (random == 5&& windowChack) {
 			mobAttack(6);
 		}
 	}
@@ -921,8 +921,9 @@ function damage__motion(data, damage){
 						alert('오류 발생 : ' + textStatus);
 					}
 				});
-			}	       
-	       
+			}
+
+	   	show();
 		
 </script>
 <!-- p2 맵 배경 -->

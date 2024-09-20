@@ -28,7 +28,6 @@ const interval = setInterval(function() {
 // window.onload 이벤트 감지
 window.onload = function() {
 	windowChack = true;
-	show();
 	const loadTime = new Date().getTime() - startTime;
 	
 	// 실제 로드 시간이 예상 시간을 초과하지 않으면, 비율로 로딩 바 채우기

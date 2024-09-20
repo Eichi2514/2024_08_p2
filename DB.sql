@@ -96,8 +96,12 @@ INSERT INTO charac
 SET regDate = NOW(),
 updateDate = NOW(),
 hp = 1, 
-memberId = 1,
-weaponId = 68;
+memberId = 1;
+
+INSERT INTO find 
+SET regDate = NOW(),
+weaponId = 1, 
+memberId = 1;
 
 ## 테스트 기록 생성
 INSERT INTO scoreboard
@@ -355,7 +359,7 @@ ON m.id = S.memberId
 ORDER BY `floor` DESC, room DESC, regDate ASC
 LIMIT 0, 3;
 
-SELECT W.*, F.updateDate
+SELECT W.*, F.regDate
 FROM weapon W
 LEFT JOIN find F
 ON W.id = F.weaponId
@@ -366,7 +370,7 @@ FROM chat C
 INNER JOIN `member` M
 ON C.memberId = M.id;
 
-## 스코어 테스트 데이터 랜덤 생성
+##스코어 테스트 데이터 랜덤 생성
 ## INSERT INTO scoreboard
 ## SET regDate = NOW(),
 ## memberId = FLOOR ((RAND()*2)+1),
