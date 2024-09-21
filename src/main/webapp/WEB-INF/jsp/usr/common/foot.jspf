@@ -78,6 +78,24 @@ socket.onopen = function(event) {
 socket.onerror = function(event) {
     console.log("WebSocket 오류:", event); // WebSocket 오류 로그
 };
+
+//채팅 전송 or 랜덤 아이템 먹기
+$(window).keydown(function(e) {
+	if (e.keyCode === 13) {
+		// 입력 필드가 포커스되어 있을 때만 전송 처리
+	    if ($('.chat_var').is(':focus')) {
+	    	 e.preventDefault(); // 엔터로 인한 기본 동작(폼 제출 방지)을 막음
+	    	 $(e.target).closest('form').submit();  // 현재 입력 필드와 연결된 폼만 제출
+	    }
+		// 랜덤 아이템 안내창이 보여지는중인지 확인
+		var isRandomItemHidden = $('.random_item_text').hasClass('hidden');
+		
+		// 보여질때만 실행
+	    if(!isRandomItemHidden){
+			Item_get();
+		}
+	}
+});
 </script>
 
 <div class="chat absolute">

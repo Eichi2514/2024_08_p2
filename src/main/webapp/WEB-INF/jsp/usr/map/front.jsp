@@ -1066,6 +1066,7 @@ function damage__motion(data, damage){
 </div>
 
 <c:if test="${random_item_probability == 1 && param.stage > 5}">
+
 <div class="random_item_text absolute z-20 hidden">
 	<!-- p2 나무판 -->
 	<!-- 
