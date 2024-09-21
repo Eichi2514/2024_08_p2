@@ -769,7 +769,6 @@ function damage__motion(data, damage){
 						showDoor();
 						showRandomItem();
 						attack_motion(something, "W");
-						damage__motion(data, damage);
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert('오류 발생 : ' + textStatus);
@@ -843,7 +842,6 @@ function damage__motion(data, damage){
 						showDoor();
 						showRandomItem();
 						attack_motion(something, "D");
-						damage__motion(data, damage);
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert('오류 발생 : ' + textStatus);
@@ -915,7 +913,6 @@ function damage__motion(data, damage){
 						showDoor();
 						showRandomItem();
 						attack_motion(something, "S");
-						damage__motion(data, damage);
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert('오류 발생 : ' + textStatus);
