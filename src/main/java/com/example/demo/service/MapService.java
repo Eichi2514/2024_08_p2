@@ -517,15 +517,19 @@ public class MapService {
 		int width = somethingWidth(something);
 
 		int distance = somethingDistance(something, weaponId, floor);
+		
+		// System.out.println("층 : "+floor);
+		// System.out.println("공격범위 : "+distance);
 
 		// 맵 생성
 		int[][] map = mapChack(something);
-
+        
 		int x = Xcode + ((height - 1) / 2);
 		int y = Ycode + width + distance;
 
 		for (int i = Ycode + width; i < y; i++) {
 			if (map[x][i] != road) {
+				// System.out.println(something+" : "+map[x][i]);
 				return map[x][i];
 			}
 		}
@@ -597,7 +601,7 @@ public class MapService {
 				return 10;
 			} else if (floor <= 12) {
 				return 11;
-			} else if (floor <= 13) {
+			} else {
 				return 12;
 			}
 		}

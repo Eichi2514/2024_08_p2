@@ -68,9 +68,9 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
     var front_hp = "${charac.hp}";
     var stage;
     var moveSpeed = ${charac.speed}; // 이동 속도 조절 (ms)
-    var damage = Math.floor(${charac.weaponId} / 10) + ${charac.power}; // 소수점 아래 버림
+    var damage = ((Math.floor(${charac.weaponId} / 10))*10) + ${charac.power}; // 소수점 아래 버림
     if (${charac.weaponId} % 10 != 0){
-    	damage++;
+    	damage+=10;
     }    
 
     // 스테이지 이동
@@ -129,11 +129,11 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
     var mob6_hp = 0;
     
 	// 몬스터의 체력 부여
-	if(${room > 0 && room < 5}){mob2_hp = ${floor};}
-	if(${room > 1 && room < 5}){mob3_hp = ${floor};}
-	if(${room > 2 && room < 5}){mob4_hp = ${floor};}
-	if(${room > 3 && room < 5}){mob5_hp = ${floor};}
-	if(${floor > 1 && room == 0}){mob6_hp = ${(floor-1)*10};}
+	if(${room > 0 && room < 5}){mob2_hp = ${floor*10};}
+	if(${room > 1 && room < 5}){mob3_hp = ${floor*10};}
+	if(${room > 2 && room < 5}){mob4_hp = ${floor*10};}
+	if(${room > 3 && room < 5}){mob5_hp = ${floor*10};}
+	if(${floor > 1 && room == 0}){mob6_hp = ${(floor-1)*100};}
 	
 	// 랜덤 숫자 생성
     function getRandom(min, max) {
@@ -582,7 +582,7 @@ function showRandomItem(){
 
 // 보스 HP 감소 함수
 function BossHpDown(){
-	let new_width_value = ( ${50/ ((floor-1)*10) }*mob6_hp);
+	let new_width_value = ( ${50/ ((floor-1)*100) }*mob6_hp);
 	$(".bossHP_bar").css('width', new_width_value+'vh');
 }
 

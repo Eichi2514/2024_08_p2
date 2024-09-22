@@ -33,7 +33,7 @@ Map<Integer, String> weaponImgs = (Map<Integer, String>) request.getAttribute("w
 </head>
 <body>
 	<div class="bg relative mx-auto z-10">
-		<div class="loding relative z-20">
+		<div class="loding absolute z-20">
 			<img class="loding_img"
 				src="https://github.com/user-attachments/assets/57d5f274-24c1-486b-9679-7aa7b6fa9017"
 				alt="" />

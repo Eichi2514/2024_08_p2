@@ -187,7 +187,9 @@ public class UsrMapController {
 		// 로그인 유저의 캐릭터 정보 가져오기
 		Charac charac = characService.characChack(rq.getLoginedMemberId());
 
-		return mapService.Aattack(something, charac.getWeaponId(), charac.getFloor());
+		int chackTarget = mapService.Aattack(something, charac.getWeaponId(), charac.getFloor());
+
+		return chackTarget; 
 	}
 
 	// 누구의 위쪽 공격 이벤트인지 서비스에 전달
@@ -200,7 +202,9 @@ public class UsrMapController {
 		// 로그인 유저의 캐릭터 정보 가져오기
 		Charac charac = characService.characChack(rq.getLoginedMemberId());
 
-		return mapService.Wattack(something, charac.getWeaponId(), charac.getFloor());
+		int chackTarget = mapService.Wattack(something, charac.getWeaponId(), charac.getFloor());
+
+		return chackTarget; 
 	}
 
 	// 누구의 오른쪽 공격 이벤트인지 서비스에 전달
@@ -213,7 +217,9 @@ public class UsrMapController {
 		// 로그인 유저의 캐릭터 정보 가져오기
 		Charac charac = characService.characChack(rq.getLoginedMemberId());
 
-		return mapService.Dattack(something, charac.getWeaponId(), charac.getFloor());
+		int chackTarget = mapService.Dattack(something, charac.getWeaponId(), charac.getFloor());
+		// System.out.println(something +" : "+ chackTarget);
+		return chackTarget; 
 	}
 
 	// 누구의 아래쪽 공격 이벤트인지 서비스에 전달
@@ -226,7 +232,9 @@ public class UsrMapController {
 		// 로그인 유저의 캐릭터 정보 가져오기
 		Charac charac = characService.characChack(rq.getLoginedMemberId());
 
-		return mapService.Sattack(something, charac.getWeaponId(), charac.getFloor());
+		int chackTarget = mapService.Sattack(something, charac.getWeaponId(), charac.getFloor());
+
+		return chackTarget; 
 	}
 
 	// 누가 죽었는지 서비스에 전달

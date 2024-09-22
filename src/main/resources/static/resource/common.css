@@ -818,7 +818,16 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	height: 10vh;
 }
 
-.damage1, .damage2, .damage3, .damage4, .damage5 {
+.damage1{
+	top: -5vh;
+	left: 0;
+	width: 10vh;
+	text-align:center;
+	color: blue;
+	
+}
+
+.damage2, .damage3, .damage4, .damage5 {
 	top: -5vh;
 	left: 0;
 	width: 10vh;
