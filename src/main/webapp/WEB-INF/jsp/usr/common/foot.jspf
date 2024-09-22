@@ -91,7 +91,7 @@ $(window).keydown(function(e) {
 		var isRandomItemHidden = $('.random_item_text').hasClass('hidden');
 		
 		// 보여질때만 실행
-	    if(!isRandomItemHidden){
+	    if(!isRandomItemHidden && ${random_item_probability == 1}){
 			Item_get();
 		}
 	}
