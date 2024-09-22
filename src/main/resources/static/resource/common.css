@@ -872,15 +872,17 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 }
 
 .Aattack2, .Aattack3, .Aattack4, .Aattack5 {
-	left: -6vh;
+	left: 4vh;
 	top: 4vh;
 	transform: scaleX(-1);
+	transition: left 0.5s ease;
 }
 
 .Aattack6 {
-	left: -6vh;
+	left: 9vh;
 	top: 9vh;
 	transform: scaleX(-1);
+	transition: left 0.5s ease;
 }
 
 /* [class^="Wattack"] {
@@ -890,14 +892,16 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 } */
 .Wattack2, .Wattack3, .Wattack4, .Wattack5 {
 	left: 4vh;
-	top: -6vh;
+	top: 4vh;
 	transform: rotate(270deg);
+	transition: top 0.5s ease;
 }
 
 .Wattack6 {
-	left: 9vh;
-	top: -6vh;
+	left: 4vh;
+	top: 4vh;
 	transform: rotate(270deg);
+	transition: top 0.5s ease;
 }
 
 /* [class^="Dattack"] {
@@ -905,13 +909,15 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	top: 4vh;
 } */
 .Dattack2, .Dattack3, .Dattack4, .Dattack5 {
-	left: 16vh;
+	left: 4vh;
 	top: 4vh;
+	transition: left 0.5s ease;
 }
 
 .Dattack6 {
-	left: 24vh;
+	left: 9vh;
 	top: 9vh;
+	transition: left 0.5s ease;
 }
 
 /* [class^="Sattack"] {
@@ -921,14 +927,16 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 } */
 .Sattack2, .Sattack3, .Sattack4, .Sattack5 {
 	left: 4vh;
-	top: 16vh;
+	top: 4vh;
 	transform: rotate(90deg);
+	transition: top 0.5s ease;
 }
 
 .Sattack6 {
 	left: 9vh;
-	top: 26vh;
+	top: 9vh;
 	transform: rotate(90deg);
+	transition: top 0.5s ease;
 }
 
 .front_mob_img {

@@ -466,23 +466,20 @@ public class MapService {
 		return "success";
 	}
 
-	public int Aattack(int something, int weaponId) {
+	public int Aattack(int something, int weaponId, int floor) {
 		int Xcode = somethingXcode(something);
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
 
-		int distance = 3;
-		if (something == charac) {
-			distance = somethingDistance(weaponId);
-		}
+		int distance = somethingDistance(something, weaponId, floor);
 
 		// 맵 생성
 		int[][] map = mapChack(something);
 
 		int x = Xcode + ((height - 1) / 2);
 		int y = Ycode - distance;
-		
+
 		for (int i = Ycode - 1; i > y; i--) {
 			if (map[x][i] != road) {
 				return map[x][i];
@@ -491,23 +488,20 @@ public class MapService {
 		return 0;
 	}
 
-	public int Wattack(int something, int weaponId) {
+	public int Wattack(int something, int weaponId, int floor) {
 		int Xcode = somethingXcode(something);
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
 
-		int distance = 3;
-		if (something == charac) {
-			distance = somethingDistance(weaponId);
-		}
+		int distance = somethingDistance(something, weaponId, floor);
 
 		// 맵 생성
 		int[][] map = mapChack(something);
 
 		int x = Xcode - distance;
 		int y = Ycode + ((width - 1) / 2);
-				
+
 		for (int i = Xcode - 1; i > x; i--) {
 			if (map[i][y] != road) {
 				return map[i][y];
@@ -516,23 +510,20 @@ public class MapService {
 		return 0;
 	}
 
-	public int Dattack(int something, int weaponId) {
+	public int Dattack(int something, int weaponId, int floor) {
 		int Xcode = somethingXcode(something);
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
 
-		int distance = 3;
-		if (something == charac) {
-			distance = somethingDistance(weaponId);
-		}
+		int distance = somethingDistance(something, weaponId, floor);
 
 		// 맵 생성
 		int[][] map = mapChack(something);
 
 		int x = Xcode + ((height - 1) / 2);
 		int y = Ycode + width + distance;
-		
+
 		for (int i = Ycode + width; i < y; i++) {
 			if (map[x][i] != road) {
 				return map[x][i];
@@ -541,55 +532,76 @@ public class MapService {
 		return 0;
 	}
 
-	public int Sattack(int something, int weaponId) {
+	public int Sattack(int something, int weaponId, int floor) {
 		int Xcode = somethingXcode(something);
 		int Ycode = somethingYcode(something);
 		int height = somethingHeight(something);
 		int width = somethingWidth(something);
 
-		int distance = 3;
-		if (something == charac) {
-			distance = somethingDistance(weaponId);
-		}
+		int distance = somethingDistance(something, weaponId, floor);
 
 		// 맵 생성
 		int[][] map = mapChack(something);
 
 		int x = Xcode + height + distance;
 		int y = Ycode + ((width - 1) / 2);
-		
+
 		for (int i = Xcode + height; i < x; i++) {
 			if (map[i][y] != road) {
 				return map[i][y];
 			}
 		}
 		return 0;
-		
+
 	}
 
-	private int somethingDistance(int weaponId) {
-		if (weaponId % 10 == 1) {
-			return 3;
-		} else if (weaponId % 10 == 2) {
-			return 4;
-		} else if (weaponId % 10 == 3) {
-			return 5;
-		} else if (weaponId % 10 == 4) {
-			return 6;
-		} else if (weaponId % 10 == 5) {
-			return 7;
-		} else if (weaponId % 10 == 6) {
-			return 8;
-		} else if (weaponId % 10 == 7) {
-			return 9;
-		} else if (weaponId % 10 == 8) {
-			return 10;
-		} else if (weaponId % 10 == 9) {
-			return 11;
-		} else if (weaponId % 10 == 0) {
-			return 12;
+	private int somethingDistance(int something, int weaponId, int floor) {
+		if (something == charac) {
+			if (weaponId % 10 == 1) {
+				return 3;
+			} else if (weaponId % 10 == 2) {
+				return 4;
+			} else if (weaponId % 10 == 3) {
+				return 5;
+			} else if (weaponId % 10 == 4) {
+				return 6;
+			} else if (weaponId % 10 == 5) {
+				return 7;
+			} else if (weaponId % 10 == 6) {
+				return 8;
+			} else if (weaponId % 10 == 7) {
+				return 9;
+			} else if (weaponId % 10 == 8) {
+				return 10;
+			} else if (weaponId % 10 == 9) {
+				return 11;
+			} else if (weaponId % 10 == 0) {
+				return 12;
+			}
+		} else {
+			if (floor <= 4) {
+				return 3;
+			} else if (floor <= 5) {
+				return 4;
+			} else if (floor <= 6) {
+				return 5;
+			} else if (floor <= 7) {
+				return 6;
+			} else if (floor <= 8) {
+				return 7;
+			} else if (floor <= 9) {
+				return 8;
+			} else if (floor <= 10) {
+				return 9;
+			} else if (floor <= 11) {
+				return 10;
+			} else if (floor <= 12) {
+				return 11;
+			} else if (floor <= 13) {
+				return 12;
+			}
 		}
-		return 0;
+		return 3;
 	}
 
 	public void doDelete(int something) {

@@ -588,10 +588,19 @@ function BossHpDown(){
 
 // 공격 함수
 function attack_motion(something, motion) {
-	var Distance = ${charac.weaponId} % 10; // 소수점 아래 버림
+	var Distance = 0;
+	
+	if(something == 1){
+		Distance = ${charac.weaponId} % 10; // 소수점 아래 버림
 		    if (${charac.weaponId} % 10 == 0){
 		    	Distance = 10;
-		    }   
+		    }
+	} else {
+		Distance = ${charac.floor-3};
+			if (Distance > 10){
+	    		Distance = 10;
+	    	}
+	}
 	
     const $attackElement = $("." + motion + "attack" + something);
     
@@ -600,26 +609,36 @@ function attack_motion(something, motion) {
     
     // 약간의 딜레이 후에 css를 변경해 이동하는 모습을 표현
     setTimeout(function() {
-        if (motion == 'A' && something == 1) {
+        if (motion == 'A') {
             $attackElement.css('left', (-4 - (Distance * 2)) + "vh");
-        } else if (motion == 'W' && something == 1) {
-            $attackElement.css('top', (-4 - (Distance * 2)) + "vh");
-        } else if (motion == 'D' && something == 1) {
-            $attackElement.css('left', (12 + (Distance * 2)) + "vh");
+        } else if (motion == 'W') {
+            	$attackElement.css('top', (-4 - (Distance * 2)) + "vh");
+        } else if (motion == 'D') {
+        		if(something < 6) {
+    	        $attackElement.css('left', (12 + (Distance * 2)) + "vh");
+   	     		} else if(something == 6){
+                 	$attackElement.css('left', (22 + (Distance * 2)) + "vh");	
+                }
             /* console.log((14 + (Distance * 2)));
             console.log("weaponId : " + ${charac.weaponId});
             console.log("Distance*2 : " + Distance*2);
             console.log("사거리 : " + (12 + (Distance * 2))); */
-        } else if (motion == 'S' && something == 1) {
-            $attackElement.css('top', (12 + (Distance * 2)) + "vh");
+        } else if (motion == 'S') {
+        		if(something < 6) {
+    	        $attackElement.css('top', (12 + (Distance * 2)) + "vh");
+	        	} else if(something == 6){
+                 	$attackElement.css('top', (22 + (Distance * 2)) + "vh");	
+                }
         }
     }, 10);  // 10ms 정도의 짧은 딜레이를 줘서 CSS 변경을 애니메이션으로 적용
 
     // 0.5초 뒤에 애니메이션이 끝나고, 모습을 없애고 원래 자리로
     setTimeout(function() {
         $attackElement.addClass('hidden'); // 다시 hidden 추가
-        if(something == 1){
+        if(something < 6){
         	$attackElement.css({top: "4vh", left: "4vh"}); // 원래 위치로 복귀
+        } else if(something == 6){
+        	$attackElement.css({top: "9vh", left: "9vh"}); // 원래 위치로 복귀
         }
     }, 500);  // 애니메이션 시간 500ms 이후
 }
@@ -935,8 +954,10 @@ function damage__motion(data, damage){
 
 <!-- 튜토리얼 알림창 -->
 <c:if test="${param.stage == 5}">
-	<div class="guide1 bg-black text-gray-400 text-center absolute">A W D S : 공격</div>
-	<div class="guide2 bg-black text-gray-400 text-center absolute">← ↑ → ↓ : 이동</div>
+	<div class="guide1 bg-black text-gray-400 text-center absolute">A
+		W D S : 공격</div>
+	<div class="guide2 bg-black text-gray-400 text-center absolute">←
+		↑ → ↓ : 이동</div>
 </c:if>
 
 <!-- 첫번째 몬스터 -->
@@ -955,7 +976,7 @@ function damage__motion(data, damage){
 		<img class="mobAttack Sattack2 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
 			src="${mob}" alt="" />
-			<!-- 몬스터 데미지 -->
+		<!-- 몬스터 데미지 -->
 		<div class="damage2 absolute z-20"></div>
 	</div>
 </c:if>
@@ -975,7 +996,7 @@ function damage__motion(data, damage){
 		<img class="mobAttack Sattack3 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
 			src="${mob}" alt="" />
-			<!-- 몬스터 데미지 -->
+		<!-- 몬스터 데미지 -->
 		<div class="damage3 absolute z-20"></div>
 	</div>
 </c:if>
@@ -995,7 +1016,7 @@ function damage__motion(data, damage){
 		<img class="mobAttack Sattack4 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
 			src="${mob}" alt="" />
-			<!-- 몬스터 데미지 -->
+		<!-- 몬스터 데미지 -->
 		<div class="damage4 absolute z-20"></div>
 	</div>
 </c:if>
@@ -1040,8 +1061,8 @@ function damage__motion(data, damage){
 		<img class="mobAttack Sattack6 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" /> <img
 			class="front_bossMob_img" src="${mob}" alt="" />
-			<!-- 보스 데미지 -->
-	<div class="damage6 absolute z-20"></div>	
+		<!-- 보스 데미지 -->
+		<div class="damage6 absolute z-20"></div>
 	</div>
 
 	<img class="item hidden absolute" src="${weapon}" alt="" />
@@ -1064,21 +1085,23 @@ function damage__motion(data, damage){
 
 <c:if test="${random_item_probability == 1 && param.stage > 5}">
 
-<div class="random_item_text absolute z-20 hidden">
-	<!-- p2 나무판 -->
-	<!-- 
+	<div class="random_item_text absolute z-20 hidden">
+		<!-- p2 나무판 -->
+		<!-- 
 	<img class="item_img absolute z-20"
 		src="https://github.com/user-attachments/assets/b3351b33-5547-48b5-9108-78ef3c69c204"
 		alt="" />
 	-->
 
-	<div class="item_title absolute z-20">수상한 알약을 발견하였습니다.</div>
-	<button class="item_get absolute z-20" onclick="Item_get()">먹는다</button>
-	<button class="item_exit absolute z-20" onclick="Item_exit()">취소</button>
-</div>
+		<div class="item_title absolute z-20">수상한 알약을 발견하였습니다.</div>
+		<button class="item_get absolute z-20" onclick="Item_get()">먹는다</button>
+		<button class="item_exit absolute z-20" onclick="Item_exit()">취소</button>
+	</div>
 
 
-<img class="random_item hidden absolute" src="https://github.com/user-attachments/assets/64a8dc0c-b9bc-41a7-a500-8a9466c0dd04" alt="" />
+	<img class="random_item hidden absolute"
+		src="https://github.com/user-attachments/assets/64a8dc0c-b9bc-41a7-a500-8a9466c0dd04"
+		alt="" />
 </c:if>
 
 <!-- 캐릭터 -->
@@ -1100,7 +1123,7 @@ function damage__motion(data, damage){
 		src="https://github.com/user-attachments/assets/aaa05c2c-d55a-4111-b367-9231727e7050"
 		alt="" />
 	<!-- 캐릭터 데미지 -->
-	<div class="damage1 absolute z-20"></div>	
+	<div class="damage1 absolute z-20"></div>
 </div>
 
 <%@ include file="../common/foot.jspf"%>
