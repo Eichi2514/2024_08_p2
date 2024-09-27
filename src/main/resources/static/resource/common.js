@@ -12,31 +12,36 @@ let estimatedLoadTime = 1500; // 예상 로드 시간
 
 // 페이지 로딩 중에 로딩 바가 점진적으로 증가하도록 설정
 const interval = setInterval(function() {
-    const currentTime = new Date().getTime();
-    const elapsedTime = currentTime - startTime;
-    
-    // 경과된 시간에 비례해 로딩 바 너비 설정 (최대 80vh)
-    const width = Math.min((elapsedTime / estimatedLoadTime) * 80, 80);
-    $(".loding_bar").css("width", width + "vh");
+	const currentTime = new Date().getTime();
+	const elapsedTime = currentTime - startTime;
 
-    // 페이지가 로드되기 전에 80vh에 도달하지 않도록 안전하게 제한
-    if (width >= 80) {
-        clearInterval(interval); // 최대 너비에 도달하면 애니메이션 정지
-    }
+	// 경과된 시간에 비례해 로딩 바 너비 설정 (최대 80vh)
+	const width = Math.min((elapsedTime / estimatedLoadTime) * 80, 80);
+	$(".loding_bar").css("width", width + "vh");
+
+	// 페이지가 로드되기 전에 80vh에 도달하지 않도록 안전하게 제한
+	if (width >= 80) {
+		clearInterval(interval); // 최대 너비에 도달하면 애니메이션 정지
+	}
 }, 100); // 100ms마다 로딩 바 업데이트
 
 // window.onload 이벤트 감지
 window.onload = function() {
 	windowChack = true;
 	const loadTime = new Date().getTime() - startTime;
-	
+
+	if (floor >= 0){ 
+		startTimer();
+		updateTime(); 
+	}	
+
 	// 실제 로드 시간이 예상 시간을 초과하지 않으면, 비율로 로딩 바 채우기
 	const finalWidth = Math.min((loadTime / estimatedLoadTime) * 80, 80);
-	    $(".loding_bar").css("width", finalWidth + "vh");
+	$(".loding_bar").css("width", finalWidth + "vh");
 
 	// 로딩 바가 완료된 후 로딩 화면 서서히 제거
-	setTimeout(function () {
-	  $(".loding").fadeOut(500);
+	setTimeout(function() {
+		$(".loding").fadeOut(500);
 	}, 500);  // 로드가 완료되면 잠시 후 로딩 화면 제거
 }
 
@@ -60,7 +65,7 @@ function startMoving(moveAction) {
 			Right(1);
 			// console.log(moveSpeed);
 		} else if (moveAction === 'down') {
-			Down(1);			
+			Down(1);
 		}
 	}, moveSpeed);
 }
@@ -136,6 +141,7 @@ function Up(something) {
 					showRandomItem_text();
 					//			console.log('LR : ' + LR + ', UD : ' + UD);
 				}
+				showDoor();
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				alert('오류 발생 : ' + textStatus);
@@ -161,6 +167,7 @@ function Down(something) {
 					showRandomItem_text();
 					//				console.log('LR : ' + LR + ', UD : ' + UD);
 				}
+				showDoor();
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				alert('오류 발생 : ' + textStatus);
@@ -186,6 +193,7 @@ function Left(something) {
 					showRandomItem_text();
 					//					console.log('LR : ' + LR + ', UD : ' + UD);
 				}
+				showDoor();
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				alert('오류 발생 : ' + textStatus);
@@ -211,6 +219,7 @@ function Right(something) {
 					showRandomItem_text();
 					//					console.log('LR : ' + LR + ', UD : ' + UD);
 				}
+				showDoor();
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				alert('오류 발생 : ' + textStatus);
@@ -259,16 +268,16 @@ function mob__prev() {
 
 function weapon__updateSlide() {
 	// 이동할 위치 계산 (현재 인덱스에 맞게 이동)
-	    var weapon__translateX = -weapon__currentIndex * (weapon__cardWidth + 3.5);
-		console.log("weapon__currentIndex : "+weapon__currentIndex);
-		console.log("weapon__itemsPerPage : "+weapon__itemsPerPage);
-		console.log("weapon__totalItems : "+weapon__totalItems);
-		console.log("weapon__cardWidth : "+weapon__cardWidth);
-		console.log("weapon__translateX : "+weapon__translateX);
+	var weapon__translateX = -weapon__currentIndex * (weapon__cardWidth + 3.5);
+	console.log("weapon__currentIndex : " + weapon__currentIndex);
+	console.log("weapon__itemsPerPage : " + weapon__itemsPerPage);
+	console.log("weapon__totalItems : " + weapon__totalItems);
+	console.log("weapon__cardWidth : " + weapon__cardWidth);
+	console.log("weapon__translateX : " + weapon__translateX);
 	$('.weapon__dictionary_inner').css('transform', 'translateX(' + weapon__translateX + 'vh)');
 }
 
-function weapon__next() {	
+function weapon__next() {
 	if (weapon__currentIndex + weapon__itemsPerPage < weapon__totalItems) {
 		weapon__currentIndex++;
 	} else {

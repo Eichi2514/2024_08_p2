@@ -66,11 +66,16 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 <script type="text/javascript">
     // 캐릭터 정보
     var front_hp = "${charac.hp}";
+    var floor = ${floor};
     var stage;
     var moveSpeed = ${charac.speed}; // 이동 속도 조절 (ms)
     var damage = ((Math.floor(${charac.weaponId} / 10))*10) + ${charac.power}; // 소수점 아래 버림
     if (${charac.weaponId} % 10 != 0){
     	damage+=10;
+    } 
+    var mobDamage = ${floor};
+    if (${room == 0}){
+    	mobDamage--;
     }    
 
     // 스테이지 이동
@@ -79,7 +84,7 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 		var doorChack = $(".door").hasClass("hidden");
 		if (LR > 79 && 38 < UD && UD < 52 && !doorChack) {
 			windowChack = false;
-			update(front_hp, stage);						
+			update(front_hp, stage, seconds);						
 			setTimeout(function(){location.href = '../map/front?stage=' + stage;}, 100);			
 			/* console.log("HP:", front_hp);
 			console.log("Stage:", stage);
@@ -88,13 +93,14 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 	}  
     
     // 캐릭터 정보 업데이트
-	function update(hp, stage) {
+	function update(hp, stage, seconds) {
 		$.ajax({
 			url : '/usr/charac/update',
 			type : 'POST',
 			data : {
 				hp : hp,
-				stage : stage
+				stage : stage,
+				clearTime : seconds
 			},
 			dataType : 'text',
 			success : function(data) {
@@ -282,8 +288,13 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 							$(".mob6").css("top", UD6 + "vh");
 						}						
 					} else if (data == 'charac') {
-						hpDown();
-						damage__motion('1', '1');
+						if (something < 6){
+							hpDown(mobDamage);
+							damage__motion('1', mobDamage);
+							} else{
+							hpDown(mobDamage*2);
+							damage__motion('1', mobDamage*2);	
+							}
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -319,8 +330,13 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 							$(".mob6").css("top", UD6 + "vh");
 						}
 					} else if (data == 'charac') {
-						hpDown();
-						damage__motion('1', '1');
+						if (something < 6){
+							hpDown(mobDamage);
+							damage__motion('1', mobDamage);
+							} else{
+							hpDown(mobDamage*2);
+							damage__motion('1', mobDamage*2);	
+							}
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -357,8 +373,13 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 							$(".mob6").css("left", LR6 + "vh");
 						}
 					} else if (data == 'charac') {
-						hpDown();		
-						damage__motion('1', '1');
+						if (something < 6){
+							hpDown(mobDamage);
+							damage__motion('1', mobDamage);
+							} else{
+							hpDown(mobDamage*2);
+							damage__motion('1', mobDamage*2);	
+							}
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -394,8 +415,13 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 							$(".mob6").css("left", LR6 + "vh");
 						}
 					} else if (data == 'charac') {
-						hpDown();
-						damage__motion('1', '1');
+						if (something < 6){
+						hpDown(mobDamage);
+						damage__motion('1', mobDamage);
+						} else{
+						hpDown(mobDamage*2);
+						damage__motion('1', mobDamage*2);	
+						}
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -405,13 +431,14 @@ String mob6Y = (codesMap.get("mob6YCode") * 2) + (10 - 2) + "vh";
 		}
 		
 // hp 감소
-function hpDown(){
-	front_hp -= 1;
+function hpDown(mobDamage){
+	front_hp -= mobDamage;
 	$('.hp_count').text(front_hp);
 	if(front_hp <= 0){
 		scoreboardLog();
 		location.href = '../map/over';
 		}
+	characHpDown();
 }
 
 // 죽었을 시 기록 남기기
@@ -419,6 +446,9 @@ function scoreboardLog() {
     $.ajax({
         url : '/usr/scoreboard/log',
         type : 'POST',
+        data: {
+        	clearTime: seconds
+        },
         dataType : 'text',
         error : function(jqXHR, textStatus, errorThrown) {
             alert('오류 발생 : ' + textStatus);
@@ -468,7 +498,16 @@ var stop2, stop3, stop4, stop5, stop6;
 
 //일정 시간마다 move 함수를 호출
 function show(){
-	console.log("페이지가 모두 로드된 후 실행됩니다.");
+	// console.log("페이지가 모두 로드된 후 실행됩니다.");	
+	// console.log(((8 / 100) * front_hp));
+	
+	setTimeout(characHpDown, 1000);
+	setTimeout(() => mobHpDown(2), 1000);
+	setTimeout(() => mobHpDown(3), 1000);
+	setTimeout(() => mobHpDown(4), 1000);
+	setTimeout(() => mobHpDown(5), 1000);
+	$('body').css('cursor', 'none');
+		
 	if(${param.stage <= 270}){
 	  if(${room > 0 && room < 5}){stop2 = setInterval(move2, 1000);}
 	  if(${room > 1 && room < 5}){stop3 = setInterval(move3, 800);}
@@ -519,7 +558,7 @@ function Item_mix(){
       type : 'POST',
       dataType : 'text',
       success: function(data) {
-    	  console.log("무기정보 : " + data);
+    	  // console.log("무기정보 : " + data);
       	var changeImg = data;
           $('.weapon_img').attr('src', changeImg);
           $('.CharacAttack').attr('src', changeImg);
@@ -580,10 +619,49 @@ function showRandomItem(){
 	}
 }
 
-// 보스 HP 감소 함수
+// 보스 체력바 변화 함수
 function BossHpDown(){
-	let new_width_value = ( ${50/ ((floor-1)*100) }*mob6_hp);
-	$(".bossHP_bar").css('width', new_width_value+'vh');
+	let new_bossHp_width = ( ${50/ ((floor-1)*100) }*mob6_hp);
+	$(".bossHP_bar").css('width', new_bossHp_width+'vh');
+}
+
+// 몬스터 체력바 변화 함수
+function mobHpDown(something){
+	let mob_hp = 0;
+	if(something == 2){
+		mob_hp = mob2_hp;
+	}else if(something == 3){
+		mob_hp = mob3_hp;
+	}else if(something == 4){
+		mob_hp = mob4_hp;
+	}else if(something == 5){
+		mob_hp = mob5_hp;
+	}
+	let new_mobHp_width = ( ${8/ (floor * 10) } * mob_hp);
+	// console.log(".mob"+something+"HP_bar : " + new_mobHp_width+'vh');
+	$(".mob"+something+"HP_bar").css('width', new_mobHp_width+'vh');
+}
+
+// 캐릭 체력바 변화 함수
+function characHpDown(){
+	let new_characHp_width = (8 / 10) * (front_hp%10);
+	// console.log(new_characHp_width);
+	let characHp_number = Math.floor(front_hp/10);
+	if(front_hp%10 == 0){
+		new_characHp_width = 8;
+		characHp_number--;
+	}
+	// console.log("체력 넓이 : " + new_characHp_width + ", 줄 수 : " + characHp_number);
+	for(var i = characHp_number-1; i >= 0; i--){
+	$(".characHP_bar"+i).css('width', '8vh');
+	}
+	for(var i = characHp_number+1; i < 11; i++){
+	$(".characHP_bar"+i).css('width', '0vh');
+	}
+	
+	// console.log(".characHP_bar"+(characHp_number-1));
+	$(".characHP_bar"+characHp_number).css('width', new_characHp_width+'vh');
+	$(".characHP_bar_text").text('x'+(characHp_number+1));
 }
 
 // 공격 함수
@@ -645,6 +723,8 @@ function attack_motion(something, motion) {
 
 // 데미지 화면에 보여주기
 function damage__motion(data, damage){
+	// console.log(data, damage)
+	mobHpDown(data);
 	$(".damage"+data).text(damage);
 	setTimeout(function() {
 		$(".damage"+data).text('');	
@@ -664,10 +744,15 @@ function damage__motion(data, damage){
 						// console.log("데미지 : " + damage);
 						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
-							hpDown();
-							damage__motion('1', '1');
+							if (something < 6){
+								hpDown(mobDamage);
+								damage__motion('1', mobDamage);
+								} else{
+								hpDown(mobDamage*2);
+								damage__motion('1', mobDamage*2);	
+								}
 						} else if (something == 1 && data == 2) {
-							mob2_hp -= damage;			
+							mob2_hp -= damage;
 							damage__motion(data, damage);
 							if(mob2_hp <= 0){
 								mobHidden(2);
@@ -735,8 +820,13 @@ function damage__motion(data, damage){
 					success : function(data) {
 						// console.log("몬스터"+data+"Attack");						 
 						if (something != 1 && data == 1) {
-							hpDown();
-							damage__motion('1', '1');
+							if (something < 6){
+								hpDown(mobDamage);
+								damage__motion('1', mobDamage);
+								} else{
+								hpDown(mobDamage*2);
+								damage__motion('1', mobDamage*2);	
+								}
 						} else if (something == 1 && data == 2) {
 							mob2_hp -= damage;			
 							damage__motion(data, damage);
@@ -808,8 +898,13 @@ function damage__motion(data, damage){
 						// console.log("데미지 : " + damage);
 						// console.log("보스 HP : " + mob6_hp);
 						if (something != 1 && data == 1) {
-							hpDown();
-							damage__motion('1', '1');
+							if (something < 6){
+								hpDown(mobDamage);
+								damage__motion('1', mobDamage);
+								} else{
+								hpDown(mobDamage*2);
+								damage__motion('1', mobDamage*2);	
+								}
 						} else if (something == 1 && data == 2) {
 							mob2_hp -= damage;			
 							damage__motion(data, damage);
@@ -879,8 +974,13 @@ function damage__motion(data, damage){
 					success : function(data) {
 						// console.log("몬스터"+data+"Attack");						 
 						if (something != 1 && data == 1) {
-							hpDown();
-							damage__motion('1', '1');
+							if (something < 6){
+								hpDown(mobDamage);
+								damage__motion('1', mobDamage);
+								} else{
+								hpDown(mobDamage*2);
+								damage__motion('1', mobDamage*2);	
+								}
 						} else if (something == 1 && data == 2) {
 							mob2_hp -= damage;			
 							damage__motion(data, damage);
@@ -938,7 +1038,30 @@ function damage__motion(data, damage){
 					}
 				});
 			}
+	       
+	       let seconds = ${charac.clearTime};
 
+	       function updateTime() {
+	           const hrs = Math.floor(seconds / 3600);
+	           const mins = Math.floor((seconds % 3600) / 60);
+	           const secs = seconds % 60;
+
+	           // 1초 단위로 형식화
+	           $(".time").text(
+	               hrs.toString().padStart(2, '0') + ":" + 
+	               mins.toString().padStart(2, '0') + ":" + 
+	               secs.toString().padStart(2, '0')
+	           );
+	       }
+
+	       function startTimer() {
+	           setInterval(() => {
+	               seconds++;
+	               updateTime();
+	           }, 1000);
+	       }
+	       
+	       
 	   	show();
 		
 </script>
@@ -960,9 +1083,17 @@ function damage__motion(data, damage){
 		↑ → ↓ : 이동</div>
 </c:if>
 
+<!-- 타이머 -->
+<div class="timer absolute">
+    <div class="time"></div>
+</div>
+
 <!-- 첫번째 몬스터 -->
 <c:if test="${room > 0 && room < 5}">
 	<div class="front_mob mob2 absolute">
+		<c:if test="${floor%10 != 0}">
+			<div class="mob2HP_bar absolute bg-red-500"></div>
+		</c:if>
 		<!-- 왼쪽 공격 -->
 		<img class="mobAttack Aattack2 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
@@ -974,8 +1105,8 @@ function damage__motion(data, damage){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack2 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
-			src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" />
+		<img class="front_mob_img" src="${mob}" alt="" />
 		<!-- 몬스터 데미지 -->
 		<div class="damage2 absolute z-20"></div>
 	</div>
@@ -983,6 +1114,9 @@ function damage__motion(data, damage){
 <!-- 두번째 몬스터 -->
 <c:if test="${room > 1 && room < 5}">
 	<div class="front_mob mob3 absolute">
+		<c:if test="${floor%10 != 0}">
+			<div class="mob3HP_bar absolute bg-red-500"></div>
+		</c:if>
 		<!-- 왼쪽 공격 -->
 		<img class="mobAttack Aattack3 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
@@ -994,8 +1128,8 @@ function damage__motion(data, damage){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack3 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
-			src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" />
+		<img class="front_mob_img" src="${mob}" alt="" />
 		<!-- 몬스터 데미지 -->
 		<div class="damage3 absolute z-20"></div>
 	</div>
@@ -1003,6 +1137,9 @@ function damage__motion(data, damage){
 <!-- 세번째 몬스터 -->
 <c:if test="${room > 2 && room < 5}">
 	<div class="front_mob mob4 absolute">
+		<c:if test="${floor%10 != 0}">
+			<div class="mob4HP_bar absolute bg-red-500"></div>
+		</c:if>
 		<!-- 왼쪽 공격 -->
 		<img class="mobAttack Aattack4 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
@@ -1014,8 +1151,8 @@ function damage__motion(data, damage){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack4 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
-			src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" />
+		<img class="front_mob_img" src="${mob}" alt="" />
 		<!-- 몬스터 데미지 -->
 		<div class="damage4 absolute z-20"></div>
 	</div>
@@ -1023,6 +1160,9 @@ function damage__motion(data, damage){
 <!-- 네번째 몬스터 -->
 <c:if test="${room > 3 && room < 5}">
 	<div class="front_mob mob5 absolute">
+		<c:if test="${floor%10 != 0}">
+			<div class="mob5HP_bar absolute bg-red-500"></div>
+		</c:if>
 		<!-- 왼쪽 공격 -->
 		<img class="mobAttack Aattack5 attackSize hidden absolute"
 			src="${charac.extra__weapon}" alt="" />
@@ -1034,8 +1174,8 @@ function damage__motion(data, damage){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack5 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" /> <img class="front_mob_img"
-			src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" />
+		<img class="front_mob_img" src="${mob}" alt="" />
 		<!-- 몬스터 데미지 -->
 		<div class="damage5 absolute z-20"></div>
 	</div>
@@ -1059,8 +1199,8 @@ function damage__motion(data, damage){
 			src="${charac.extra__weapon}" alt="" />
 		<!-- 아래쪽 공격 -->
 		<img class="mobAttack Sattack6 attackSize hidden absolute"
-			src="${charac.extra__weapon}" alt="" /> <img
-			class="front_bossMob_img" src="${mob}" alt="" />
+			src="${charac.extra__weapon}" alt="" />
+		<img class="front_bossMob_img" src="${mob}" alt="" />
 		<!-- 보스 데미지 -->
 		<div class="damage6 absolute z-20"></div>
 	</div>
@@ -1106,6 +1246,18 @@ function damage__motion(data, damage){
 
 <!-- 캐릭터 -->
 <div class="front_charac charac absolute">
+	<div class="characHP_bar_text absolute"></div>
+	<div class="characHP_bar0 absolute bg-red-300"></div>
+	<div class="characHP_bar1 absolute bg-red-500"></div>
+	<div class="characHP_bar2 absolute bg-yellow-500"></div>
+	<div class="characHP_bar3 absolute bg-yellow-300"></div>
+	<div class="characHP_bar4 absolute bg-green-300"></div>
+	<div class="characHP_bar5 absolute bg-green-500"></div>
+	<div class="characHP_bar6 absolute bg-blue-300"></div>
+	<div class="characHP_bar7 absolute bg-blue-500"></div>
+	<div class="characHP_bar8 absolute bg-purple-300"></div>
+	<div class="characHP_bar9 absolute bg-purple-500"></div>
+
 	<!-- 왼쪽 공격 -->
 	<img class="attackSize Aattack1 CharacAttack hidden absolute"
 		src="${charac.extra__weapon}" alt="" />

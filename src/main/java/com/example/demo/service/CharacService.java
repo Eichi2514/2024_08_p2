@@ -24,15 +24,18 @@ public class CharacService {
 		return characRepository.characChack(loginedMemberId);
 	}
 
-	public void update(int hp, int floor, int room, int memberId) {
+	public void update(int hp, int floor, int room, int clearTime, int memberId) {
 
 
 		// 보스방 통과시에만 체력 증가
-		if (floor != 1 && room == 1 && hp < 10) {
-			hp++;
+		if (floor != 1 && room == 1 && hp < 100) {
+			hp+=10;
+			if(hp > 100) {
+				hp = 100;
+			}
 		}
 		
-		characRepository.update(hp, floor, room, memberId);
+		characRepository.update(hp, floor, room, clearTime, memberId);
 	}
 
 	public void weaponChange(int memberId, int weaponId) {

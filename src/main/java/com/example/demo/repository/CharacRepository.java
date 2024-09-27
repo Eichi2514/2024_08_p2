@@ -33,10 +33,11 @@ public interface CharacRepository {
 			SET updateDate = NOW(),
 			hp = #{hp},
 			`floor` = #{floor},
-			room = #{room}
+			room = #{room},
+			clearTime = #{clearTime}
 			WHERE memberId = #{memberId}
 			""")
-	public void update(int hp, int floor, int room, int memberId);
+	public void update(int hp, int floor, int room, int clearTime, int memberId);
 
 	@Update("""
 			UPDATE charac
@@ -51,10 +52,11 @@ public interface CharacRepository {
 			SET updateDate = NOW(),
 			`floor` = 1,
 			room = 0,
-			hp = 1,
+			hp = 100,
 			`power` = 0,
 			speed = 50,
-			weaponId = 1
+			weaponId = 1,
+			clearTime = 0
 			WHERE memberId = #{memberId}
 			""")
 	public void reset(int memberId);

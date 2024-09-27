@@ -185,11 +185,24 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	z-index: 10;
 }
 
+.arrow1{
+	left:0;
+	font-size: 4.5vh;
+	transform: rotate(90deg);
+}
+
+.arrow2{
+	left: 10.6vh;
+	font-size: 4.5vh;
+	transform: rotate(180deg);
+	background: rgb(255, 71, 48);	
+}
+
 .start:hover>.start-2, .start:hover>.start-text {
 	display: block;
 }
 
-.start:hover>.start-1 {
+.start:hover>.start-1, .start:hover>.arrow1, .start:hover>.arrow2 {
 	display: none;
 }
 
@@ -388,7 +401,14 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 .scoreboard_table {
 	top: 4vh;
-	left: 24vh;
+	left: 16vh;
+	width: 45vh;
+	text-align: center;
+}
+
+.scoreboard_clearTime{
+	font-size: 1.5vh;
+	bottom: 0;
 }
 
 .pagination {
@@ -409,12 +429,12 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 
 .pagination_left {
 	top: 33vh;
-	left: 16vh;
+	left: 12vh;
 }
 
 .pagination_right {
 	top: 33vh;
-	left: 54vh;
+	left: 60vh;
 }
 
 /* 인게임 헤드 */
@@ -806,6 +826,21 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 	border-radius: 1vh;
 }
 
+.timer{
+	top: 1vh;
+	left: 122vh;
+	width: 20vh;
+	height: 9vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0.3vh solid rgb(174, 0, 27);
+	border-radius: 1vh;
+	/* background: rgb(255, 71, 48); */
+	color: rgb(156, 163, 175);
+	-webkit-text-stroke: 0.1vh black;
+}
+
 .front_charac {
 	left: 10vh;
 	top: 44vh; /* 44.1 */
@@ -816,6 +851,24 @@ input:-moz-placeholder { /* 파이어폭스 4-18 */
 .front_charac_img {
 	width: 10vh;
 	height: 10vh;
+}
+
+.characHP_bar1, .characHP_bar2, .characHP_bar3, .characHP_bar4, .characHP_bar5, .characHP_bar6, .characHP_bar7, .characHP_bar8, .characHP_bar9, .characHP_bar0, .mob2HP_bar, .mob3HP_bar, .mob4HP_bar, .mob5HP_bar{
+	top: -2vh;
+	left: 1vh;
+	height: 1vh;		
+	transition: width 0.5s ease;
+}
+
+.characHP_bar_text{
+	top: -2vh;
+	left: 1vh;
+	height: 1vh;
+	width: 8vh;
+	text-align: right;
+	font-size:0.7vh;
+	padding-right:0.1vh;
+	z-index: 30;
 }
 
 .damage1{
