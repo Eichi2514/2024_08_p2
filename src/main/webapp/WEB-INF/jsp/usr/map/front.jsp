@@ -1061,6 +1061,31 @@ function damage__motion(data, damage){
 	           }, 1000);
 	       }
 	       
+	       $(document).ready(function() {
+	            let timeoutId;
+
+	            // 마우스가 움직이면 호출되는 함수
+	            function resetCursorTimer() {
+	                // 커서를 다시 보이도록 설정
+	                $('body').css('cursor', 'default');
+
+	                // 이전 타이머가 있다면 취소
+	                clearTimeout(timeoutId);
+
+	                // 설정한 시간 후에 커서를 숨김
+	                timeoutId = setTimeout(function() {
+	                    $('body').css('cursor', 'none');
+	                }, 1000);
+	            }
+
+	            // 페이지가 처음 로드될 때 타이머 시작
+	            timeoutId = setTimeout(function() {
+	                $('body').css('cursor', 'none');
+	            }, 3000);
+
+	            // 마우스가 움직일 때마다 타이머를 리셋
+	            $(document).on('mousemove', resetCursorTimer);
+	        });
 	       
 	   	show();
 		
