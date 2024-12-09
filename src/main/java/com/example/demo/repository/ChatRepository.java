@@ -12,11 +12,16 @@ import com.example.demo.vo.Chat;
 public interface ChatRepository {
 
 	@Select("""
-			SELECT C.*, M.nickname extra__writer
-			FROM chat C
-			INNER JOIN `member` M
-			ON C.memberId = M.id
-			""")	
+    		SELECT sub.*
+    		FROM (
+        		SELECT C.*, M.nickname AS extra__writer
+        		FROM chat C
+        		INNER JOIN `member` M ON C.memberId = M.id
+        		ORDER BY C.id DESC
+        		LIMIT 30
+    		) AS sub
+    		ORDER BY sub.id ASC
+			""")
 	public List<Chat> chatList();
 
 	@Insert("""
