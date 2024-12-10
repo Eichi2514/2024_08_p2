@@ -73,8 +73,8 @@ updateDate = NOW(),
 loginId = 'asd',
 loginPw = 'asd',
 authLevel = 7,
-`name` = '관리자',
-nickname = '관리자',
+`name` = 'admin',
+nickname = 'admin',
 gender = 1;
 
 INSERT INTO `member`
@@ -82,8 +82,8 @@ SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'qwe',
 loginPw = 'qwe',
-`name` = '회원2',
-nickname = '회원2',
+`name` = 'tester2',
+nickname = 'tester2',
 gender = 2;
 
 INSERT INTO `member`
