@@ -1,5 +1,5 @@
 # 첫 번째 스테이지: 빌드 스테이지
-FROM maven:3.8.6-openjdk-17 AS builder
+FROM maven:3-openjdk-17 AS builder
 
 # 작업 디렉토리 설정
 WORKDIR /app
@@ -25,5 +25,5 @@ WORKDIR /app
 # 첫 번째 스테이지에서 빌드된 WAR 파일 복사
 COPY --from=builder /app/target/your-app.war app.war
 
-# 내장 톰캣을 사용하여 실행 (JAR처럼 실행)
+# 내장 톰캣을 사용하여 실행
 ENTRYPOINT ["java", "-jar", "app.war"]
