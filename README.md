@@ -1,3 +1,23 @@
+# 프로젝트 실행 방법
+
+## 1. 프로젝트 클론
+   - 다음 명령어를 통해 프로젝트를 클론하고 디렉토리로 이동합니다:
+```bash
+git clone https://github.com/Eichi2514/2024_08_p2.git
+cd 2024_08_p2
+```
+
+## 2. 프로젝트 내의 DB.sql의 쿼리를 연결할 DB에서 실행한다
+   - 예시) XAMPP를 포트 3306으로 실행한 후, SQLyog에서 다음과 같은 설정으로 연결 :
+       아이디 : root
+       비밀번호 : (없음)
+    
+## 3. 프로젝트 실행
+
+## 4. 브라우저에서 http://localhost:8080/usr/home/main 으로 접속하여 실행 결과 확인
+
+## 5. 프로젝트 소개
+
 ![1](https://github.com/user-attachments/assets/81f74f7c-b29d-4eb1-9760-586913deecdf)
 ![발표2](https://github.com/user-attachments/assets/2fe5395c-04b3-4d72-967b-e4b4816c62f2)
 ![2](https://github.com/user-attachments/assets/ce2ce9cb-1228-4947-a8b8-cdf0058ef1fb)
