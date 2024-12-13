@@ -14,7 +14,8 @@ cd 2024_08_p2
     
 ## 3. 프로젝트 실행
 
-## 4. 브라우저에서 http://localhost:8080/usr/home/main 으로 접속하여 실행 결과 확인
+## 4. 결과 확인
+   브라우저에서 http://localhost:8080/usr/home/main 으로 접속하여 실행 결과 확인
 
 ## 5. 프로젝트 소개
 
