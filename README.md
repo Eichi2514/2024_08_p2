@@ -7,7 +7,8 @@ git clone https://github.com/Eichi2514/2024_08_p2.git
 cd 2024_08_p2
 ```
 
-## 2. 프로젝트 내의 DB.sql의 쿼리를 연결할 DB에서 실행한다
+## 2. DB 셋팅
+   프로젝트 내의 DB.sql의 쿼리를 연결할 DB에서 실행한다 <br>
    예시) XAMPP를 포트 3306으로 실행한 후, SQLyog에서 다음과 같은 설정으로 연결 <br>
      - 아이디 : root <br>
      - 비밀번호 : (없음) <br>
