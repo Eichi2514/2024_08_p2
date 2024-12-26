@@ -8,7 +8,7 @@ cd 2024_08_p2
 ```
 
 ## 2. DB 셋팅
-   프로젝트 내의 DB.sql의 쿼리를 연결할 DB에서 실행한다 <br>
+   프로젝트 내의 DB.sql 파일의 쿼리를 연결할 DB에서 실행한다 <br>
    예시) XAMPP를 포트 3306으로 실행한 후, SQLyog에서 다음과 같은 설정으로 연결 <br>
      - 아이디 : root <br>
      - 비밀번호 : (없음) <br>
@@ -39,3 +39,6 @@ cd 2024_08_p2
 ![16](https://github.com/user-attachments/assets/7939439f-ccee-49e4-881d-5c01502f3acf)
 ![17](https://github.com/user-attachments/assets/49786841-e9f9-4b55-9a3c-debd0928236c)
 ![18](https://github.com/user-attachments/assets/68441894-31d9-44cf-8ae6-d52f5683a6ce)
+
+## 6. 프로젝트 플레이 영상
+<a href="https://drive.google.com/file/d/1mh9brC24bFh3A0Es7ehbxluNSBX-iFhE/view?usp=drive_link" target="_blank">플레이 영상</a>
